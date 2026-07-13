@@ -1,0 +1,20 @@
+#!/usr/bin/sed -f
+# sed commands to change grok database to comma separated fields.
+# usage: "csv file.db"  e.g. "csv countries.db | nl | less" 
+#
+# Modus Operandi:
+#  First combine "\" splitted lines with " | " marker; again and again
+#  Then change "," to ";" to avoid extra fields
+#  Then change separator ":" to ","
+#
+# Stoffel Lombard <lombc@clom.me.up.ac.za>
+{
+:again
+/\\$/N
+s/\\ *\n/ | /g
+/\\$/bagain
+s/\\:/|||||/g
+s/,/;/g
+s/:/,/g
+s/|||||/:/g
+}

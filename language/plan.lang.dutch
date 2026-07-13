@@ -1,0 +1,381 @@
+\n(Probeer bestand %s te raadplegen.)
+\nDay Planner versie %s\nGecompileerd op %s\n\nAuteur: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nZend mail naar majordomo@bitrot.de on in te schrijven\n op de mailing-lijst. Of surf naar nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nDe brondcode is verkrijgbaar op\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (eigen)
+ (enkel leesbaar)
+ (waarschuwing)
+%5d      (pid van het blokkeerbestand voor %s, voor gebruiker %d)\n
+%d van %d afspraken uit de grok-database\n%s genegeerd\nwegens ongeldige datum/tijd.
+%s is een\ngrok-database, niet ondersteund
+%s is een\nxmbase-grok database, kan bestand niet schrijven
+%s: %s in lijn %d van %s\n
+%s: %s: ongeldige lijn:\n%s
+%s: %s: niet gevonden\n
+%s: WAARSCHUWING: kan %s niet vinden\n
+%s: WAARSCHUWING: kan gebruikersname niet lezen\n%s.
+%s: WARNING: can't signal daemon: 
+%s: WAARSCHUWING: kan niet %s opstarten: 
+%s: WAARSCHUWING: bestand %s is versie 
+%s: WAARSCHUWING: fork niet mogelijk\n
+%s: kan kleur voor %s niet toekennen\n
+%s: kan %s niet creeren: 
+%s: kan ~%s in %s niet evalueren, gebruik dan maar .\n
+%s: kan niet schrijven naar %s: 
+%s: kan blokkeerbestand niet creeren 
+%s: kan blokkeerbestand niet openen 
+%s: kan blokkeerbestand niet lezen 
+%s: kan blokkeerbestand niet unlinken
+%s: kan blookeerbestand niet schrijven
+%s: verwijderen van script "%s"\n
+%s: process %d met blokkeerbestand %s kon niet worden gestopt\n
+%s: kon database niet blokkeren na 3 seconden, zal toch lezen\n
+%s: genereren script "%s"\n
+%s: negeren van onveilig script
+%s: afgebroken met signaal %d\n
+%s: uitgelogd, mededelingen worden onderdrukt
+%s: geen mailer gedefinieerd\n
+%s: geen geheugen
+%s: plan calendar daemon, versie %s.\n
+%s: database wordt opnieuw gelezen\n
+%s: running "%s", args
+%s: sleeping for %d:%02d:%02d\n
+%s: start %s\n
+%s: onbekende kleur voor %s\n
+%s: ongekende host, kan niet authentiseren\n
+%s: utmp werkt, logout wordt in de gaten gehouden
+%s: Je hebt uitgelogd, einde (probeer -L?)\n
+(h:m)
+(h:m:s) volgens de systeemtijd
+-K\talleen lopende daemons worden gestopt\n
+-L is de default. -l verhindert overbodige plands.\n
+-L\tutmp wordt niet in de gaten gehouden (utmp werkt regelmatig niet zoals het hoort)\n
+-d\tdebug: blijf in voorgrond, schrijft alle acties uit\n
+-k\tstop lopende daemon, ga dan verder\n
+-l is de default. Probeer -d of -L bij vroegtijdige stop.\n
+-l\tutmp in de gaten houden en stoppen als de gebruiker uitlogt\n
+-s\tutmp in de gaten houden en "slapen" zolang de gebruiker uitgelogd is\n
+-t\tgeen notifier vensters, uitschrijven gebeurt naar stdout\n
+12-uur am/pm tijdformaat
+<onbekend>
+ALARM op %d:%02d%c
+Over
+Over...
+Toevoegen
+Tijdsinstelling
+Tijdsinstelling...
+waarschuwing: %s
+Alarm
+Alarm Opties
+Alarm opties...
+Alarm:
+Alle
+Alle afspraken
+Tekstkleur voor afspraken
+Tekstkleur voor afspraken:
+April
+Augustus
+Oude afspraken automatisch verwijderen
+Venstergroote automatisch aanpassen
+Zomeruur automatisch starten vanaf dag
+Beschikbare bestanden:
+Beschikbare bestanden, selecteren en toevoegen:
+Kalender begint om
+Bladeren
+Bladeren in server
+Kalenderconfiguratie
+Kalenderuitzicht
+PostScript skeletbestand "%s"\nniet vinden
+Stop
+Kan eigen groep niet wijzigen
+Kan eigen path niet wijzigen
+Verbinding met netplan\nserver host %s niet mogelijk
+Kan eigen bestand niet verwijderen.
+Kan afspraken van %s niet wijzigen omdat zij uit een grok-database afkomstig zijn. Bewaren is niet geimplementeerd voor grok-databases. Het bestand is\n%s
+Kan afspraken van %s niet wijzigen,\n geen schrijftoelating voor %s\n of voor %s/.dayplan.\nBestand->Herladen laadt de bestanden opnieuw.\n U kan individuele afspraken niet afzetten maar u kan ze wel allemaal afzetten met Config->Gebruiker.
+Kan afspraken van %s niet wijzigen,\nde server op %s weigert schrijftoelating.\nBestand->Herladen laadt de bestanden opnieuw.\nU kan individuele afspraken niet afzetten maar u kan ze wel allemaal afzetten met Config->Gebruiker.
+Doel niet bereikt, stop.
+Kan geen pipe openen naar ")%s"
+Grootte van niet-dagelijkse afspraak kan niet gewijzigd worden
+Leegmaken
+Afdruk in kleur
+Gekleurde achtergrond voor andere bestanden
+Config
+Bevestigen
+Context
+Verder
+Verder zonder daemon
+Databasetoegang
+Datum
+Doel-datum:
+Dag
+Dag-overzicht
+Zomeruur is
+December
+Default
+Default waarschuwing:
+Definieer vakantiedagen
+Verwijder
+Verwijder oude afspraken
+Einde
+Toon:
+Toon geen afspraken in dagoverzicht
+Toon geen afspraken in maandoverzicht
+Toon geen afspraken in weekoverzicht
+Toon geen afspraken in jaaroverzicht
+Toon geen afspraken in jaarzicht
+Toon geen oude afspraken in overzicht van vandaag
+OK
+Kopie
+FOUT:\n\n
+Vroeg alarm:
+Wijzigen
+Kalender eindigt om
+Geef eerst een naam in
+Afspraak uit weekoverzicht
+FOUT
+Kan file %s niet lezen
+Uitzonderingsdata
+Uitzonderingsdata:
+Uitvoeren
+Veiligheidskopie voor %s niet mogelijk,\n%s is niet schrijfbaar
+Veiligheidskopie voor database %s in %s\n niet mogelijk, schrijven afgebroken
+Kon afspraak-database %s\nniet creeren
+Kon kopie van gebruiker-database %s\n niet lezen
+Kon bestand %s van gebruiker %s niet lezen, fout %d\n
+Kon hoofdbestand %s niet lezen, fout %d\n
+Kon privaat bestand %s niet lezen, fout %d\n
+Kon afspraak niet schrijven in databasebestand\n"%s".\nUw recente wijzigingen zijn verloren.\nKijk na of er voldoende schrijfruimte is en of u permissie heeft om in de directory te schrijven.
+Kon afspraak niet schrijven in databasebestand\n"%s".\nUw recente wijzigingen zijn verloren.\nKijk na of er voldoende schrijfruimte is en of u permissie heeft om in de directory te schrijven.\nKon originele inhoud niet herstellen.\nU vindt een zekerheidskopie in \n%s. Herstel het bestand manueel a.u.b.
+Februari
+Bestand
+Bestand %s heeft %d afspraken in %s\n en %d op server %s. Er wordt overgeschakeld naar de server\n en de file %s wordt genegeerd.
+Bestand %s bestond niet op server %s\n en werd gecreeerd en geinitialiseerd met\n de huidig ingeladen afspraken.
+Bestandenlijst
+Bestandenlijst...
+Bestanden in programma's
+Eerste week is de eerste volledige week
+Eerste week is de eerste week met donderdag
+Vrij
+Helpfunctie
+Globale opties:
+Ga naar datum
+Ga naar vandaag
+Ga naar ...
+Groen venster
+Groep
+Groepselectie
+Raden
+Help
+Vakantiedagen
+Overzicht
+Januari
+Juli
+Juni
+Zoek op sleutelwoorden
+Beeindigen
+Taal
+Talen
+Groot maand-overzicht
+Grote balken voor week-afspraken zonder tijd
+Laatste
+Laatste dag: stop herhalen op
+Laat alarm:
+Ongevoelig voor grote/kleine letters
+Gevoelig voor grote/kleine letters
+Locaal pad
+Connectie met netplan op server %s onderbroken.\n\nTerug opstarten a.u.b., kies dan\n'Bestand->Herlees bestanden' om opnieuw te connecteren\n Het is mogelijk dat recente wijzigingen verloren zijn gegaan.
+Mailer:
+Maart
+Mei
+Boodschap
+Maa
+Maand
+Maand-overzicht opties:
+Maand/dag/jaar-formaat
+Naam
+Naam is niet uniek, verworpen
+Netwerk
+Volgende
+Volgende week
+Geen alarm op
+Geen
+Nota
+November
+Oktober
+Alle afspraken weglaten
+Alle niet-eigen afspraken weglaten
+Alle private afspraken weglaten
+Context
+Een bestand...
+Alleen eigenaar kan wijzigen
+Opties:
+Andere
+Eigen
+Eigen
+Eigen
+Pad is niet uniek, verworpen
+Pin
+Eerst tijd of datum invoeren a.u.b.
+Eerst de bestandenlijst en de \n netwerkconnecties ingeven alvorens afspraken in te geven a.u.b.
+Vorige
+Afdrukken
+Afdrukken gestopt met signaal %d\nKijk uw afdrukcommando na.
+Afdrukmode:
+Afdrukken...
+Privaat
+Probleem met vakantiebestand %s:\n.80s in lijn %d
+Einde
+Rood venster
+Regular expression
+Herinnering: geen alarm, geen tijdsaanduiding
+Herhaal elke
+Herhaal elk jaar
+Herhaal op
+Herhaal op
+Herlees bestanden
+Voer netplan-scripts uit (veiligheidsrisico !)
+Zat
+Afspraken
+Afspraken recycleren
+Zoek
+Zoek naar:
+Zoek sleutelwoorden...
+Zoekmode:
+Zend mail
+September
+Server
+Server Host
+Server host "%s" protocolfout:\nAntwoordcode `%c' werd verwacht maar de server zond `%c'.\nVolledig antwoord van de server was:\n%s
+Server host %s meldt probleem:\n\n%s
+Server op host %s antwoordt niet\n
+Server op host %s is onbereikbaar.
+Server op host %s: protocol fout\n
+Shell Script
+Toon Juliaanse datum
+Toon waarschuwingstijden
+Toon bestandsnamen in balk-labels
+Toon een-dags-afspraken
+Toon weeknummers
+Klein maandoverzicht
+Iemand anders is deze afspraak aan het aanpassen.\nProbeer het later nog een keer
+Sorry, geen hulp beschikbaar
+Sorry, geen hulp beschikbaar,\n%s niet gevonden
+Sorteren
+Splitsen
+Afdrukcommando:
+Start daemon nu
+String conversie fout.\n
+Zon
+Sync
+Het eerste bestand in de bestandenlijst\n(%s) zou geen grok-database mogen zijn!\nProbeer verder te gaan maar dataverlies is mogelijk.
+De netplan server meldde een fout\ntoen deze afspraak werd toegevoegd. Kijk permissies na.\n
+De nieuwe datum komt na de einddatum,\n%s. De einddatum is buiten gebruik gesteld.
+De nieuwe taal zal pas in voege treden\n nadat plan herstart wordt.
+De nieuwe einddatum komt voor de startdatum, %s\n Genegeerd.
+Het andere programma kon niet afgesloten worden.\n
+Deze maand
+Deze week
+Don
+Tijd
+Tijdzone is GMT
+Vandaag
+Morgen
+Teveel fouten, stop.\n
+Problemen oplossen
+Probeer op te starten met de -L optie.\n
+Din
+Undo
+Gebruik: pland [-dkKlL]\n
+Gebruik GPS weeknummers
+Gebruik hoofdvenster voor alle zichten
+Gebruik rechtse muistoets om de kleur te wijzigen
+Gebruikersbestand %s op host %s: kan niet connecteren\n
+Gebruikersbestand %s op host %s: kan socket niet openen\n
+Gebruikersbestand %s op host %s: ongekende host\n
+Zicht
+WAARSCHUWING:\n\nU kan nu afspraken van andere gebruikers wijzigen.\nplan zal normaal gezien verschillende schrijfcommando's op het zelfde moment detecteren\n (behalve over NFS), maar zal niet detecteren of een andere gebruiker datzelfde afspraak-bestand gewijzigd heeft\nterwijl u het aan het wijzigen was. De oudere wijzigingen zullen verloren gaan in dit getal!
+Waarsch.
+Waarschuwing
+Waarschuwing:\nEen ander %s programma runt al.\n%s\nDruk op "Verdergaan" om toch te starten of op "Stop" om het andere programma te stoppen.\nVerdergaan kan verlies van nieuwe afspraken veroorzaken en\ninvoeren van afspraken van op de commando-lijn zal niet werken.
+Waarschuwing:\nEr is geen daemon opgestart.\nZonder daemon zal geen actie worden ondernomen als een alarm moet afgaan.\nStart "%s" in uw ~/.xsession of\n~/.sgisession bestand a.u.b. of start plan op met de -S optie.
+Waarschuwing: alarm op %d:%02d%c
+Waarschuwing: kan chmod 0600 niet uitvoeren op afspraak\ndatabase %s
+Waarschuwing: eigen config- en databestand %s is niet schrijfbaar\n
+Waarschuwing: eigen privaat databestand %s is niet schrijfbaar\n
+Woe
+Week
+Week (Landscape)
+Week (Portrait)
+Weekoverzicht
+Week- en Dagoverzicht opties:
+Week begint op zondag
+Weekoverzicht bevat
+Vensters verdwijnen na
+X resources
+Jaar
+Jaaroverzicht
+Jaaroverzicht
+Geel venster
+U heeft %d afspraken hier en\n%d op server %s. %s werd bewaard in %s\n en oude afspraken in %s werden genegeerd.
+Uw eigen afsprakenbestand is alleen leesbaar!
+JrOv
+Zoom in
+altijd af
+altijd aan
+Een andere daemon bestaat, gebruik %s -k
+auth op %s antwoordt %s\n
+authenticatiefout op %s\n
+authenticatieserver op %s antwoordt niet\n
+automatisch
+beg:
+Kan niet bereiken
+Kan de authenticatieserver niet bereiken op %s\n
+Kan bestaande %s daemon niet stoppen
+Kan socket naar authenticatie niet openen
+dagen
+dagen:
+default
+einde:
+elke...
+vijfde...
+bestand van gebruiker #%d niet gelezen, geen naam of pad\n
+bestand van gebruiker #%d niet geschreven, geen naam of pad\n
+eerste...
+vierde...
+ontving antwoord "%s"\n
+niet compleet
+laatste...
+len:
+lengte %d:%02d, tot %d:%02d%c
+min:
+ontbreekt
+e
+netplan server:
+nieuw bestand
+geen geheugen
+geen geheugen voor lijst met afspraken
+geen geheugen voor dagoverzicht
+geen geheugen voor pixmaps
+geen geheugen voor weekoverzicht
+geen geheugen voor jaaroverzich
+geen gebruiker "%s"
+uur
+ouder dan 90 dagen
+ouder dan een dag
+ouder dan een maand
+ouder dan een week
+ouder dan een jaar
+opt:
+eigen
+plan: geconnecteerd met host %s: %s
+e
+tweede...
+e
+e
+derde...
+tot
+te veel uitzonderingsdata voor afspraak
+onbekend
+gebruik systeemtijd
+gebruiker %s
+schrijffout
+xmbase-grok database %s\nkan niet gelezen worden, de kalender-interface is %s en er bestaan geen \ndatumvelden om er een automatisch te genereren.

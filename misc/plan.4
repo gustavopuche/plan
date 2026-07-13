@@ -1,0 +1,270 @@
+.TH PLAN 4
+.SH NAME
+~/.dayplan \- database file of plan(1)
+.SH SYNOPSIS
+.SH DESCRIPTION
+The ~/.dayplan file is read and written by the plan and pland programs. It
+can be edited manually, but it has not been designed for this. Generally,
+the format is annoyingly unmnemonic, and there is virtually no error
+checking. Use at your own risk. The only reason I didn't make this a
+binary file is that I dislike binary config files as a matter of principle.
+.LP
+The type of every line depends on the first character of the line. The
+second character is always a single TAB character. All following characters
+are arguments. Comments and blank lines (which are ignored) can appear
+anywhere. "Header types" are all at the beginning of the file before the
+first "entry type".
+.LP
+TYPES THAT CAN APPEAR ANYWHERE:
+.IP #
+Comment line. The rest of the line is ignored.
+.sp
+.LP
+HEADER TYPES:
+.IP o
+Options. The argument consists of 14 consecutive flag characters, and five 
+numerical arguments. '-' means an option is off, everything else means the 
+option is on. In order, the flags are:
+.RS
+.IP s
+sunday first
+.IP a
+12-hour (am/pm) mode
+.IP m
+US date format mm/dd/yy
+.IP d
+auto-delete past options
+.IP j
+show julian dates
+.IP w
+show week numbers
+.IP n
+show the next three notes, rather than the first three
+.IP -
+always a minus sign, not used (used to be warning popup mode)
+.IP w
+show advance warnings graphically in week view
+.IP u
+show file names next to note strings in week view
+.IP b
+show appointments without time as full-width bar in week views
+.IP -
+if "w", the first week of the year is the one with full seven days;
+if "t", the first Thursday controls which week is the first; otherwise,
+any partial week is first
+.IP c
+use group color of other file appointments as the background color
+for the text of these appointments in the day boxes in the month view
+.IP o
+turn the own-only flag in appointment entry menus on by default, and
+only show appointments from the main ~/.dayplan file.
+.LP
+After the flags, there is a sequence of integers:
+.IP -
+default early warning time in seconds
+.IP -
+default late warning time in seconds
+.IP -
+expiration time of notifier windows in seconds; 0 means notifiers
+never expire
+.IP -
+beginning hour of week views, default is 8 (8:00 o'clock)
+.IP -
+ending hour of week views, default is 20 (20:00 o'clock)
+.IP -
+the number of days displayed in a week view, 1..28, default is 7
+.RE
+.IP O
+More options. The argument consists of 24 consecutive flag characters,
+most of which are unused and reserved for future use. '-' means an option
+is off, everything else means the option is on. In order, the flags are:
+.RS
+.IP s
+use the main window for all views
+.IP a
+resize windows if the contents change
+.RE
+.IP t
+Time adjustment parameters as defined with the Adjust Time popup. The
+five numeric parameters are the offset to the system clock in seconds,
+the timezone offset in seconds, the DST flag (0=always on, 1=always off,
+2=automatic), and the Julian begin and end dates for automatic DST.
+.IP e
+Early warning flags,
+.IP l
+Late warning flags, and
+.IP a
+alarm flags:
+.br
+These three have the same format. The first three argument chars
+are flags, as specified in the Alarm Options popup. '-' means the
+flag is off, everything else means the flag is on. In order, the
+flags are:
+.RS
+.IP w
+show a color-coded window when the warning/alarm triggers
+.IP m
+send mail when the warning/alarm triggers
+.IP x
+execute a command when the warning/alarm triggers
+.LP
+The flags are followed by a single blank. The rest of the line is
+the command to execute when the warning/alarm triggers and the 'x'
+flag is on.
+.RE
+.IP y
+Year overview options. There are 10 consecutive flag characters and 
+three numerical arguments. '-' means an option is off, everything else 
+means the option is on. Only one flag is currently defined:
+.RS
+.IP s
+show single-day appointments too (those with a repeat-every count of 1)
+.IP -
+nine unused flags that must be present, all '-'
+.LP
+After the flags, there is a sequence of integers:
+.IP -
+the number of months (zoom factor) that fills one screenful
+.IP -
+The display mode is 0 for the default files as defined in the file
+list menu, 1 for all files, 2 for own appointments only, and 2 for
+the file defined by the following number.
+.IP -
+the number of the file whose appointments are displayed if the previous
+number is 3.
+.RE
+.IP P
+The PostScript printing options. Ten flag characters, followed by a
+blank and the print mode:
+.RS
+.IP a
+omit all appointments from the printout
+.IP p
+omit all private appointments from the printout
+.IP -
+eight unused flags that must be present, all '-'
+.IP -
+the mode: 0 for month, 1 for year, 2 for landscape week, and 3 for
+portrait week
+.RE
+.IP p
+The print spooling string. When printing a PostScript calendar,
+the PostScript code is sent to stdin of this command.
+.IP m
+The mailer program, as specified in the Alarm Options menu. Up to
+one "%s" is allowed, it is replaced by the (quoted) note string.
+"%s" is typically used for a subject.
+.IP U
+This code is obsolete since version 1.5.
+.IP u
+One file in the file list. There are five arguments (the order is
+strange because the month flag has been added later in version 1.4):
+.RS
+.IP - 
+the file (login) name
+.IP -
+the file path
+.IP -
+0 if the file is shown in week views, 1 if the file is suspended
+.IP -
+the color used in the week view, a number in the range 0..7
+.IP -
+0 if the file is shown in month views, 1 if the file is suspended
+.IP -
+0 if appointments from this file are silent, 1 if they can trigger
+their alarms
+.RE
+.sp
+.LP
+ENTRY TYPES:
+.IP [0-9]
+Begins an entry. This is the only mandatory line, all others that
+follow are optional. All following lines that do not begin with a
+numeric digit are extra information for the entry. Unlike all other
+types, there is no TAB character in the second column, the first
+character is the first digit of the trigger date.
+.RS
+.LP
+The line consists of five date/time fields, seperated by at least
+one blank, and three flag characters that must be consecutive. As
+usual, flags are off if the character is '-', and on otherwise. The
+fields are:
+.IP 1/2/3 9
+trigger date, month/day/year. Year can be either 70..99,00..38, or 1970..2038.
+Do not enter appointments after 2037. If there is demand, I'll fix this bug
+in about 50 years.
+.IP 1:2:3 9
+trigger time, hour:minutes:seconds, in 24-hour format. 99:99:99
+means that there is no alarm time ("-" in the time column).
+.IP 1:2:3 9
+length, hour:minutes:seconds, in 24-hour format
+.IP 1:2:3 9
+early-warning time, hour:minutes:seconds, in 24-hour format,
+0:0:0 means there is no early warning
+.IP 1:2:3 9
+late-warning time, hour:minutes:seconds, in 24-hour format,
+0:0:0 means there is no late warning
+.IP S 9
+suspended (the green button at the left edge is off)
+.IP P 9
+private (goes into the private dayplan file that has mode 0600)
+.IP N 9
+no alarm (trigger warnings if nonzero, but no final alarm)
+.IP M 9
+do not show this appointment in the month view
+.IP Y 9
+do not show this appointment in the year view
+.IP W 9
+do not show this appointment in the week view
+.IP O 9
+do not show this appointment in the year overview
+.IP D 9
+do not show this appointment in the day view
+.IP t 9
+this is an active todo item, move to today if in the past
+.IP - 9
+one unused flag, always '-'
+.IP 0 9
+appointment text color in month calendar: 0 is default, 1..8 are colors
+.IP 0 9
+show a warning this many days in advance: 0 means never, 1 means one day
+ahead, etc.
+.RE
+.IP E
+Add an exception date to the appointment. After the 'E', a tab and a
+date m/d/y on which the appointment will not trigger follow. There can
+be up to four 'E' lines for each appointment (see NEXC in conf.h).
+.IP R
+Add repetition information to the current entry. There are five
+numeric fields, separated by at least one blank. This one is
+particularly unsuited for human consumption, sorry.
+.RS
+.IP 1
+trigger alarm every <1> days (in seconds)
+.IP 2
+delete alarm after this date (seconds since 1/1/70 0:00:00)
+.IP 3
+weekday bitmap and nth-week bitmap:
+.br
+bit0=sunday ... bit6=saturday
+.br
+bit8=first ... bit12=fifth, bit13=last
+.IP 4
+month day bitmap, bit0=last day of the month, bits 1..31=on that day of
+the month
+.IP 5
+if 1, the entry repeats every year; if 0, it doesn't. 
+.RE
+.IP N
+Add a note string to the current entry. All characters that follow
+the TAB are part of the note string.
+.IP M
+Add another line to the current entry's message. All characters
+that follow the TAB are part of the line. There can be multiple
+M lines, they all add to the message.
+.IP S
+Add another line to the current entry's script. All characters
+that follow the TAB are part of the line. There can be multiple
+S lines, they all add to the script.
+.IP G
+Reserved for group meetings, not currently used.

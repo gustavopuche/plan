@@ -1,0 +1,52 @@
+:
+: French holiday file. Copy to ~/.holiday
+:
+: - en vert les saisons
+: - en bleu (texte) et rouge (jour) les jours feriés
+: - en cyan d''autres fêtes non feriées
+: Je suis pas sûr pour les fêtes des pères et des mères
+:
+: Author: Jean-Claude Giese <giese@loria.fr>
+: fixed apostrophe 9.1.99, Guy Brand <guybrand@chimie.u-strasbg.fr>
+: un-fixed 99/04/12, Yann Dirson - the bug is in the parser !!
+:
+blue "Jour de l'an" weekend on 1.1.
+cyan "Epiphanie" on first sunday in january
+green "Printemps" on 20.3.
+blue "Pâques" weekend on easter length 2 days
+blue "Pentecôte" weekend on easter plus 49 days length 2 days
+blue "Ascension" weekend on easter plus 39 days
+blue "Fête du travail" weekend on 1.5.
+blue "Armistice 1945" weekend on 8.5.
+green "Eté" on 21.6.
+blue "Fête Nationale" weekend on 14.7.
+blue "Assomption" weekend on 15.8.
+green "Automne" on 23.9.
+blue "Toussaint" weekend on 1.11.
+blue "Armistice 1918" weekend on 11.11.
+green "Hiver" on 21.12.
+blue "Noël" weekend on 25.12. 
+cyan "St Sylvestre" on 31.12.
+:
+: Jean-Claude écrivait:
+:cyan "Fête des mères" on first sunday in june
+:cyan "Fête des pères" on last sunday in june
+:
+: Ses essais n''étant visiblement pas exacts, voici
+: les miens, avec qq informations sur leur validité.
+:                              Yann Dirson <dirson@debian.org>
+:
+: fête des mères: Dimanche suivant la Pentecôte
+: OK pour 199[46789], mais pas 1995 (Dimanche précédant la Pentecôte !)
+:cyan "Fête des mères" on easter plus 56 days
+:
+: Il semblerait que la règle pour la fête des mères soit plus compliquée :
+:
+: SI la pentecôte n'est pas le dernier dimanche de mai
+: ALORS la fête des mères est le dernier dimanche de mai
+: SINON elle est le premier dimanche de juin
+cyan "Fête des mères" on last sunday in may \
+        plus (([easter]+49 == [last sunday in may])? 7: 0) days
+: fête des pères
+: OK pour 199[4-9]
+cyan "Fête des pères" on third sunday in june

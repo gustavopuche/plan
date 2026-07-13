@@ -1,0 +1,381 @@
+\n(Tentative d'accès au fichier "%s".)
+\nPlanificateur version %s\nCompilé %s\n\nAuteur: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nCâblez à majordomo@bitrot.de vous abonner à la\nliste de diffusion.  Ou visitez le site Web:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nLes sources sont disponibles depuis\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (possesseur)
+ (lecture seule)
+ (alerte)
+%5d      (pid du fichier verrou %s, de l'utilisateur %d)\n
+%d des %d rendez-vous de la base grok\n%s ont été ignorés\nen raison d'une heure/date invalide.
+%s est une\nbase de données grok, non supportée
+%s est une\nbase de données xmbase-grok, impossible d'écrire le fichier
+%s: %s sur la ligne %d dans %s\n
+%s: %s: ligne illégale:\n%s
+%s: %s: non trouvé\n
+%s: ATTENTION: impossible de trouver %s\n
+%s: ATTENTION: impossible de lire le nom d'utilisateur.\n%s
+%s: ATTENTION: impossible de parler au démon: 
+%s: ATTENTION: impossible de démarrer %s: 
+%s: ATTENTION: le fichier %s est la version 
+%s: Attention: fork impossible\n
+%s: impossible d'allouer la couleur pour %s\n
+%s: impossible de créer %s: 
+%s: impossible d'évaluer ~%s dans %s, utilisation de .\n
+%s: impossible d'écrire dans %s: 
+%s: création du fichier verrou impossible 
+%s: ouverture du fichier verrou impossible  
+%s: lecture du fichier verrou impossible 
+%s: suppression du fichier verrou impossible 
+%s: écriture du fichier verrou impossible 
+%s: effacement du script "%s"\n
+%s: échec en terminaison du processus %d propriétaire du verrou %s\n
+%s: Impossible de verrouiller la base après 3 secondes, accès malgré tout\n
+%s: génération du script "%s"\n
+%s: script non sécurisé ignoré
+%s: terminaison avec le signal %d\n
+%s: déconnexion, je reste silencieux
+%s: aucun mailer définit\n
+%s: pas assez de mémoire
+%s: démon plan calendar, version %s.\n
+%s: relecture de la base de données\n
+%s: en route "%s", args
+%s: dormant pour %d:%02d:%02d\n
+%s: démarrage de %s\n
+%s: couleur inconnue pour %s\n
+%s: hôte inconnu, impossible d'authentifier\n
+%s: utmp fonctionne, surveillance de la déconnexion
+%s: vous vous êtes déconnecté, fin (essayez -L?)\n
+(h:m)
+(h:m:s) à l'horloge système
+-K\ttue le démon existant seulement\n
+-L est par défaut. Essayez -l si vous avez démarré trop de pland.\n
+-L\tne vérifie pas utmp (utmp est souvent buggé)\n
+-d\tdebug: reste au premier plan, affiche toutes les actions\n
+-k\ttue le démon existant, puis continue\n
+-l est par défaut. Essayez -d ou -L si pland exitait déjà auparavant.\n
+-l\tsurveille utmp et quitte lorsque l'utilisateur se déconnecte\n
+-s\tsurveille utmp et s'endort lorsque l'utilisateur se déconnecte\n
+-t\taffiche les fenêtres de notification sur la sortie standard\n
+Format de temps 12h am/pm
+<inconnu>
+ALARME à %d:%02d%c
+A propos
+A propos...
+Ajouter
+Ajuster l'heure
+Ajuster l'heure...
+Advance warning: %s
+Alarme
+Options d'alarme
+Options d'alarme
+Alarme:
+Tout
+Toutes les entrées
+Couleur du texte du rendez-vous
+Couleur du texte du rendez-vous:
+Avril
+Août
+Auto-effacement des entrées du passé
+Fenêtres redimensionnées automatiquement
+DST automatique dans le calendrier Julien
+Fichiers disponibles :
+Fichiers disponibles, sélectionner et ajouter:
+Démarrer la vue à
+Parcourir
+Parcourir le serveur
+Paramétrage de la vue du calendrier
+Vues du calendrier...
+Impossible de trouver un fichier/squelette PostScript\n "%s"
+Annuler
+Impossible de changer le groupe du possesseur
+Impossible de changer le chemin du possesseur
+Connexion impossible à l'hôte\nserveur netplan %s
+Impossible de supprimer le fichier du possesseur
+Cannot modify appointments of %s because they\nwere read from a grok database. Saving is not\nimplemented for grok databases. The file is\n%s
+Cannot modify appointments of %s,\nno write permission for %s\nor %s/.dayplan.\n\nRe-check the permissions with File->Reread database.\nYou can not disable individual appointments, but you\ncan disable all with the File->File list popup.
+Cannot modify appointments of %s,\nserver on %s denies write permission.\nRe-check the permissions with File->Reread database.\nYou can not disable individual appointments, but you\ncan disable all with the File->File list popup.
+Impossible de se déplacer là, abandon.
+Impossible d'ouvrir de rediriger vers ")%s"
+Impossible de retailler une entrée comportant une répétition non journalière
+Effacer
+Impression couleur
+Fond coloré pour les autres fichiers
+Paramètres
+Confirmer
+Contexte
+Continuer
+Continuer sans démon
+Accès base de données
+Date
+Date à afficher :
+Jour
+Vue du jour
+Réglages DST sont
+Décembre
+Défaut
+Alertes par défaut :
+Définir les congés...
+Effacer
+Effacer les entrées du passé
+Ignorer
+Afficher :
+Ne pas afficher de rendez-vous dans la vue journalière
+Ne pas afficher de rendez-vous dans la vue du mois
+Ne pas afficher de rendez-vous dans la vue de la semaine
+Ne pas afficher de rendez-vous dans l'aperçu de l'année
+Ne pas afficher de rendez-vous dans la vue de l'année
+Ne pas afficher les rendez-vous du passé dans la vue du jour
+Terminé
+Dupliquer
+ERREUR :\n\n
+Alarme avancée:
+Editer
+Terminer la vue à 
+Entrez d'abord un nom
+Entrée issue de la vue de la semaine
+Erreur
+Erreur en lecture des fichiers :\n%s
+Dates d'exception
+Dates d'exception:
+Exécuter
+Echec de la sauvegarde %s,\nimpossible d'écrire dans %s
+Impossible de sauvegarder la base %s\ndans %s, écriture avortée
+Impossible de créer le rendez-vous dans la\nbase %s
+Impossible de lire la copie des utilisateurs dans la\nbase %s
+Impossible de lire le fichier %s de l'utilisateur %s, erreur %d\n
+Impossible de lire le fichier principal %s, erreur %d\n
+Impossible de lire le fichier privé %s, erreur %d\n
+Echec d'écriture dans la base des rendez-vous\n"%s".\nVos modifications récentes ont été ignorées.\nVérifiez l'espace disque et les autorisations du répertoire !
+Echec d'écriture dans la base des rendez-vous\n"%s".\nVos modifications récentes ont été ignorées.\nVérifiez l'espace disque et les autorisations du répertoire !\n\nImpossible de restaurer le contenu d'origine. La sauvegarde se trouve dans\n%s, et requiert une restauration manuelle
+Février
+Fichier
+File %s has %d appointments in %s\nand %d on server %s. Switching to server and ignoring\nfile %s.
+File %s on server %s did not\nexist. Created one and initialized with\ncurrently loaded appointments.
+Liste des fichiers
+Liste des fichiers...
+Fichiers et programmes
+La première semaine doit être complète
+La première semaine doit contenir un jeudi
+Ven
+Obtenir de l'aide
+Options globales :
+Aller à la date
+Aller à aujourd'hui
+Aller à...
+Fenêtre verte
+Groupe
+Sélection du groupe
+Estimer
+Aide
+Congés
+Introduction
+Janvier
+Juillet
+Juin
+Recherche par mot clé
+Terminer
+Langue
+Langues
+Mois étendu
+Trait large pour les entrées de semaine sans heure
+Dernier
+Dernier jour : arrêter de répéter le
+Alarme tardive:
+Insensible à la casse
+Sensible à la casse
+Chemin local
+Connexion perdue avec le serveur netplan %s.\n\nRelancez-la SVO, puis choisissez\n`Fichier->Relire les fichiers' pour vous reconnecter.\nVous pourriez avoir perdu vos modifications récentes.
+Mailer:
+Mars
+Mai
+Message
+Lun
+Mois
+Options des vues par mois :
+Format de date mois/jour/année
+Nom
+Le nom n'est pas unique, rejeté
+Réseaux
+Suivant
+Semaine suivante
+Pas d'alarme le
+Aucun
+Note
+Novembre
+Octobre
+Omettre tous les rendez-vous
+Omettre les rendez-vous des autres
+Omettre les rendez-vous privés
+Aide contextuelle
+Un fichier...
+Seul le possesseur peut écrire des fichiers de rendez-vous
+Options :
+Autre
+Possesseur
+Possesseur seulement
+Possesseur seulement
+Le chemin n'est pas unique, rejeté
+Fixer
+Entrez l'heure ou la date en premier
+Please finish specifying the file list and the\nnetwork connections before editing appointments.
+Préc.
+Imprimer
+Echec de l'impression, abandon avec l'erreur %d\nVérifiez la commande d'impression.
+Mode d'impression :
+Imprimer...
+Privé
+Problème avec le fichier holiday %s:\n%.80s ligne %d
+Quitter
+Fenêtre rouge
+Expression régulière
+Rappel seulement : aucune alarme, heure non affichée
+Répéter chaque
+Répéter chaque année
+Répéter le
+Répéter le
+Relire les fichiers
+Exécuter des scripts netplan (risque pour la sécurité !)
+Sam
+Schedule
+Schedule Recycler
+Rechercher
+Rechercher :
+Recherche par mot clé...
+Mode de recherche :
+Envoyer un message
+Septembre
+Serveur
+Hôte serveur
+Server host "%s" protocol error:\nExpected reply code `%c' but server sent `%c'.\nFull reply message in error was:\n%s
+L'hôte serveur %s rapporte un problème :\n\n%s
+L'hôte serveur %s ne répond pas\n
+L'hôte serveur %s n'est pas joignable.
+Erreur de protocole avec l'hôte serveur %s\n
+Shell Script
+Afficher les dates Juliennes
+Afficher les heures des alarmes avancées
+Noms de fichiers de fichier dans la barre des labels
+Afficher les rendez-vous d'un seul jour
+Afficher les numéros de semaine
+Mois réduit
+Quelqu'un d'autre édite cette entrée. Réessayez plus tard.
+Désolé, aucune aide disponible
+Désolé, aucune aide disponible,\n%s n'a pas été trouvé
+Trier
+Dissocier
+Chaîne du spouleur :
+Démarrer le démon
+Erreur de conversion de chaîne de caractères.\n
+Dim
+Synchro
+The first file in the file list\n(%s)\nmust not be a grok database!\nTrying to continue, you may lose data.
+The netplan server reported an error\nwhen this record was committed. Check\naccess permissions.\n
+The new date is after the last-trigger date,\n %s. The last-trigger date has been disabled.
+Le nouveau langage sera pris en charge\naprès redémarrage de plan.
+The new last-trigger date is before the\nfirst-trigger date, %s. Ignored.
+L'autre programme n'a pu être terminé.\n
+Mois courant
+Semaine courante
+Jeu
+Heure
+Le fuseau horaire est GMT
+Aujourd'hui
+Demain
+Trop d'erreurs, abandon.\n
+Problèmes
+Essayer d'utiliser l'option -L.\n
+Mar
+Défaire
+Usage: pland [-dkKlL]\n
+Utiliser les numéros de semaine GPS
+Afficher les vues dans la fenêtre principale
+Utilisez le bouton droit de la souris pour changer la couleur
+Fichier utilisateur %s sur l'hôte %s: connexion impossible\n
+Fichier utilisateur %s sur l'hôte %s: ouverture du socket impossible\n
+Fichier utilisateur %s sur l'hôte %s: hôte inconnu\n
+Vue
+ATTENTION:\n\nVous pouvez maintenant éditer les rendez-vous des autres utilisateurs.\nplan détecte normalement les écritures multiples et simultanées\n(sauf via NFS), mais ne s'apercevra pas si un autre\nutilisateur a modifié le même fichier de rendez-vous pendant que vous\nle changiez. Les modifications les plus anciennes seront perdues\ndans ce cas. Soyez prudent !)
+Alarme
+Attention
+Attention:\nUn autre programme %s fonctionne.\n%s\nPressez Continuer pour poursuivre, ou Terminer pour\ntenter de fermer cet autre programme. En poursuivant\nvous pourriez perdre les nouvelles entrées de rendez-vous,\net les entrées de rendez-vous par la ligne de commande ne fonctionneront pas.
+Attention:\nAucun démon planificateur n'est actif. Sans un tel démon,\naucune action ne sera entreprise lorsqu'une alarme sera atteinte.\nDémarrez "%s" dans votre fichier ~/.xsession ou\n~/.sgisession, ou lancez plan avec l'option -S.
+Attention: alarme à %d:%02d%c
+Attention: impossible de chmod 0600 le rendez-vous\ndans la base %s
+Attention: fichiers de config et données %s ne sont pas accessibles en écriture\n
+Attention: votre propre fichier de données %s n'est pas accessible en écriture\n
+Mer
+Semaine
+Semaine (Paysage)
+Semaine (Portrait)
+Vue de la semaine
+Options des vues par semaine et jour : 
+La semaine débute le dimanche
+Vue de semaine contient
+Auto-acquittement des alarmes après
+Ressources X
+Année
+Aperçu de l'année
+Vue de l'année
+Fenêtre jaune
+You have %d appointments here and\n%d on server %s. Saved %s\nto %s and discarded old\nappointments in %s.
+Votre fichier de rendez-vous est en lecture seule !
+YrOv
+Zoomer
+toujours inactifs
+toujours actifs
+un autre démon existe, utilisez %s -k
+auth sur %s répond %s\n
+échec à l'authentification sur %s\n
+le serveur d'authentification de %s ne répond pas\n
+automatique
+début:
+impossible d'accéder
+impossible de connecter le serveur d'authentification de %s\n
+impossible de terminer le démon %s existant
+impossible d'ouvrir un socket pour l'authentification
+jours
+jours:
+defaut
+fin:
+chaque...
+cinquième...
+fichier de l'utilisateur #%d non lu, aucun nom ni chemin\n
+fichier de l'utilisateur #%d non écrit, aucun nom ni chemin\n
+premier...
+quatrième...
+réponse reçue "%s"\n
+incomplet
+dernier...
+durée:
+durée %d:%02d, jusqu'à %d:%02d%c
+min:
+manquant
+ème
+Serveur netplan à interroger:
+nouveau fichier
+pas assez de mémoire
+pas assez de mémoire pour la liste des rendez-vous
+pas assez de mémoire pour la vue du jour
+pas assez de mémoire pour les pixmaps
+pas assez de mémoire pour la vue de la semaine
+pas assez de mémoire pour l'aperçu de l'année
+pas d'utilisateur "%s"
+heure
+datant de plus de 90 jours
+datant de plus d'un jour
+datant de plus d'un mois
+datant de plus d'une semaine
+datant de plus d'un an
+opt:
+proprio
+plan: connecté à l'hôte %s: %s
+ème
+seconde...
+er
+ème
+troisième...
+pour
+trop de dates d'exception pour ce rendez-vous
+inconnu
+utiliser l'horloge système
+utilisateur %s
+erreur d'écriture
+La base xmbase-grok %s\nne peut être lue car l'interface du\ncalendrier est %s, et il n'y a pas de champs de date\npour en générer un automatiquement.

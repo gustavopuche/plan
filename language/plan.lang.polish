@@ -1,0 +1,381 @@
+\n(Próba otwarcia pliku "%s".)
+\nDay Planner wersja %s\nSkompilowana %s\n\nAutor: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nAby wpisaæ siê na listê dyskusyjn±,\nwys³aæ mail do majordomo@bitrot.de.  Sprawd¼ równie¿ moj± stronê domow±:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\n¬ród³a s± dostêpne w:\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (w³asny)
+ (do odczytu)
+ (ostrzegaæ)
+%5d      (Identyfikator procesu (PID) pliku blokuj±cego dla %s, dla u¿ytkownika %d)\n
+%d of %d ustalenia z bazy danych grok\n%s uniewa¿nione\nz powodu niew³a¶ciwej daty/czasu.
+%s jest\nbaz± danych grok, nieobs³ugiwan±
+%s jest\nbaz± danych xmbase-grok, nie mozna zapisaæ pliku
+%s: %s w linii %d z %s\n
+%s: %s: niew³a¶ciwa linia:\n%s
+%s: %s: nie znaleziono\n
+%s: UWAGA: nie mogê znale¼æ %s\n
+%s: UWAGA: nie mogê odczytaæ nazwy u¿ytkownika.\n%s
+%s: UWAGA: nie mam sygna³u demona: 
+%s: UWAGA: nie mogê uruchomiæ %s: 
+%s: UWAGA: plik %s jest w wersji 
+%s: Uwaga: nie rozejdê siê\n
+%s: nie mogê przyporz±dkowaæ dla %s\n
+%s: nie mogê utworzyæ %s: 
+%s: nie mogê okre¶liæ ~%s w %s, u¿ywaj±c .\n
+%s: nie mogê pisaæ do  %s: 
+%s: nie mogê utworzyæ pliku blokuj±cego 
+%s: nie mogê otworzyæ pliku blokuj±cego 
+%s: nie mogê odczytaæ pliku blokuj±cego 
+%s: nie mogê zerwaæ po³±czenia z plikiem blokuj±cym
+%s: nie mogê zapisaæ pliku blokuj±cego 
+%s: kasowanie skryptu "%s"\n
+%s: nie uda³o siê zabiæ procesu %d posiadania pliku blokuj±cego %s\n
+%s: nie uda³o siê zablokowaæ bazy danych po 3 sekundach, mimo wszystko otwieram\n
+%s: tworzenie skryptu "%s"\n
+%s: ignorowanie niebezpiecznego skryptu
+%s: zabity sygna³em %d\n
+%s: wylogowany, zostawiony w spokoju
+%s: program pocztowy nie jest zdefiniowany\n
+%s: brak pamiêci
+%s: demon kalendarza, wersja %s.\n
+%s: powtórny odczyt bazy danych\n
+%s: praca "%s", argumenty
+%s: oczekiwanie przez %d:%02d:%02d\n
+%s: uruchamianie %s\n
+%s: nieznany kolor dla %s\n
+%s: nieznany host, nie mogê uiwerzytelniæ\n
+%s: utmp pracuje, oczekiwanie na wylogowanie
+%s: szanowny u¿ytkownik siê wylogowa³, opuszczanie (try -L?)\n
+(godz.:min.)
+(godz.:min.:s) do czasu systemowego
+-K\tkill tylko istniej±ce demony\n
+-L jest domy¶lne. Niech szanowny u¿ytkownik spróbuje -l je¶li ma zbyt du¿o demonów pland.\n
+-L\tnie patrz na utmp (utmp jest czêsto zepsuty)\n
+-d\todpluskwianie: zostañ na wierzchu, wydrukuj dzia³ania\n
+-k\tzabij istniej±cego demona, dzia³aj dalej\n
+-l jest domy¶lne. Spróbuj -d lub -L je¶li pland koñczy dzia³anie zbyt wcze¶nie.\n
+-l\tsprawd¼ utmp i wyjd¼, gdy u¿ytkownik siê wyloguje\n
+-s\tsprawd¼ utmp i oczekuj podczas gdy u¿ytkownik jest wylogowany\n
+-t\tnie wy¶wietlaj okien przypominacza,drukuj do standardowego wyj¶cia\n
+Format czasu 12-godzinny (am/pm)
+<unknown>
+ALARM o godz. %d:%02d%c
+O programie
+O programie...
+Dodaj
+Ustaw czas
+Ustaw czas...
+Ostrze¿enie o postêpie: %s
+Alarm
+Opcje alarmu
+Opcje alarmu...
+Alarm:
+Wszystko
+Wszystkie Wej¶cia
+Kolor tekstu zadania
+Kolor tekstu zadania:
+Kwiecieñ
+Sierpieñ
+Skasuj poprzednie wpisy
+Automatycznie zmieñ rozmiar okien
+Automatyczny DST z dnia Juliañskiego
+Dostêpne pliki:
+Dostêpne pliki, wybierz i dodaj:
+Zacznij przegl±danie od
+Przegl±daj
+Serwer Przegl±dania
+Konfiguracja widoku kalendarza
+Widoki kalendarza...
+Nie mogê znale¼æ szkieletu\npliku postscriptowego "%s"
+Poniechaj
+Nie mo¿na zmieniæ grupy posiadacza
+Nie mozna zmieniæ ¶cie¿ki posiadacza\nNie mo¿na poniechaæ indywidualnych zadañ, lecz mo¿na\nponiechaæ wszystkich u¿ywaj±c
+Nie mo¿na po³±czyæ siê z hostem\nserwera netplan %s
+Nie mo¿na skasowaæ pliku posiadacza
+Nie mo¿na zmodyfikowaæ zadañ %s poniewa¿\nnie zosta³y odczytane z bazy danych grok. Zapisywanie\nnie jest przewidziane w bazach danych grok. Plik jest\n%s
+Nie mo¿na zmodyfikowaæ zadañ %s,\nbrak uprawnieñ do zapisu dla %s\nlub %s/.dayplan.\n\nProszê sprawdziæ uprawnienia Plik->Od¶wierz bazê danych.\nNie mo¿na poniechaæ indywidualnych zadañ, lecz mo¿na\nponiechaæ wszystkich u¿ywaj±c Plik->Lista plików.
+Nie mo¿na zmodyfikowaæ zadañ %s,\nserwer na %s zabrania dostêpu.\nSprawd¼ uprawnienia u¿ywaj±c Plik->Od¶wierz bazê danych.\nNie mo¿na poniechaæ indywidualnych zadañ, lecz mo¿na\nponiechaæ wszystkich u¿ywaj±c Plik->Lista plików.
+Nie mo¿na tu przenosiæ, odmawiam.
+Nie mogê otworzyæ rurki do ")%s"
+Nie mogê zmieniæ rozmiarów wej¶cia je¶li cykl nie jest dzienny
+Czy¶æ
+Wydruk kolorowy
+Kolorowe t³o dla innych plików
+Konfiguracja
+Zatwierd¼
+Kontekst
+Kontynuuj
+Kontynuuj bez demona
+Dostêp do bazy danych
+Data
+Data do której siê prze³±czyæ:
+Dzieñ
+Widok Dnia
+Zapisanie ¶witu jest
+Grudzieñ
+Domy¶lne
+Domy¶lne ostrze¿enia:
+Definiuj dni wolne...
+Poniechaj
+Skasuj poprzednie wpisy
+Wyjd¼
+Wy¶wietl:
+Nie pokazuj zadañ w widoku dnia
+Nie pokazuj zadañ w widoku miesi±ca
+Nie pokazuj zadañ w widoku tygodnia
+Nie pokazuj zadañ w przegl±dzie roku
+Nie pokazuj zadañ w widoku roku
+Nie pokazuj poprzednich wpisów w dzisiejszym okienku
+Zrobione
+Kopiuj
+B£AD:\n\n
+Uprzedzenie:
+Edytuj
+Zakoñcz widok na
+Najpierw wprowad¼ nazwê
+Wpis z widoku tygodnia
+B³±d
+B³±d podczas odczytu pliku\n%s
+Daty wyj±tków
+Daty Wyj±tków:
+Uruchom
+Nie mog³em przywróciæ %s,\nnie mogê zapisaæ do %s
+Nie mog³em przywróciæ bazy danych %s\ndo %s, zapis przerwany
+Nie mog³em utworzyæ zadania\nbazy danych %s
+Nie mog³em utworzyæ\nbazy danych u¿ytkownika%s
+Nie mog³em odczytaæ pliku %s u¿ytkownika %s, b³±d %d\n
+Nie mog³em odczytaæ pliku wiod±cego %s, b³±d %d\n
+Nie mog³em odczytaæ pliku prywatnego %s, b³±d %d\n
+Nie mog³em zapisaæ pliku zadañ bazy danych\n"%s".\nOstatnie zmiany nie zosta³y zachowane.\nSprawd¼ miejsce na dysku i uprawnienia katalogu!
+Nie mog³em zapisaæ pliku zadañ bazy danych\n"%s".\nOstatnie zmiany nie zosta³y zachowane.\nSprawd¼ miejsce na dysku i uprawnienia katalogu!\n\nNie mogê odtworzyæ oryginalnych zawarto¶ci. Kopia bezpieczeñstwa jest w\n%s, wymaga rêcznego odtworzenia
+Luty
+Plik
+Plik %s ma %d zadania w %s\ni %d na serwerze %s. Prze³±czenie do serwera\nfile %s.
+Plik %s na serwerze %s nie\nistnia³. Stworzy³em nowy i zainicjowa³em\naktualnie za³adowanymi zadaniami.
+Lista plików
+Lista plików...
+Pliki i programy
+Pierwszy tydzieñ jest perwszym pe³nym tygodniem
+Pierwszy tydzieñ jest pierwszym tygodniem z czwartkiem
+Pi±
+Uzyskanie pomocy
+Opcje globalne:
+Id¼ do daty
+Id¼ do dzisiaj
+Id¼...
+Zielone okno
+Grupa
+Wybór grupy
+Zgadnij
+Pomoc
+Dni wolne
+Wprowadzenie
+Styczeñ
+Lipiec
+Czerwiec
+Szukanie s³owa kluczowego
+Zabij
+Jêzyk
+Jêzyki
+Miesi±c - du¿y
+Wielkie listewki dla okien wprowadzeñ bez czasu
+Ostatni
+Zakoñcz powtarzanie na dniu:
+Marudzenie:
+Nie uwzglêdniaj wielko¶ci liter
+Uwzglêdniaj wielko¶æ liter
+¦cie¿ka lokalna
+Utracone po³±czenie z serwerem netplan %s.\n\nProszê po³±czyæ siê na nowo, nastêpnie wybraæ\n`Plik->Odtwórz pliki'.\nMo¿esz utraciæ ostatnio wprowadzone dane.
+Mailer:
+Marzec
+Maj
+Komunikat
+Pon
+Miesi±c
+Opcje widoku miesi±ca:
+Format daty: miesi±c/dzieñ/rok
+Nazwa
+Nazwa nie jest unikalna, odmawiam
+Sieæ
+Dalej
+Nastêpny tydzieñ
+Bez alarmu na
+¯aden
+Uwagi
+Listopad
+Pa¼dziernik
+Pomiñ wszystkie zadania
+Pomin zadania wszystkich innych
+Pomiñ zadania prywatne
+W kontek¶cie
+Jeden plik...
+Tylko w³a¶ciciel mo¿e zapisywaæ pliki appt
+Opcje:
+Inni
+W³asne
+Tylko W³asne
+Tylko w³asne
+¦cie¿ka nie jest unikalna, odmawiam
+Pin
+Proszê najpierw wprowadziæ czas lub datê
+Prosz zakoñczyæ okre¶laj±c listê plików i\npo³±czenia sieciowe przed edycj± zadañ.
+Wstecz
+Drukuj
+Drukowanie nieudane, przerwane z sygna³em %d\nSprawd¼ listê kolejkowania.
+Tryb wydruku:
+Drukuj...
+Prywatne
+Problem z plikiem dni wolnych %s:\n%.80s w linii %d
+Zakoñcz
+Czerwone okno
+Wyra¿enie regularne
+Tylko przypominacz: ¿adnych alarmów, czas ukryty
+Powtórz co
+Powtórz co rok
+Powtórz ka¿dego
+Powtórz w dniach
+Odczytaj ponownie pliki
+Uruchom skrypty netplana (niebezpieczne!)
+Sob
+Lista
+¦mietnik listy
+Szukanie
+Szukaj:
+Szukaj s³ów kluczowych...
+Tryb szukania:
+Wy¶lij pocztê
+Wrzesieñ
+Serwer
+Host serwera
+B³±d "%s" protoko³u hosta serwera:\nOczekiwane odtworzenei kodu `%c' lecz serwer wys³a³ `%c'.\nPe³ny tekst komunikatu o b³êdzie:\n%s
+Host serwera %s zg³asza problem:\n\n%s
+Serwer na ho¶cie %s nie odpowiada\n
+Serwer na ho¶cie %s jest nieosi±galny.
+Serwer na ho¶cie %s: b³±d protoko³u\n
+Skrypt pow³oki
+Poka¿ daty juliañskie
+Poka¿ momenty wczesnego ostrzegania
+Poka¿ nazwy plików w etykietach listewek
+Poka¿ jednodniowe zadania
+Poka¿ numery tygodni
+Miesi±c - ma³y
+Kto¶ inny edytuje ten wpis. Proszê spróbowaæ pó¼niej.
+Przepraszam, pomoc jest niedostêpna
+Przepraszam, pomoc jest niedostêpna,\n%s nie znaleziono
+Sortuj
+Rozdziel
+£añcuch kolejki:
+Uruchom demona
+B³±d konwersji ³añcucha.\n
+Nie
+Sync
+Pierwszy plik z listy plików\n(%s)\nnie mo¿e byæ baz± danych grok!\nPróba kontunuacji, mo¿na utraciæ dane.
+Serwer netplan zg³osi³ b³±d\ngdy ten rekord by³ zapisywany. Proszê\nsprawdziæ uprawnienia.\n
+Nowa data jest za dat± koñcow±,\n %s. Data koñcowa zosta±³ uniewa¿niona.
+Nowy jêzyk bêdzie dzia³a³\npo ponownym uruchomieniu programu.
+Nowa data koñcowa jest przed\ndat± pocz±tkow±, %s. Odmawiam.
+Innego programu nie mo¿na by³o zabiæ.\n
+Ten miesi±c
+Ten tydzieñ
+Czw
+Czas
+Stref± czasow± jest GMT
+Dzisiaj
+Jutro
+Zbyt wiele b³êdów, przerwanie.\n
+Rozwi±zywanie problemów
+Spróbuj uruchomiæ z opcj± -L .\n
+Wto
+Cofnij
+U¿ycie: pland [-dkKlL]\n
+U¿yj numeru tygodni na ho¶cie GPS
+U¿yj g³ównego okna dla wszystkich widoków
+U¿yj prawego klawisza myszy do zmiany kolorów
+Plik u¿ytkownika %s na ho¶cie %s: nie mo¿na siê po±³czyæ\n
+Plik u¿ytkownika %s na ho¶cie %s: nie mo¿na otworzyæ gniazda\n
+Plik u¿ytkownika %s na ho¶cie %s: nieznany host\n
+Widok
+UWAGA:\n\nYou can now edit other users' appointments.\nplan will normally notice multiple writes at the same\ntime (except over NFS), but will not notice if another\nuser has modified the same appointment file while you\nwere changing it. The older changes will get lost in\nthis case. Watch out!)
+Uprzed¼
+Warning
+Uwaga:\nPracuje inny (%s) program.\n%s\nWci¶nij 'Dalej' aby kontynuowaæ mimo wszystko, lub zabij\nspróbuj zabiæ inny program. Kontynuowanie\nmo¿e spowodowaæ utratê nowo wprowadzonych zadañ, a\nwprowadzanie komend dla zadañ nie bêdzie funkcjonowaæ.
+Uwaga:\nNie ma demona zadañ.\nBez demona nie zostanie podjêta ¿adna akcja gdy alarm siê w³±czy.\nProszê uruchomiæ '%s' dodaj±c jego wywo³anie w plikach\n~/.xsession lub ~/.sgisession albo uruchomiæ plan z opcj± -S.
+Uwaga: alarm o godz. %d:%02d%c
+Uwaga: nie mogê zrobiæ: chmod 0600 zadanie\nbaza danych %s
+Uwaga: w³asny plik konfiguracji i danych %s jest tylko do odczytu\n
+Uwaga: w³±sny plik prywatnych danych %s jest tylko do odczytu\n
+¦ro
+Tydzieñ
+Tydzieñ (Krajobraz)
+Tydzieñ (Portret)
+Widok tygodnia
+Opcje widoku dnia i tygodnia:
+Tydzieñ rozpoczyna siê od niedzieli
+Widok tygodnia zawiera
+Wy³±czenie okien po czasie
+Ustawienia serwera X
+Rok
+Przegl±d Roku
+Widok Roku
+¯ó³te okno
+Masz %d zadañ tutaj i\n%d na serwerze %s. Zapisane %s\ndo %s i zapomniane stare\nzadania w %s.
+Twoje w³asne zadanie jest wy³±cznie do odczytu!
+YrOv
+Powiêkszenie
+zawsze wy³±czone
+zawsze w³±czone
+istnieje ju¿ inny demon, u¿yj %s -k
+auth on %s replies %s\n
+b³±d uwierzytelnienia na %s\n
+serwer uwierzytelniania na %s nie odpowiada\n
+automatyczne
+pocz.:
+nie mo¿na otworzyæ
+nie mo¿na po³±czyæ siê z serwerem uwierzytelniania %s\n
+nie mo¿na zabiæ istniej±cego demona %s
+nie mo¿na otworzyæ gniazda do uwierztelniania 
+dni
+dni:
+domy¶lny
+koniec:
+ka¿dy...
+pi±ty...
+plik u¿ytkownika #%d nie odczytany, brak nazwy pliku lub ¶cie¿ki\n
+plik u¿ytkownika #%d nie zapisany, brak nazwy lub ¶cie¿ki\n
+pierwszy...
+czwarty...
+da³ odpowied¼ "%s"\n
+niekompletn±
+ostatni...
+okres:
+d³ugo¶æ %d:%02d, dopóki nie %d:%02d%c
+minut:
+brakuj±cy
+nd
+serwer netplan do odpytania:
+nowy plik
+brak pamiêci
+brak pamiêci dla listy zadañ
+brak pamiêci dla widoku dnia
+brak pamiêci dla ikon
+brak pamiêci widoku tygodnia
+brak pamiêci dla przegl±du roku
+brak u¿ytkownika "%s"
+godz.
+starsze ni¿ 90 dni
+starsze ni¿ jeden dzieñ
+starsze ni¿ jeden miesi±c
+starsze ni¿ jeden tydzieñ
+starsze ni¿ jeden rok
+opt:
+w³asny
+plan: po³±czono z hostem %s: %s
+rd
+drugi...
+st
+th
+trzeci...
+do
+zbyt wiele dat wyj±tków dla appt
+nieznany
+u¿yj czasu systemowego
+u¿ytkownik %s
+b³±d zapisu
+bazy danych xmbase-grok %s\nnie mo¿na odczytaæ poniewa¿ interfejs\nkalendarza jest %s, i nie ma pól\ndat do autamatycznego generowania.

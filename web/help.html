@@ -1,0 +1,52 @@
+<HTML VERSION="2.0">
+<HEAD>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<CENTER>
+<FONT size=+1>
+<img src="rtsban.jpg"><br>
+<br>
+<br>
+Welcome to WebPlan 1.8<br>
+Developed by <A HREF=mailto:gaetan@montreal.sgi.com>Gaetan Lord</A> and
+<A HREF=mailto:michel@sgi.com>Michel Bourget</A><br>
+Based on <A HREF=http://www.bitrot.de/plan>plan</A>, which is maintained by
+<A HREF=mailto:thomas@bitrot.de>Thomas Driemeyer</A>.<br>
+</CENTER>
+<br>
+<hr>
+<br>
+<H2>Installation</H2>
+<UL>
+  <LI>	Copy all files in the <I>web</I> directory of the <I>plan</I>
+	distribution to the <I>cgi-bin</I> directory of your HTTP server.
+	This directory is often located in <I>/var/httpd</I>.<p>
+
+  <LI>	You need a <I>netplan</I> server version 1.8 or later running on
+	the same host that the web server running the WebPlan CGI scripts
+	runs on. Its data directory must be named
+	<I>/usr/local/lib/netplan.dir</I>, which must be writable for the
+	CGI scripts.<p>
+
+  <LI>	There must be a <I>plan</I> executable version 1.8 or later in the
+	directory <I>/usr/local/bin</I> on the host that the web server is
+	running on.
+</UL>
+<p>There is no way to run the web interface without the help of an HTTP
+server. You need root access to install it.
+
+<H2>Notes</H2>
+<P><A HREF=http:webList.cgi>List of Users on this WebServer</A>
+<br>
+<UL>
+  <LI>	For very obvious reasons, I don't explain how to delete an entry.
+	[Note by thomas: doesn't work in version 1.8 anyway.]<p>
+  <LI>	Private Entries are those starting with a . (dot) in the text
+	Description. Please do not confuse with regular plan Private Entries.<p>
+  <LI>	Appointment:Yes/No button is No if you only want Day Event data.<p>
+  <LI>	Private:Yes/No button is No if you only want non-private data (as
+	defined above).
+</UL>
+</FONT>
+</BODY>
+</HTML>

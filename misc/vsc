@@ -1,0 +1,21 @@
+#!/usr/bin/sed -f
+# sed commands to change comma separated fields to grok database.
+# This command undoes csv command.
+# usage: "vsc file.db" 
+#
+# try  "csv countries.db | vsc - | diff  countries.db - " to test.
+#
+# Modus Operandi:
+#  First separator "," is changed  to ":" 
+#  Then ";" are changed to ","
+#  Lines are split where marked with " | " using "\"
+#
+# Stoffel Lombard <lombc@clom.me.up.ac.za>
+{
+s/:/\\:/g
+s/,/:/g
+s/;/,/g
+#The following command must be broken accross two lines just after "\\\"
+s/ | /\\\
+/g
+}

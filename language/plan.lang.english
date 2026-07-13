@@ -1,0 +1,381 @@
+\n(Trying to access file "%s".)
+\nDay Planner version %s\nCompiled %s\n\nAuthor: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nSend mail to majordomo@bitrot.de to subscribe\nto the mailing list.  Or check out my home page:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nThe sources are available at\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (own)
+ (readonly)
+ (warn)
+%5d      (pid of lockfile for %s, for user %d)\n
+%d of %d appointments from grok database\n%s discarded\nbecause of invalid date/time.
+%s is a\ngrok database, not supported
+%s is an\nxmbase-grok database, cannot write file
+%s: %s in line %d of %s\n
+%s: %s: illegal line:\n%s
+%s: %s: not found\n
+%s: WARNING: can't find %s\n
+%s: WARNING: can't read user name.\n%s
+%s: WARNING: can't signal daemon: 
+%s: WARNING: can't start %s: 
+%s: WARNING: file %s is version 
+%s: Warning: cannot fork\n
+%s: can't alloc color for %s\n
+%s: can't create %s: 
+%s: can't evaluate ~%s in %s, using .\n
+%s: can't write to %s: 
+%s: cannot create lockfile 
+%s: cannot open lockfile 
+%s: cannot read lockfile 
+%s: cannot unlink lockfile 
+%s: cannot write lockfile 
+%s: deleting script "%s"\n
+%s: failed to kill process %d owning lockfile %s\n
+%s: failed to lock database after 3 seconds, accessing anyway\n
+%s: generating script "%s"\n
+%s: ignoring insecure script
+%s: killed with signal %d\n
+%s: logged out, keeping quiet
+%s: no mailer defined\n
+%s: no memory
+%s: plan calendar daemon, version %s.\n
+%s: re-reading database\n
+%s: running "%s", args
+%s: sleeping for %d:%02d:%02d\n
+%s: starting %s\n
+%s: unknown color for %s\n
+%s: unknown host, cannot authenticate\n
+%s: utmp works, watching for logout
+%s: you have logged out, exiting (try -L?)\n
+(h:m)
+(h:m:s) to system time
+-K\tkill existing daemon only\n
+-L is the default. Try -l if you get too many pland's.\n
+-L\tdon't watch utmp (utmp is often buggy)\n
+-d\tdebug: stay in foreground, print actions\n
+-k\tkill existing daemon, then continue\n
+-l is the default. Try -d or -L if pland exits early.\n
+-l\twatch utmp and exit when user logs out\n
+-s\twatch utmp and sleep while user is logged out\n
+-t\tdon't pop up notifier windows, print to stdout\n
+12-hour am/pm time format
+<unknown>
+ALARM at %d:%02d%c
+About
+About...
+Add
+Adjust Time
+Adjust time...
+Advance warning: %s
+Alarm
+Alarm Options
+Alarm options...
+Alarm:
+All
+All Entries
+Appointment text color
+Appointment text color:
+April
+August
+Auto-delete past entries
+Auto-resize windows
+Automatic DST from Julian day
+Available files:
+Available files, select and Add:
+Begin view at
+Browse
+Browse Server
+Calendar view configuration
+Calendar views...
+Can't find PostScript skeleton\nfile "%s"
+Cancel
+Cannot change own group
+Cannot change own path
+Cannot connect to netplan\nserver host %s
+Cannot delete own file
+Cannot modify appointments of %s because they\nwere read from a grok database. Saving is not\nimplemented for grok databases. The file is\n%s
+Cannot modify appointments of %s,\nno write permission for %s\nor %s/.dayplan.\n\nRe-check the permissions with File->Reread database.\nYou can not disable individual appointments, but you\ncan disable all with the File->File list popup.
+Cannot modify appointments of %s,\nserver on %s denies write permission.\nRe-check the permissions with File->Reread database.\nYou can not disable individual appointments, but you\ncan disable all with the File->File list popup.
+Cannot move there, aborted.
+Cannot open pipe to ")%s"
+Cannot resize entry with nondaily repeat
+Clear
+Color printout
+Colored background for other files
+Config
+Confirm
+Context
+Continue
+Continue without daemon
+Database access
+Date
+Date to switch to:
+Day
+Day View
+Daylight Saving is
+December
+Default
+Default warnings:
+Define holidays...
+Delete
+Delete past entries
+Dismiss
+Display:
+Don't show appointment in day view
+Don't show appointment in month view
+Don't show appointment in week view
+Don't show appointment in year overview
+Don't show appointment in year view
+Don't show past entries in today's box
+Done
+Dup
+ERROR:\n\n
+Early warning:
+Edit
+End view at
+Enter a name first
+Entry from week view
+Error
+Error while reading files:\n%s
+Exception Dates
+Exception Dates:
+Execute
+Failed to back up %s,\ncannot write to %s
+Failed to back up database %s\nto %s, aborted write
+Failed to create appointment\ndatabase %s
+Failed to read copy of user\ndatabase %s
+Failed to read file %s of user %s, error %d\n
+Failed to read master file %s, error %d\n
+Failed to read private file %s, error %d\n
+Failed to write appointment database file\n"%s".\nYour recent changes have been discarded.\nCheck disk space and permissions of the directory!
+Failed to write appointment database file\n"%s".\nYour recent changes have been discarded.\nCheck disk space and permissions of the directory!\n\nCould not restore original contents. Backup is in\n%s, requires manual restore
+February
+File
+File %s has %d appointments in %s\nand %d on server %s. Switching to server and ignoring\nfile %s.
+File %s on server %s did not\nexist. Created one and initialized with\ncurrently loaded appointments.
+File List
+File list...
+Files and programs
+First week is first full week
+First week is first week with Thursday
+Fri
+Getting help
+Global options:
+Goto Date
+Goto today
+Goto...
+Green window
+Group
+Group Selection
+Guess
+Help
+Holidays
+Introduction
+January
+July
+June
+Keyword Search
+Kill
+Language
+Languages
+Large Month
+Large bars for week entries without time
+Last
+Last day: stop repeating on
+Late warning:
+Literal case insensitive
+Literal case sensitive
+Local path
+Lost connection to netplan server %s.\n\nPlease start it up again, then choose\n`File->Reread files' to reconnect and re-read.\nYou may have lost recent changes.
+Mailer:
+March
+May
+Message
+Mon
+Month
+Month view options:
+Month/day/year date format
+Name
+Name is not unique, rejected
+Networking
+Next
+Next week
+No alarm on
+None
+Note
+November
+October
+Omit all appointments
+Omit everyone else's appointments
+Omit private appointments
+On context
+One file...
+Only owner can write appt files
+Options:
+Other
+Own
+Own Only
+Own only
+Path is not unique, rejected
+Pin
+Please enter time or date first
+Please finish specifying the file list and the\nnetwork connections before editing appointments.
+Prev
+Print
+Print failed, aborted with signal %d\nCheck your spooler string.
+Print mode:
+Print...
+Private
+Problem with holiday file %s:\n%.80s in line %d
+Quit
+Red window
+Regular expression
+Reminder only: no alarms, time not shown
+Repeat every
+Repeat every year
+Repeat on
+Repeat on the
+Reread files
+Run netplan scripts (security risk!)
+Sat
+Schedule
+Schedule Recycler
+Search
+Search for:
+Search keywords...
+Search mode:
+Send mail
+September
+Server
+Server Host
+Server host "%s" protocol error:\nExpected reply code `%c' but server sent `%c'.\nFull reply message in error was:\n%s
+Server host %s reports a problem:\n\n%s
+Server on host %s does not reply\n
+Server on host %s is unreachable.
+Server on host %s: protocol error\n
+Shell Script
+Show Julian dates
+Show advance-warning times
+Show file names in bar labels
+Show single-day appointments
+Show week numbers
+Small Month
+Somebody else is editing this entry. Please try again later.
+Sorry, no help available
+Sorry, no help available,\n%s not found
+Sort
+Split
+Spooler string:
+Start daemon now
+String conversion error.\n
+Sun
+Sync
+The first file in the file list\n(%s)\nmust not be a grok database!\nTrying to continue, you may lose data.
+The netplan server reported an error\nwhen this record was committed. Check\naccess permissions.\n
+The new date is after the last-trigger date,\n %s. The last-trigger date has been disabled.
+The new language will be effective\nafter plan is restarted.
+The new last-trigger date is before the\nfirst-trigger date, %s. Ignored.
+The other program could not be killed.\n
+This month
+This week
+Thu
+Time
+Timezone is GMT
+Today
+Tomorrow
+Too many errors, aborting.\n
+Troubleshooting
+Try running with -L option.\n
+Tue
+Undo
+Usage: pland [-dkKlL]\n
+Use GPS week numbers
+Use main window for all views
+Use right mouse button to change color
+User file %s on host %s: cannot connect\n
+User file %s on host %s: cannot open socket\n
+User file %s on host %s: unknown host\n
+View
+WARNING:\n\nYou can now edit other users' appointments.\nplan will normally notice multiple writes at the same\ntime (except over NFS), but will not notice if another\nuser has modified the same appointment file while you\nwere changing it. The older changes will get lost in\nthis case. Watch out!)
+Warn
+Warning
+Warning:\nAnother %s program is running.\n%s\nPress Continue to start up anyway, or Kill to\nattempt to kill the other program. Continuing\nmay cause loss of new appointment entries, and\ncommand-line entry of appointments will not work.
+Warning:\nThere is no Scheduler daemon. Without a daemon,\nno action will be taken when an alarm triggers.\nPlease start "%s" in your ~/.xsession or\n~/.sgisession file, or run plan with the -S option.
+Warning: alarm at %d:%02d%c
+Warning: cannot chmod 0600 appointment\ndatabase %s
+Warning: own config and data file %s is not writable\n
+Warning: own private data file %s is not writable\n
+Wed
+Week
+Week (Landscape)
+Week (Portrait)
+Week View
+Week and Day view options:
+Week begins with Sunday
+Week view contains
+Windows time out after
+X resources
+Year
+Year Overview
+Year View
+Yellow window
+You have %d appointments here and\n%d on server %s. Saved %s\nto %s and discarded old\nappointments in %s.
+Your own appointment file is read-only!
+YrOv
+Zoom in
+always off
+always on
+another daemon exists, use %s -k
+auth on %s replies %s\n
+authentication failure on %s\n
+authentication server on %s does not reply\n
+automatic
+beg:
+cannot access
+cannot connect to authentication server on %s\n
+cannot kill existing %s daemon
+cannot open socket to authentication 
+days
+days:
+default
+end:
+every...
+fifth...
+file of user #%d not read, no name or path\n
+file of user #%d not written, no name or path\n
+first...
+fourth...
+got reply "%s"\n
+incomplete
+last...
+len:
+length %d:%02d, until %d:%02d%c
+min:
+missing
+nd
+netplan server to query:
+new file
+no memory
+no memory for appointment list
+no memory for day view
+no memory for pixmaps
+no memory for week view
+no memory for year overview
+no user "%s"
+o'clock
+older than 90 days
+older than one day
+older than one month
+older than one week
+older than one year
+opt:
+own
+plan: connected to host %s: %s
+rd
+second...
+st
+th
+third...
+to
+too many exception dates for appt
+unknown
+use system time
+user %s
+write error
+xmbase-grok database %s\ncannot be read because the calendar\ninterface is %s, and there are no\ndate fields to automatically generate one.

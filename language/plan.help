@@ -1,0 +1,2447 @@
+#
+# help pulldown choices
+#
+%% intro
+	INTRODUCTION
+
+	This program combines the functions of the various graphical calendar
+	tools, and an alarm facility such as calendar(1). In the main window,
+	a month calendar is displayed, consisting of 28..31 day boxes. Into
+	each of these day boxes, appointments may be entered that trigger on
+	that day, at a particular time.
+
+	To enter an appointment, click on the daybox the appointment should
+	go into. An appointment list popup appears. Click on the top "time"
+	button. A date appears next to it, and there is a cursor in the time
+	button. Enter a time, such as "11:00", and press Return. Skip the
+	length button by pressing Return again. Now the rightmost button
+	has a cursor in it; enter a short description of the appointment
+	and press Return again. The appointment is now added; you can enter
+	another one or press Done to exit the menu. The appointment has now
+	appeared in the day box of the month calendar.
+
+	An alternative way of entering appointments is the year calendar. It
+	is accessible from the Year pulldown menu of the main month calendar.
+	Its day boxes work exactly like those of the month calendar. Finally,
+	the week view allows editing appointments by double-clicking them.
+
+	In addition to simply adding an appointment by date, time, and note,
+	various options such as repetitive appointments, advance warnings,
+	message texts, automatic execution of shell scripts etc. are available
+	in the appointment list menus.
+
+	Appointments can also be entered from the command line, using a
+	command like
+
+	     plan 1015 wake up and go home
+
+	The date and time is in date(1) format, [mmdd]hhmm.
+
+	When plan started up, it may have complained that no daemon is running,
+	and offered to start one. The daemon is a separate program that waits
+	for appointments to trigger, and takes appropriate action when one
+	does. This means that without the daemon, no alarm will ever trigger.
+	It also means that this interactive program does not have to run for
+	alarm triggers, only the daemon always exists.
+
+	plan reads appointments from files or from an IP server "netplan". The
+	File->File list can be used to configure file names and server hosts.
+	plan does not start netplan automatically; it must already run on the
+	specified hosts.
+%% help
+	GETTING HELP
+
+	To get general help on a popup menu, press the Help button in that
+	popup menu.
+
+	To get help on a pulldown menu in the main month calendar window,
+	install the pulldown menu by pressing and releasing the left mouse
+	button on the menubar button, then press the HELP or F1 keyboard key.
+
+	Help on most buttons is available by choosing "On Context" in the Help
+	pulldown, and then pressing on a button or calendar. Every help window
+	contains a Context button that does the same thing as "On Context".
+
+	Normally, the Help or F1 keyboard keys are not very helpful, because
+	many of the interesting items either have no shadow (so you don't
+	know which tab group member has focus), or are drawn using Xlib.
+%% trouble
+	TROUBLESHOOTING
+
+	*  If you get the message "No type converter registered for 'Pixel' to
+	    'String' conversion", you probably have a CDE system that overrides
+	    standard resources with nonfunctional values. Run "plan -d >>
+	    ~/.Xdefaults; xrdb -merge" to fix.
+
+	*  If the time display in the month view and in the icon title do not
+	    update, and/or you get the message "X server fails to send timer
+	    events, switching to synchronous file writing", there is something
+	    wrong with your X server (probably XFree). The message shows that
+	    plan has noticed this (after changing an appointment at least 40
+	    seconds after startup) and will at least make sure that no data is
+	    lost. There is no fix for the time display.
+
+	*  If you get messages like "pland: .../.dayplan: illegal line:
+	    y s--------- 1 1 0" or "pland: too many u stmts in .../.dayplan",
+	    you are running the wrong pland version, 1.4.4 or earlier instead
+	    of 1.4.7 or higher. Install the correct version of pland in the
+	    directory specified as LIB in the Makefile (/usr/local/mi/lib by
+	    default). Also make sure notifier, netplan, plan.help, and
+	    plan_cal.ps are in the same directory.
+
+	*  If you run netplan as root, and it can't open its home directory,
+	    check whether NOB_UID and NOB_GID in the Makefile really contain
+	    the user and group ID of the <nobody> account, and make sure that
+	    <nobody> can access the netplan.dir home directory in $(LIB).
+
+	*  if holidays are not shown in the month view, make sure that your
+	    day number font (Plan*calNumberFont) is at least twice as large
+	    as your note font (plan*calNoteFont).
+
+	*  if holidays are not shown in the week view, there may not be enough
+	    space, and you need to increase the bar height. Try this in your
+	    .Xdefaults file: "Plan*weekBarHeight: 26" (without the quotes).
+
+	*  pland does not execute scripts attached to appointments that were
+	    read from a server, and will print an error message instead. This
+	    is necessary because anybody could modify or attach a script to
+	    one of your appointments, and have it executed under your user ID.
+
+	*  If plan refuses to change appointments in other files that were
+	    attached with the File->File list menu, saying "no permission",
+	    make sure that you own the file. Having write permission is not
+	    enough. You can override this safety feature by turning off the
+	    "Only owner can write" mode in the Config->Calendar menu, but
+	    do so with great care because multiple writers are not sequenced.
+	    This applies only to files that are not read from netplan servers.
+
+	*  If your screen saver stops working when plan is running, put two
+	    lines "Plan*showIconTime: False" and "Plan*showIconDate: False"
+	    into your ~/.Xdefaults file. If plan updates the time in the icon,
+	    the screen saver timeout is restarted, and never reaches timout
+	    because updates happen once every minute. Only some X servers
+	    exhibit this problem.
+
+	*  On SGI systems, if the icon doesn't show a picture, copy the icon
+	    picture Plan.icon into your ~/.icons directory. If you don't have
+	    one and don't want one, set the plan*noIcon resource to False in
+	    your ~/.Xdefaults file. It may be necessary to restart 4Dwm to
+	    register the icon after copying it to ~/.icons.
+
+	*  If starting plan prints cpp errors to stderr (or pops up an error
+	    dialog on SGIs if desktop error reporting is turned on), change
+	    all '#' characters in your ~/.holiday to ':'. The comment
+	    introducer was changed in version 1.3 to allow #include statements.
+
+	*  If the main menu shows an incorrect time above the month calendar,
+	    and alarms trigger an hour early or late, plan might have an
+	    incorrect idea of your timezone and Daylight Saving Time status.
+	    To correct this, choose "Adjust Time" from the Config pulldown,
+	    and change the defaults.
+
+	*  If the pulldowns in the main menu show labels like "button_3", add
+	    -DNOMSEP to whatever xxx_C line you are using in the Makefile, and
+	    recompile. If the problem persists, also add -DFIXMBAR.
+
+	*  On some BSD-based systems, it takes a while for appointment
+	    changes to propagate to the daemon. The result is that alarms that
+	    trigger a few minutes after they were added or edited are ignored.
+	    This is normal on these systems. However, if alarms don't trigger
+	    at all, use the ps command (see man ps) to make sure that pland is
+	    running, and verify that its process ID agrees with the number in
+	    /tmp/.plandUID (with UID being your numerical user ID). Also, plan
+	    may get out of sync if you start more than one, and answer Continue
+	    in the warning dialog.
+
+	*  Previous versions of plan contained a recommendation to put "killall
+	    pland" into your .logout file. Don't do this, it kills the daemon
+	    whenever you delete a window, and no more alarms will trigger.
+
+	*  The plan program uses quite a few colormap entries. Although there
+	    is a black&white fallback mode, you may have problems starting other
+	    programs that also need many colormap entries. The only workaround
+	    is to kill plan when you don't need it; alarms will trigger anyway.
+
+	*  If radio and toggle buttons appear gray regardless of the colToggle
+	    and colRed resources, make sure that the sgiMode resource is False.
+	    In SGI desktop mode, colToggle and colRed are disabled because they
+	    would override the desktop defaults. The sgiMode resource is True
+	    only if plan was compiled with "make sgi5", add "plan*sgiMode: False"
+	    to your ~/.Xdefaults file in this case, or recompile with "make sgi4".
+	*  If you are using LessTif and the File->File list dialog is missing
+	    all buttons except the toggles, upgrade to LessTif version 0.87.1
+	    or later.
+
+	*  The message "Warning: No type converter registered for 'Pixel' to
+	    'String' conversion" on CDE systems such as Sun may mean that a
+	    font was not found. Use plan -d to list all resources and verify
+	    that all fonts exist, using the xfontsel program. If not, change
+	    the lines with bad fonts and add them to your ~/.Xdefaults file.
+
+	If you have problems you can't resolve, or if you have suggestions
+	for new features, or porting instructions for new platforms, send mail
+	to me at thomas@bitrot.de. Note that the plan version on the
+	SGI Developer's Toolbox CD supports only SGI systems. If you mail, do
+	not forget to include your version number as reported by "plan -v".
+%% files
+	FILES AND PROGRAMS
+
+	The calendar program is distributed as four programs and two data
+	files: plan, pland, notifier, netplan, plan.help, and plan_cal.ps.
+	Plan should be installed in the directory given as DIR in the Makefile,
+	by default /usr/local/bin, and the others in the directory given as
+	LIB, also /usr/local/bin by default. The distribution also contains
+	.holiday files for various countries.
+
+	"plan" is the main interactive calendar program that you are using at
+	the moment. It is used to view calendars and to enter appointments
+	at specified dates and times, with various optional parameters. It
+	depends on the plan.help file, and writes all configuration parameters
+	and appointments to two files ".dayplan" and ".dayplan.priv" in the
+	user's home directory. It signals the daemon (SIGHUP) when that file
+	changes, to force the daemon to re-read it.
+
+	"pland" is the daemon. Its purpose is to watch alarms and warnings,
+	and to perform the appropriate action if one triggers. The "plan"
+	program need not run to trigger an alarm. "pland" is a very small
+	program with no X code, to avoid excessive system load. It reads the
+	~/.dayplan* databases, but never writes to them. pland is normally
+	started by the user's .xsession or .sgisession file.
+
+	"notifier" displays an ascii text in a color-coded window. It is a
+	separate program to keep "pland" small. It handles snoozing all by
+	itself.
+
+	"netplan" is an IP server that must be started before plan and pland
+	start. It is sufficient to have one per network of hosts. If enabled
+	with the File->File list dialog, all plan's and pland's connect to
+	the netplan server to read and write appointments. netplan properly
+	sequences all events and informs connected programs of changes.
+
+	"plan.help" contains all help messages.
+
+	"plan_cal.ps" is a PostScript skeleton containing PostScript code
+	used by plan when printing calendars. This file can be used to change
+	the defaults for margins and fonts; future versions may use popup
+	menus for this task. Always keep the original version when editing it.
+
+	"Plan.icon" is an SGI RGB picture file that should be copied to the
+	~/.icons directory. On SGIs, the noIcon resource is set to True by
+	default to make 4Dwm use the full-color picture. It may be necessary
+	to restart 4Dwm to register the icon.
+
+	In the user's home directory, there are three files. ".dayplan" contains
+	the public appointments (the ones without the padlock icon in the
+	appointment list menu, which can be displayed in other users' week
+	views). ".dayplan.priv" contains the private appointments (the ones
+	with a padlock, which cannot be accessed by other users). ".holiday"
+	contains a description of public holidays and vacations as specified
+	with the Define Holidays popup in the Config pulldown. For a description
+	of the .dayplan* format, see the plan(4) manpage.
+
+	If the LIB directory (specified in the Makefile) contains a file
+	"holiday", it is read after ".holiday" to add system-wide holidays to
+	the user's holiday list.
+
+	Both plan and pland use the environment variables $PATH, $PLAN_PATH, a
+	built-in default path, and the directories DIR and LIB specified in the
+	Makefile for locating programs and plan.help.
+	plan does not start netplan automatically; it must already run on the
+	specified hosts.
+
+	plan can read database files created by the desktop database manager
+	"xmbase-grok", version 1.4 and later. Grok is a database manager that
+	includes a GUI builder to define custom database applications, and
+	comes with predefined applications such as a phone directory, a todo
+	list, a workplan manager, a bibliography and others. Grok is available
+	on the same servers as plan. The primary servers are ftp.fu-berlin.de
+	and ftp.x.org. See http://www.bitrot.de/index.html.
+%% network
+	NETWORKING
+
+	netplan is an IP service. There is normally only one on a network of
+	hosts. It manages all appointment files for all plan and pland programs
+	on the network. The advantage over having these programs read files is
+	that multiple access is sequenced such that nobody overwrites or cancels
+	changes by others, and that everybody is immediately informed of changes
+	automatically.
+
+	netplan must be started manually before the first plan or pland is
+	started. It sits on a port on a specific host, by default port 5444.
+	It should be started as user "nobody", but any other user will work
+	as long as it can read and write netplan's home directory (defined in
+	netplan_if.h, by default /usr/local/lib/netplan.dir). If netplan is
+	started as root, it switches to "nobody". This is useful if netplan
+	is started from a boot script like /etc/rc2.d/S99netplan (System V)
+	or /etc/rc.local (BSD).
+
+	There are several security concerns. netplan does not provide access
+	authentification. Everybody can read and write any file managed by
+	netplan. For this reason, plan continues to keep private (padlocked)
+	appointments in a ~/.dayplan.priv file, not under netplan control.
+
+
+	SECURITY FEATURES
+
+	Apart from the ability for everybody to access everybody else's non-
+	private appointments, netplan must satisfy general security concerns.
+	In particular, it must not be usable to open network security holes
+	that allow access to files that have nothing to do with plan. The
+	security features are:
+
+	*  if run by root or setuid root, netplan switches to "nobody". The
+	    UID and GID of <nobody> is compiled in, not determined at runtime.
+	    netplan will refuse to run setgid-but-not-setuid root.
+
+	*  netplan does not execute other programs (this is one of the reasons
+	    why there are still pland daemons).
+
+	*  netplan cannot be used to access files that are not in its home
+	    directory, /usr/local/lib/netplan by default. Absolute paths are
+	    converted to paths relative to the home directory, and paths with
+	    ".." are rejected.
+
+	*  netplan refuses to access softlinks and files that have more than
+	    one hardlink. This may be inconvenient at times, but without this
+	    the user who started netplan would be wide open to the entire net.
+
+	*  netplan is not sendmail. All buffers are checked for overflows. It
+	    is implemented as a single 1158-line C file and can be hand-checked
+	    easily.
+
+	*  netplan is Purify'd.
+
+	*  the pland daemon does not execute scripts that were read from a server.
+%% widgets
+	WIDGETS AND RESOURCES
+
+	plan uses the following environment variables:
+
+	   PLAN_TZ provides defaults for the timezone and Daylight Saving Time.
+	   TZ provides the defaults if PLAN_TZ is not set.
+	   LOGNAME provides your user name for the default mailer command.
+	   USER provides your user name if LOGNAME is undefined.
+	   user provides your user name if LOGNAME and USER are both undefined.
+	   HOME is your home directory, for locating .dayplan* and .holiday.
+	   PLAN_PATH and PATH are colon-separated search paths for finding
+	      programs. First, BIN and LIB from the Makefile are searched, then
+	      PLAN_PATH, then PATH, and finally a built-in default search path.
+	      Note that the latter contains the current directory.
+
+	To get a list of default X resources of the "plan" program, run it with
+	the -d option. The output can be directly appended to the .Xdefaults
+	file in your home directory or saved into a file "Plan" in your
+	app-defaults directory. If you install a system wide app-default file
+	make sure that lines do not start with "plan"; otherwise users might
+	not be able to override the setup. Omit the application name or use
+	the application class name "Plan". The "notifier" program also supports
+	a -d option.
+
+	For example, for a much smaller month calendar, append these lines
+	to your ~/.Xdefaults file or modify your app-defaults file:
+
+	      Plan*colGrid: #909090
+	      Plan*menubar*fontList: -*-helvetica-bold-*-normal-*-14-*
+	      Plan*fontList: -*-*-medium-r-*-*-14-*
+	      Plan*calNumberFont: -*-helvetica-*-r-*-*-14-*
+	      Plan*calBoxWidth: 40
+	      Plan*calBoxHeight: 34
+	      Plan*calBoxMargin: 10
+	      Plan*calBoxTitle: 15
+
+	The resources of "notifier" can be set similarly. Its application class
+	name is "Notifier". Here are plan's main resources, listed by view, in
+	the order geometry, fonts, and colors:
+
+
+	GLOBAL RESOURCES
+
+	    noIcon: don't draw anything into the icon. This should be used on
+		SGI systems so that 4Dwm uses the color picture as an icon.
+		The color icon should be moved to ~/.icons/Plan.icon .
+	    showIconTime: if true, show the current time in the icon title. For
+		some reason, this may prevent the screen saver from kicking in.
+	    showIconDate: if true, show the current date and time in the icon
+	        title. For some reason, this may prevent the screen saver from
+		kicking in.
+	    frameToday: put a black frame into today's day box in the month
+		view. This is useful on 1-bit black and white systems.
+	    noMonthShadow: in the month view, only draw the days that actually
+	        fall into this month, don't draw other days as shadows.
+	    sgiMode: for SGI systems running IRIX 5.2 only. Switches plan to
+		the SGI desktop style if True. colToggle and colRed are ignored
+		in this mode. sgiMode is True by default if plan was compiled
+		with "make sgi5". sgiMode is far superior to classic Motif. You
+		may also set `useSchemes' to True, and set `scheme' to Lascaux.
+		When using schemes, many color and font resources are ignored.
+	    startupAs: if set to ``smallmonth'', start with small month window
+
+	    menubar*fontList: font for menubar and pulldowns
+	    fontList: default font for buttons and titles
+	    helpFont: font used in help popups
+	    background: standard window background color
+	    colStd: standard foreground color for button labels etc
+	    colBack: standard background color
+	    colWireFrame: used for exclusive-or'ed wireframe boxes when dragging
+	    colGrayIcon: color of appt entry option icons if the option is disabled
+	    colTextBack: all inset text entry buttons use this color, pink by default
+	    colToggle: most toggle buttons use this color when the toggle is on
+	    colRed: the pin toggle in appointment edit popups uses this color when on
+	    noteWidth: the width of the note column in the appointment entry dialog,
+	        in pixels (new in version 1.5)
+
+
+	MONTH VIEW RESOURCES
+
+	    calBoxWidth: width of one day box
+	    calBoxHeight: height of one day box, determines number of note lines
+	    calBoxMargin: margin size at the edges of the inset calendar
+	    calArrowWidth: width of the week popup arrows at the left edge
+	    calBoxTitle: height of the title area with the weekday names
+
+	    calNumberFont: large font used for day numbers, twice as large as note font
+	    calNoteFont: very small and narrow font for notes
+
+	    frameToday: put black frame in today's day box. Useful for 1-bit screens.
+
+	    colCalBack: standard white month background color
+	    colCalShade: boxes with days in them use this background color
+	    colCalAct: no longer used, was day highlight before plan 1.7
+	    colCalToday: today's daybox uses this color, green by default
+	    colCalFrame: color of the thin frame that surrounds the grid
+	    colGrid: color of the grid that surrounds the day boxes
+	    colWeekday: color of weekday day numbers, black
+	    colWeekend: color of weekend day numbers, dark red
+	    colNote: color of note texts, something not too dark that doesn't stand out
+	    colNoteOff: this color is used for suspended notes, much lighter
+
+	    colHolidayBlack: color used when "black" is used in the holiday definition
+	    colHolidayRed: color used when "red" is used in the holiday definition
+	    colHolidayGreen: color used when "green" is used in the holiday definition
+	    colHolidayYellow: color used when "yellow" is used in the holiday definition
+	    colHolidayBlue: color used when "blue" is used in the holiday definition
+	    colHolidayMagenta: color used when "magenta" is used in the holiday definition
+	    colHolidayCyan: color used when "cyan" is used in the holiday definition
+	    colHolidayWhite: color used when "white" is used in the holiday definition
+
+
+	YEAR VIEW RESOURCES
+
+	    yearMargin: size of margin around the entire year
+	    yearGap: size of gap between months
+	    yearTitle: height of space reserved for year number at the top
+	    yearBoxWidth: width of one day box
+	    yearBoxHeight: height of one day box
+
+	    colYearBack: background color of the entire year area
+	    colYearBoxBack: background color of month boxes
+	    colYearNumber: color of day numbers
+	    colYearWeekday: color of weekday names
+	    colYearMonth: color of month names
+	    colYearTitle: color of the year number at the top
+	    colYearGrid: color of the thin box that surrounds every month
+
+	    yearTitleFont: large font used for the year number at the top
+	    yearMonthFont: medium italics font used for month names
+	    yearWeekdayFont: small italics font used for weekday names
+	    yearNumberFont: small font used for day numbers
+
+	WEEK VIEW RESOURCES
+
+	    weekMargin: size of margin around entire week view
+	    weekGap: height of gap between days
+	    weekDayWidth: width of the leftmost column with the weekday names in it
+	    weekHourWidth: width of one hour column
+	    weekBarHeight: height of an appointment bar
+	    weekBarGap: height of gap between appointment bars
+	    weekMaxNote: appointment note texts longer than this width are clipped
+
+	    colWeekBack: background color of the entire week view
+	    colWeekBoxback: shaded background color of the box that represents one day
+	    colWeekTitle: color of the title at the top
+	    colWeekGrid: color of the lines that separate hour columns
+	    colWeekDay: color of the weekday names in the leftmost column
+	    colWeekNote: color of note texts printed into or next to appointment bars
+	    colWeekFrame: color of the thin lines around the edges of bars
+	    colWeekWarn: color of the part of bars that represents advance-warning times
+	    colWeekUser_0: color of user's own bars, and one of the file colors (blue)
+	    colWeekUser_1: another color available for bars from other files.
+	    ...                 The colors are selectable in the File list popup.
+	    colWeekUser_7: the last file color. eight colors total are available
+
+	    weekTitleFont: font used for the title at the top giving the interval
+	    weekDayFont: font used for weekday names in the leftmost column
+	    weekHourFont: font used for hours above the bar chart
+	    weekNoteFont: small font used for appointment notes inside or next to bars
+
+	DAY VIEW RESOURCES
+
+	    Day views share most resources with the week view, with the following
+	    exceptions that replace the corresponding week view resources:
+
+	    dayMargin: margin all around the display and gap between days
+	    dayGap: horizontal gap beetween appointment columns
+	    dayHeadline: height of date at the top of each day box
+	    dayHourWidth: width of the hour column at the left view edge
+	    dayHourHeight: distance between two consecutive hour lines
+	    dayBarWidth: width of an appointment box
+
+	YEAR OVERVIEW RESOURCES
+
+	    yovWWidth: width of window showing the year overview
+	    yovWHeight: height of window showing the year overview
+	    yovDayWidth: width of one day in pixels when zoomed out all the way
+
+	    (also uses weekMargin, weekGap, weekDayWidth, weekBarHeight, weekBarGap,
+	    and weekMaxNote.)
+%% languages
+	LANGUAGES
+
+	Language support in plan is simple. All messages are hardcoded in the
+	program in English, but may be substituted before being displayed.
+	Substitution is based on two files, both in the standard LIB directory
+	(/usr/local/lib by default): plan.lang.english is the reference file,
+	and plan.lang.L is the replacement file for language L. If a message in
+	plan matches line N in plan.lang.english, and language L is selected
+	with the Config->Language pulldown, line N of plan.lang.L is displayed.
+
+	To create a new language L, create a file plan.lang.L in the same
+	directory where plan.lang.english is located. Copy plan.lang.english to
+	plan.lang.L and translate every line. All ISO-8859 characters are legal.
+	Make sure that all %d and %s codes are present and in the correct order!
+	Also doublecheck that plan.lang.english and plan.lang.L have the same
+	number of lines; plan will reject the language otherwise. Send me a
+	copy of the new language file, as well as all others that you had to
+	change to ensure that all language files have the correct number of
+	lines (see below). Send mail to thomas@bitrot.de .
+
+	The plan.lang.english file must be sorted. All messages in plan must
+	match a line in this file exactly. Lines may contain \n (newline) and
+	\t (tab). When inserting a line into plan.lang.english after adding a
+	message to the plan sources, insert it in the SAME line in all other
+	plan.lang.*! If you do not know the translation, insert the English
+	string followed by an asterisk (*), which makes it easy for me to find.
+	If you see an asterisk * in a message and plan is less than six months
+	old, please send me a translation.
+
+	To create a help file for language L, copy the file plan_help to
+	plan_help.L, and translate all text freely except the words following
+	%% at the beginning of a line, which must remain unchanged.
+
+	Due to the difficulty of maintaining language files, there will always
+	be English-only strings. Also, there is no way to adjust accelerators
+	in pulldown menus.
+#
+# main window, menu bar and month calendar
+#
+%% pd_file
+	FILE PULLDOWN
+
+	File list -- list of appointment files. This dialog configures group
+	  names (first button column in edit menus) to read either from a file
+	  path or a netplan server.
+
+	Reread databases -- read .dayplan file and all other appointment files
+	  configured with File->File list. Rechecks file permissions and owner-
+	  ship if applicable.
+
+	Delete Past Entries -- removes all appointments before today's date,
+	  except those that come from files with no write permission.
+
+	Print -- pop up a menu that prints PostScript calendars.
+
+	About -- prints the version number and my email address. Please mail
+	  bug reports to that address.
+
+	Quit -- write data base back to the ~/.dayplan file if it has changed,
+	  and exit the program. The daemon will continue to run.
+%% pd_config
+	CONFIG PULLDOWN
+
+	Calendar views -- installs the main preference popup, with global
+	  options, month view options, and week view options.
+
+	Adjust time -- define time-of-day corrections, time zone, and Daylight
+	  Saving Time mode. Use this menu to adjust the time if appointments
+	  appear early or late.
+
+	Alarm options -- pops up a menu that defines the actions taken when
+	  an appointment triggers. The actions are taken by a daemon and are
+	  independent of whether the interactive calendar program runs or not.
+
+	Define holidays -- pops up a window that allows specification of
+	  holidays and vacations.
+%% pd_search
+	LANGUAGE
+
+	Choose a new language. It will fully come into effect only after
+	restarting plan. See Help->Languages for more information.
+%% pd_search
+	SEARCH PULLDOWN
+
+	Today -- print an appointment menu with today's items.
+
+	Tomorrow -- print an appointment menu with tomorrow's items.
+
+	This Week -- print an appointment menu with all items of the current
+	  week.
+
+	Next Week -- print an appointment menu with all items of the week
+	  after the current week.
+
+	This Month -- print an appointment menu with all items of the current
+	  month.
+
+	All -- print an appointment menu with all items.
+
+	Search Keywords -- print an appointment menu with all items that
+	  contain the specified string in their note, message, or script fields.
+
+	Private -- print an appointment menu with all private appointments.
+
+	One file -- print an appointment menu with all your own appointments
+	  or all those in a particular file created with File->File list.
+%% pd_view
+	VIEW PULLDOWN
+
+	All views either appear in their own windows (the default) or replace
+	the month view in the main window if this mode is enabled in the
+	Config -> Calendar views dialog.
+
+	Day -- show a day view for the current day that plots appointments
+	  on the given day against a vertical hour axis. Pressing on the
+	  upper half of month day boxes, or the upper left corner of year
+	  day boxes, also switches to day mode.
+
+	Week -- show a week view for the current week. Week views plot
+	  appointments as colored bars on a hour/day chart. The small
+	  triangles at the left edge of month and year views also switch
+	  to week mode.
+
+	Small month -- show the main month view, small window mode.
+
+	Large month -- show the main month view, large window mode. Pressing
+	  a month name in the year view also switches to month mode.
+
+	Year -- pop up a year view menu with 12 month calendars for the
+	  current year.
+
+	Year Overview -- pop up a linear 365-day year view menu that plots
+	  multiday appointments in the current year. This is intended for
+	  graphing vacations.
+
+	Goto today -- switch all views (day, week, month, year, year overview)
+	  such that they contain today.
+
+	Goto -- popup a date entry menu, then switch all views such that they
+	  contain the entered date.
+#
+# help popup
+#
+%% help_done
+	DISMISS
+
+	Remove the help popup.
+#
+# month view
+#
+%% cal_month
+	CURRENT MONTH
+
+	The month displayed in the month calendar below. It can be incremented
+	and decremented to show the next or previous month. The inc/dec arrows
+	will wrap to the next or previous year.
+
+	The currently displayed month can also be changed by pressing on any
+	month name in the year calendar (see Year pulldown).
+
+	To return to the current month, choose Goto today in the View pulldown.
+%% cal_year
+	CURRENT YEAR
+
+	The year that the month shown below is in.
+%% cal
+	MONTH CALENDAR VIEW
+
+	Displays the current month, as specified by the month and year
+	controls above. The format can be changed with the Config pulldown.
+	Each day box contains a list of appointments on that day, with time
+	and note string. Advance warnings that appear several days ahead of
+	the actual appointment are shown with "W:" inserted before the note.
+
+	The note string is grayed out if the appointment is suspended (the
+	button to the left of that appointment in the appointment list is
+	turned off). The appointment is not shown at all if it is "omitted"
+	using the exception popup that can be installed in the appointment
+	entry menu by pressing on the triangular warning sign button.
+
+	If there are more appointments than will fit in the box (usually 3),
+	only the first three are shown; the "Don't show today's past" option
+	in the Options pulldown determines which three. If there are more
+	appointments than will fit in the box, three dots are shown in the
+	lower right corner of the box.
+
+	If there is a full-line holiday on a day, the holiday name will use
+	the first line. Appointments that have no time ("-" was entered in
+	the day menu) come next, and finally the regular appointments.
+
+	Todays's day box is highlighted green. When a day box is opened by
+	pressing down on the lower half of it, a list of all appointments on
+	that day is popped up.
+
+	There is a small triangle to the left of every week row. Pressing one
+	of the arrows pops up a week view that displays the week in a hour vs.
+	day chart.
+
+	The mouse cursor changes as it is moved the calendar:
+
+	- over a triangle at the left edge, hand cursor:
+	   *  Call a week calendar for that week
+
+	- in the top part of a day box, hand cursor:
+	   *  Zoom up to a day calendar for that day
+
+	- in an appointment, four-sided arrow or pencil:
+	   *  Press and release the left mouse button to edit all appointments
+	       on that day. This will call a list popup that can be used to
+	       add, change, and delete appointments.
+
+	- in an appointment, four-sided arrow or pencil:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the appointment to a different date. Note that if the
+	       appointment is set to repeat on certain weekdays or days of the
+	       month, moving the appointment changes the first trigger date but
+	       the weekday or month day setting does not change, which means
+	       that the calender may seem unchanged after moving.
+
+	- in blank space, pencil:
+	   *  Press and release the left mouse button to enter a new appointment
+	       on the day under the cursor
+#
+# year calendar window
+#
+%% year
+	YEAR CALENDAR VIEW
+
+	Displays the current year, as specified by the year controls in the
+	main month calendar, at the time the year menu was popped up. Later
+	changes to the year control will not change the year menu.
+
+	The year calendar basically consists of 12 small copies of the month
+	calendar. The day boxes work the same way. The current day is green.
+	Pressing on the bottom right corner of a day box (not the bottom half
+	as in month day boxes; they are too small for that) opens it and shows
+	the list of appointments on that day. Pressing the top left corner
+	switches to day view. There are also week view call triangles to the
+	left of every week row.
+
+	Pressing on a month name will switch the month calendar to that month.
+
+	The day boxes are too small for appointments and notes; if there is
+	at least one appointment on that day (suspended or not), a small
+	black square is shown in the day box. Appointment are ignored if they
+	are "omitted" using the exception popup that can be installed in the
+	appointment entry menu by pressing on the triangular warning sign
+	button.
+
+	Drag and drop is not supported in year views because no appointments
+	that could be dragged are visible.
+#
+# Time adjustment popup
+#
+%% adj
+	ADJUST TIME
+
+	This menu serves two purposes. First, it allows to adjust the system
+	clock, which on many systems or networks controlled by warring
+	timelords may be off by a few minutes. By adding a constant to the
+	system time, alarms can be made to trigger accurately.
+
+	Second, determining the timezone a system is in is a black art. There
+	are various incompatible TZ formats, unavailable or nonstandard
+	system calls, and Daylight Saving starting and ending dates that
+	have not been specified correctly by the system administrator. This
+	menu allows users to specify the regular timezone relative to GMT
+	(Greenwich Mean Time, or UTC). In addition, one hour can be added
+	while Daylight Saving Time (DST) is in effect.
+
+	DST can be either be taken from the system time, turned on or off
+	manually, or switched automatically from a begin and end day. These
+	days change every year, and can be entered with this menu. They are
+	entered as Julian dates (day numbers relative to January 1 in the
+	range 1..366). Julian dates can be determined with the Julian Dates
+	option in Config.
+
+	The "use system time" choice is available only on certain systems,
+	and is not tested well. Unfortunately this isn't as portable as it
+	should be. If you can contribute corrections or ports to new platforms,
+	please implement them in time.c, function guess_tzone, near line 238,
+	and send me the result (thomas@bitrot.de). This is EXPERIMENTAL!
+
+	Week number 1 is the first full week of the year means that the
+	first week in January is defined to be week number 1 only if all
+	seven days of that week fall in the current year. Alternatively,
+	the first week can be defined to be the first week whose Thursday
+	falls into the new year. The latter flag takes priority over the
+	former. If both flags are off, any partial week is counted as week
+	number 1.
+
+	This menu only affects your plan and its daemon, pland. The system
+	clock is not affected, and all programs other than your own plan
+	program will still believe in the official network time.
+%% adj_time
+	ADJUST SYSTEM CLOCK
+
+	Enter a system clock correction constant here. For example, if your
+	system clock is fast by two minutes and 20 seconds, enter "-0:02:20".
+	If your system clock is slow, enter a positive time.
+
+	The correction applies only to plan and the plan daemon that waits
+	for alarms. The system clock and other programs are not affected.
+%% adj_zone
+	TIMEZONE
+
+	At startup, the timezone is determined automatically. This may give
+	incorrect results on some system, especially if the system timezone
+	files are not configured properly. With the Timezone field, the
+	timezone can be set in hours:minutes relative to Greenwich Mean Time
+	(GMT or UTC). To revert to the system defaults, press the Guess
+	button.
+
+	While Daylight Saving Time is in effect, another hour is added to
+	the timezone.
+%% adj_dst
+	DAYLIGHT SAVING
+
+	Many countries switch the time one hour forward in the summer. This
+	is normally done automatically by the system, but requires the system
+	administrator to change the timezone start and end dates every year.
+	If this configuration does not agree with reality, this menu allows
+	plan users to override it.
+
+	Daylight Saving can either be turned on permanently (in the summer),
+	turned off permanently (in the winter, or if your country does not
+	have Daylight Saving time), or turned on on a begin date and and end
+	date. The begin and end dates must be specifies as Julian dates; use
+	Julian Dates in Config to find out the numbers. Press the Guess button
+	to return to system defaults.
+
+	Daylight Saving is turned on and off at 2:00 in the morning on the
+	begin and end days, respectively, unless overridden by system files.
+	See "man timezone" for details.
+%% adj_guess
+	GUESS TIMEZONE AND DST
+
+	Use system defaults for the timezone and Daylight Saving begin and
+	end dates. This function is of limited use because it depends on a
+	certain format of the $TZ environment variable, which is frequently
+	undefined or contains a description in a format not understood by
+	plan.
+
+	Note that plan does NOT attempt to use standard Unix functions for
+	guessing the time zone. There are too many exotic systems out there
+	for this to work reliably. Version 1.0 of plan attempted this, which
+	turned into a user support nightmare. This is not really satisfactory
+	for plan users, but very convenient and time-saving for the plan
+	author (me) who gets loads of email about plan anyway. Sorry.
+%% adj_done
+	DONE
+
+	Remove time adjustment menu.
+#
+# Alarm Options popup
+#
+%% opt
+	ALARM OPTIONS
+
+	An appointment can trigger up to three times: at the specified alarm
+	time, and at the advance-warning times that can be entered in the
+	appointment list menu. For every type of trigger, the action taken
+	can be specified with this menu:
+
+	1. The green, yellow, or red window pops up at the trigger time. It
+	   contains the appointment's message or note text. The window position
+	   is randomized.
+
+	2. Mail is sent, using the "Mailer" command string. The string "%s"
+	   in the mailer command is replaced with an appropriate subject string.
+	   The appointment's message or note text is used as the body of the mail.
+
+	3. A program is executed. Playaiff or something else that makes
+	   noises is a good choice. This is independent of the appointment's
+	   script, which is always executed (at the alarm time only, not at
+	   warning time). If the command string contains %s, it is replaced
+	   with the appointment's note string (last column in appointment
+	   entry dialog).
+
+	The daemon's PATH environment variable is used to locate the mailer
+	and the programs. Defaults are supplied if there is no PATH. In all
+	cases, the umask is set to 077.
+%% opt_early
+	EARLY WARNING
+
+	This specification is used for early-warning triggers.
+%% opt_early_w
+	GREEN WINDOW
+
+	The daemon pops up a green window when the early-warning time is
+	reached. The window contains the appointment's message or note text.
+%% opt_early_m
+	EARLY WARNING MAIL
+
+	Mail is sent when the early-warning time is reached. The Mailer
+	button at the bottom specifies the program to use; "%s" is replaced
+	with an appropriate subject string.
+%% opt_early_x
+	EARLY WARNING PROGRAM
+
+	The program specified in the text area on the left is executed when
+	the early-warning time is reached. If the command string contains %s,
+	it is replaced with the appointment's note string (last column in
+	appointment entry dialog).
+%% opt_late
+	LATE WARNING
+
+	This specification is used for late-warning triggers.
+%% opt_late_w
+	YELLOW WINDOW
+
+	The daemon pops up a yellow window when the late-warning time is
+	reached. The window contains the appointment's message or note text.
+%% opt_late_m
+	LATE WARNING MAIL
+
+	Mail is sent when the late-warning time is reached. The Mailer
+	button at the bottom specifies the program to use; "%s" is replaced
+	with an appropriate subject string.
+%% opt_late_x
+	LATE WARNING PROGRAM
+
+	The program specified in the text area on the left is executed when
+	the late-warning time is reached. If the command string contains %s,
+	it is replaced with the appointment's note string (last column in
+	appointment entry dialog).
+%% opt_alarm
+	ALARM
+
+	This specification is used for main alarm triggers.
+%% opt_alarm_w
+	RED WINDOW
+
+	The daemon pops up a red window when the main alarm time is reached.
+	The window contains the appointment's message or note text.
+%% opt_alarm_m
+	ALARM MAIL
+
+	Mail is sent when the main alarm time is reached. The Mailer button
+	at the bottom specifies the program to use; "%s" is replaced with
+	an appropriate subject string.
+%% opt_alarm_x
+	ALARM PROGRAM
+
+	The program specified in the text area on the left is executed when
+	the main alarm time is reached. If the command string contains %s,
+	it is replaced with the appointment's note string (last column in
+	appointment entry dialog).
+%% opt_mailer
+	MAILER
+
+	Specifies the program to use to send mail. Mail is sent when one of
+	the "Send mail" buttons above is enabled. In the mailer string, "%s"
+	is replaced with an appropriate subject string, containing the
+	reason, date, and truncated note or message text.
+
+	The default is "Mail -s %s <username>".
+%% opt_timeout
+	TIMEOUT
+
+	In this field, a time can be entered. If this field is blank, alarms
+	popped up by the pland daemon when the appointment's warning or alarm
+	time is reached will stay on the screen forever, until the Dismiss
+	button in the popup is pressed.
+
+	A window lifetime can be entered as hours:minutes. A window popped
+	up after this change will disappear by itself after the specified time.
+%% opt_done
+	DONE
+
+	Remove the Alarm Options popup.
+#
+# calendar view config popup
+#
+%% calconfig
+	CONFIGURATION
+
+	All configuration data is saved in the ~/.dayplan file. The date and
+	time format is specified with this menu, the program does not use
+	X11R5 or Unix locale information. The menu is split in three parts:
+
+
+	GLOBAL OPTIONS:
+
+	Use main window for all views -- show all view modes (day, week,
+	  month, year, year overview) in the main window instead of popping
+	  up a separate window for each view.
+
+	Week begins with Sunday -- print Sunday in the first column, as in
+	  US calendars, rather than in the last column.
+
+	Month/Day/Year date format -- print dates in month/day/year format,
+	  rather than in day.month.year format.
+
+	12 hour am/pm time format -- print all times in US am/pm format,
+	  rather than in the European 24-hour format.
+
+	Auto delete past entries -- automatically remove all expired
+	  appointments before today's date.
+
+
+	MONTH VIEW OPTIONS:
+
+	Show Julian dates -- print the day number in each month day box,
+	  beginning with 1 on January 1.
+
+	Show week numbers -- print the week number in each leftmost month day
+	  box, in parentheses. The next option defines what kind of week number.
+
+	GPS week numbers -- week numbers, if enabled, are shown in GPS (Global
+	  Positioning System) format, in square brackets. GPS weeks are defined
+	  in the range 0..1023 only.
+
+	First week is full week -- normally, week number 1 in a year is the
+	  the first partial week of the year. In full-week mode, the first
+	  week is the first week with all seven days in the year.
+
+	First week is first week with Thursday -- another way to define the
+	  first week: the first week is the first whose Thursday falls into
+	  the new year. This flag has priority over the previous flag.
+
+	Colored background for other files -- if enabled, the note text that
+	  appears in the day boxes in the month view has the background color
+	  chosen in the "Group" column in this menu for this user, provided the
+	  "Month" mode button is also on. This is useful for classifying
+	  appointments quickly, but tends to make the month calendar look gaudy.
+	  Bars in the week view always use the group color as background color.
+
+	Don't show today's past -- in today's daybox (shaded green), skip
+	  all entries that are in the past, and only show the next three
+	  future entry notes.
+
+
+	DAY AND WEEK VIEW OPTIONS:
+
+	These modes are used for both the day view and the week view, which
+	are in many ways similar.
+
+	The top text button allows configuring the number of days shown in
+	the week view. Minimum is 1, maximum is 28, and the default is 7.
+
+	The week view shows bars that represent appointments. The horizontal
+	position and length of the bar represents its trigger time and length.
+	The chart is clipped at the left and right edges at 8:00 and 20:00 by
+	default. These defaults can be changed with this popup.
+
+	Press on the text buttons to get a cursor, and enter the hour. Only
+	the hour can be entered, minutes are ignored. To set the end time to
+	midnight, both 0 and 24 are accepted.
+
+	If advance-warning times are enabled, show appointments' warning
+	periods as gray extensions at the left end of appointment bars.
+
+	If file names are enabled, the name of the appointment file are
+	displayed in the week menu is displayed in or next to the users's bars
+	in the week view. For adding files, such as appointments of other users
+	on the network, see the help for the File->File list popup.
+
+	Normally, entries without time ("-" in the time column in the entry
+	menu) are shown as a small triangle at the left edge of a week view
+	line. If the large-bar mode is enabled, they appear as a full line.
+%% global_flags
+	GLOBAL OPTIONS
+
+	Use main window for all views -- show all view modes (day, week,
+	  month, year, year overview) in the main window instead of popping
+	  up a separate window for each view.
+
+	Week begins with Sunday -- print Sunday in the first column, as in
+	  US calendars, rather than in the last column.
+
+	Month/Day/Year date format -- print dates in month/day/year format,
+	  rather than in day.month.year format.
+
+	12 hour am/pm time format -- print all times in US am/pm format,
+	  rather than in the European 24-hour format.
+
+	Auto delete past entries -- automatically remove all expired
+	  appointments before today's date.
+
+	Run netplan scripts -- appointments with shell scripts that were read
+	  from a netplan server are not normally executed because that makes
+	  it easy for others to execute programs under your user ID, which is
+	  a serious security risk that is not acceptable in most commercial
+	  environments. However, on your home system you may not care and let
+	  the daemon execute such scripts by enabling this flag. You have been
+	  warned!
+
+	Only owner can write files -- if enabled (the default), you will not
+	  be able to change appointments from other files even if you have write
+	  permission. You need to be the owner too. This effectively ensures
+	  that for each file, there is only one person who can write it, so
+	  conflicts cannot happen. Turn this off at your own risk... If all
+	  files are read from servers and not from disk paths, this mode has
+	  no purpose and is grayed out.
+%% month_flags
+	MONTH VIEW OPTIONS
+
+	Show Julian dates -- print the day number in each month day box,
+	  beginning with 1 on January 1.
+
+	Show week numbers -- print the week number in each leftmost month day
+	  box, in parentheses. The next option defines what the first week of
+	  a year is.
+
+	First week is full week -- normally, week number 1 in a year is the
+	  the first partial week of the year. In full-week mode, the first
+	  week is the first week with all seven days in the year.
+
+	Colored background for other files -- if enabled, the note text that
+	  appears in the day boxes in the month view has the background color
+	  chosen in the "Group" column in this menu for this file, provided the
+	  "Month" mode button is also on. This is useful for classifying
+	  appointments quickly, but tends to make the month calendar look gaudy.
+	  Bars in the week view always use the group color as background color.
+
+	Don't show today's past -- in today's daybox (shaded green), skip
+	  all entries that are in the past, and only show the next three
+	  future entry notes.
+%% week_flags
+	DAY AND WEEK VIEW OPTIONS
+
+	These modes are used for both the day view and the week view, which
+	are in many ways similar.
+
+	The top text button allows configuring the number of days shown in
+	the week view. Minimum is 1, maximum is 28, and the default is 7.
+
+	The week view shows bars that represent appointments. The horizontal
+	position and length of the bar represents its trigger time and length.
+	The chart is clipped at the left and right edges at 8:00 and 20:00 by
+	default. These defaults can be changed with this popup.
+
+	Press on the text buttons to get a cursor, and enter the hour. Only
+	the hour can be entered, minutes are ignored. To set the end time to
+	midnight, both 0 and 24 are accepted.
+
+	If advance-warning times are enabled, show appointments' warning
+	periods as gray extensions at the left end of appointment bars.
+
+	If file names are enabled, the name of a file whose appointments are
+	displayed in the week menu is displayed in or next to the file's bars
+	in the week view. For adding other appointment files in the week menu,
+	see the help for File list in the File pulldown.
+
+	Normally, entries without time ("-" in the time column in the entry
+	menu) are shown as a small triangle at the left edge of a week view
+	line. If the large-bar mode is enabled, they appear as a full line.
+%% range_done
+	DONE
+
+	Remove the week view range popup, and redraw the week view to
+	comply with the new range.
+%% range_ndays
+	NUMBER OF DAYS
+
+	The top text button allows configuring the number of days shown in
+	the week view. Minimum is 1, maximum is 28, and the default is 7.
+%% range_defwarn
+	DEFAULT WARNINGS
+
+	Enter the default early and late warning times. For example, entering
+	"5,15" sets the default warning times to 5 and 15 minutes. When a new
+	appointment is created, this will become its default warning times.
+	Clear this field to disable default warnings.
+%% range_min
+	BEGIN HOUR
+
+	This is the hour the week view chart begins with, that is shown at
+	the left edge. Appointments that begin earlier will be clipped.
+	Press on the inset button and enter a number in the range 0..23 to
+	change the begin time. The week view will be updated when the Done
+	button is pressed.
+%% range_max
+	END HOUR
+
+	This is the hour the week view chart ends with, that is shown at
+	the right edge. Appointments that end later will be clipped.
+	Press on the inset button and enter a number in the range 1..24 to
+	change the begin time (0 is accepted as a synonym for 24). The end
+	time must be greater than the begin time in the row above. The week
+	view will be updated when the Done button is pressed.
+%% range_warn
+	SHOW WARNINGS
+
+	If advance-warning times are enabled, show appointments' warning
+	periods as gray extensions at the left end of appointment bars.
+%% range_user
+	SHOW USERS
+
+	If file names are enabled, the name of the file whose appointments are
+	displayed in the week menu is displayed in or next to the file's bars
+	in the week view. For adding other appointments files in the week menu,
+	see the help for File list in the File pulldown.
+#
+# goto popup
+#
+%% goto
+	GOTO DATE
+
+	Enter a date to switch all visible calendar views (yov, month, year)
+	such that they contain today's date. A full date must be entered; the
+	month day is relevant for the yov view. To switch the views to contain
+	today, enter "today", or use the "goto today" choice in the View
+	pulldown. To switch n days forward or back, enter "+n" or "-n".
+
+	Press Return to switch. The Cancel button removes the popup without
+	switching.
+#
+# keyword search popup
+#
+%% key
+	KEYWORD SEARCH
+
+	The keyword search install an appointment list menu that contains all
+	the appointments that contain a specified string or regular expression.
+	The note, message, and script of each appointment is searched.
+
+	The search can use one of three methods:
+	1. Search for an exact match.
+	2. Ignore case differences.
+	3. Search for a regular expression (if supported, the program can be
+	   compiled without this option).
+%% key_literal
+	LITERAL SEARCH
+
+	Search for an exact match. No magic characters are recognized.
+%% key_uncase
+	CASE_INSENSITIVE SEARCH
+
+	Search for an exact match, but ignore case differences. No magic
+	characters are recognized.
+%% key_regular
+	REGULAR EXPRESSION SEARCH
+
+	Search for a regular expression. Magic characters are evaluated.
+%% key_string
+	SEARCH STRING
+
+	The string or regular expression to search for.
+%% key_search
+	SEARCH
+
+	Start the search.
+%% key_cancel
+	CANCEL
+
+	Cancel the search and remove the popup.
+#
+# appointment list menu
+#
+%% day
+	APPOINTMENT LIST
+
+	An appointment list is created by pressing on a day box in the month
+	or year calendar menus, or with the Search pulldown in the main window.
+	Appointments are shown sorted by time, earliest first, with at least
+	one blank row at the bottom. The blank row is used for adding new
+	appointments.
+
+	The first three wide columns are for entering date, time, and length
+	of the appointment numerically. The narrow columns that follow install
+	menus that specify additional information; and the wide last column
+	contains a note that is displayed in the month and year calendars' day
+	boxes.
+
+	The small button to the left of each row, if turned off, suspends
+	that appointment. It will remain in the database, will be printed
+	grayed-out in the month calendar's day boxes, and will not trigger
+	any alarms or warnings.
+
+	For help on the individual columns, use Help "On Context". The buttons
+	control automatic repetition, messages, and shell scripts. Also see the
+	help message for Confirm.
+
+	Note that a single '-' in the time column will remove the time in
+	the month view's day box. This and more options are available in the
+	exception popup, called by the button with the triangular sign. Use
+	Help On Context on the respective columns for details.
+
+	Also note that although 16 colors (dark and light versions of 8 hues)
+	are available for groups, the group buttons (rightmost column) always
+	use dark colors even if a light one was chosen in the File list menu.
+%% day_enable
+	ACTIVATE/SUSPEND BUTTONS
+
+	If turned on (green), the appointment is alive and will trigger alarms
+	as specified in the Alarm Options menu that can be accessed through
+	the Config pulldown. (In SGI desktop mode, a checkmark is shown instead
+	of a green box).
+
+	If the button is turned off (gray), the appointment is suspended. It
+	will remain in the database, will be printed grayed-out in the month
+	calendar's day boxes and in the yov view chart, and will not trigger
+	alarms. The small black dots in the year calendar day boxes are not
+	affected.
+%% day_user
+	GROUP COLUMN
+
+	If this button is blank, you own the appointment; it is stored either
+	in ~/.dayplan or ~/.dayplan.priv (depending on the padlock). The
+	appointment can be put into another file by pressing this button
+	and selecting a file name from the popup. The list of files can be
+	specified using the File list entry in the File pulldown in the main
+	window. Users whose appointment file is not writable are not listed.
+	If an appointment is moved to another file, it is recommended that
+	the "Own only" mode at the bottom of the window is turned off, or the
+	moved appointment will disappear from the list.
+
+	Note that although 16 colors (dark and light versions of 8 hues) are
+	available for groups, the group buttons always use dark colors even if
+	a light one was chosen in the File list menu. This has technical
+	reasons: plan tries to conserve color map entries by using dithering,
+	which can't be done in a pushbutton.
+%% day_date
+	DATE COLUMN
+
+	The trigger date. Dates can be entered as yovday Mon..Sun (or German
+	Mo..So), as numeric date (mm/dd/yy or dd.mm.yy, depending on the
+	Config pulldown), as commands such as "tomorrow" or "heute".
+	Alternatively, +3 means today plus 3 days.
+
+	Normally, appointments are added by starting with the time and using
+	the date defaults supplied automatically. If a date is changed, the
+	end date changes by the same amount. In other words, multi-day
+	appointments do not change length when they are moved.
+
+	The up/down arrows move the appointment by one day, or by one week if
+	the Shift key is held down.
+%% day_enddate
+	END DATE COLUMN
+
+	Appointments can repeat for several days until (and including) the
+	date specified with this field. This is useful for extended events
+	such as vacations. In the year overview (see View pulldown), multi-day
+	appointments are displayed as bars that extend over multiple days.
+
+	The format of the last day field is the same as for the date field
+	above: dates can be entered as yovday Mon..Sun (or German Mo..So), as
+	numeric date (mm/dd/yy or dd.mm.yy, depending on the Config pulldown),
+	as commands such as "tomorrow" or "heute". Alternatively, +3 means
+	today plus 3 days.
+
+	If the field is left empty, the appointment does not repeat daily.
+
+	Using this field is equivalent to using the Repeat popup (called by
+	the leftmost square option button below the Note field), which offers
+	more complex repetition options, and entering "Repeat every [_1_]
+	days" "Until (last day) [___]". The end date column is provided in
+	the main appointment menu because daily repetition is used much more
+	frequently than other types of repetition.
+
+	The up/down arrows move the end date by one day, or by one week if
+	the Shift key is held down.
+%% day_time
+	TIME COLUMN
+
+	The trigger time, as hh:mm or hh:mm{a,p}, depending on the settings
+	in the Config pulldown. The time can also be entered as hhmm.
+
+	If a single minus "-" is entered, the alarm and its warnings will not
+	trigger, and no time will be shown in the month calendar's day boxes.
+	This is useful for birthdays and general reminders. In conjunction with
+	repetition, it can also be used for vacations or other extended events.
+	Holidays should be defined with the Holiday pulldown, the syntax there
+	is much more flexible.
+
+	Appointments with no time will always appear first in the day boxes,
+	and will not be affected by the "Don't show today's past" option. In
+	yov views, they appear as triangles pointing right at the left edge.
+
+	The up/down arrows move the appointment by five minutes, or by one hour
+	if the Shift key is held down.
+%% day_length
+	LENGTH COLUMN
+
+	The length of the appointment. This information is used for the yov
+	view, it controls the length of the bar that represents the appointment.
+	There is no collision checking, appointments can freely overlap with
+	no warning.
+
+	If the length begins with a minus '-', the remaining string is
+	interpreted as an end time. "-12:30" means until 12:30.
+
+	The Length column is disabled if there is no time (i.e., if the time
+	column displays "-").
+
+	The up/down arrows change the length by five minutes, or by one hour if
+	the Shift key is held down.
+%% day_recycle
+	RECYCLE COLUMN
+
+	This button controls automatic repetition of an appointment on certain
+	days. If the recycle symbol is shown in the button, the appointment
+	repeats. Repeating appointments are shown in every day box in all views
+	they have triggered on or will trigger on, between the entered date and
+	the Until date if entered. If the Auto Delete Past Entries in the
+	Config pulldown is enabled, past trigger dates are not shown.
+
+	Pressing the recycle button pops up the recycle menu, which allows
+	entry of the repetition information (on certain yovdays, on certain
+	month days, every n days, until a specified expiry date).
+%% day_advance
+	ADVANCE WARNING COLUMN, MINUTES
+
+	This button controls advance warnings. An appointment can have up to
+	three trigger times: the "alarm time", which triggers at the time
+	specified in the time column, an early warning, and a late warning.
+	By default, only the alarm time is enabled. The syntax is
+
+	      <early>[,<late>[,-]]
+
+	Early and late times are in minutes. All parts are separated by commas
+	or blanks. The optional "-" at the end turns off the main alarm time,
+	so only warnings will trigger, if specified. Examples are "5" (one
+	warning 5 minutes in advance, and the main alarm), "10,45" (two
+	warnings and the main alarm), "15,-" (one warning, no alarm). If the
+	main alarm time is turned off, scripts specified with the "%" button
+	will still be run; but operations specified with the Alarm Options
+	(windows, mail, or commands) won't. Entering a '=' uses the default
+	warning times, which are updated with every numeric entry.
+
+	The actions taken when the alarm and the warnings trigger is
+	controlled by the "Alarm Options" menu in the Config pulldown of the
+	main month calendar window. Options include color-coded windows,
+	mail, and Unix commands.
+
+	The Advance Warning column is disabled if there is no time (i.e., if
+	the time column displays "-").
+
+	The up/down arrows move the late warning time by five minutes. If the
+	Shift key is held down, the early warning time is moved instead. It
+	does not matter which one is actually earlier, except that the earlier
+	time pops up a green dialog at warning time, and the later pops up a
+	yellow one (unless otherwise configured with Config->Alarm).
+%% day_advdays
+	ADVANCE WARNING COLUMN, DAYS
+
+	This button controls advance warnings that appear several days ahead of
+	the actual appointment. An appointment can have only one of these. The
+	warning appears like the appointment itself in the various calendar
+	views, usually with a gray background and/or marked with "W:" (month
+	calendar) or "(warn)" (day calendar). The warning triggers only at the
+	regular appointment time, not any specified number of minutes ahead,
+	too.
+
+	For repeating appointments, one warning is shown for every instance of
+	the appointment, with one exception: if an appointment repeats daily,
+	only one warning is shown the given number of days ahead of the first
+	day of the appointment. Such appointments are best entered using the
+	"end date" button below the "beg date" button.
+
+	The up/down arrows move the number of days by one day. If the Shift key
+	is held down, the number of days changes by one week.
+%% day_message
+	MESSAGE COLUMN
+
+	This button allows a message to be attached to the appointment. Most
+	of the time, the last column (note) suffices, but for longer texts
+	messages can be used. A symbol is shown in the button if a message
+	exists; pressing the button pops up a text entry menu.
+
+	When the appointment triggers, the text is shown in the window that
+	pops up (assuming that window hasn't been disabled with the Config
+	pulldown's Alarm Options menu).
+%% day_script
+	SCRIPT COLUMN
+
+	This button allows a shell script to be attached to the appointment.
+	A symbol is shown in the button if a script exists; pressing the
+	button pops up a text entry menu. When the alarm time triggers, the
+	script will be executed by the daemon. Unlike attached messages,
+	scripts will be ignored by advance-warning triggers. Pop up the help
+	menu in the Script popup to get more information on how scripts are
+	executed.
+
+	The Script column is disabled if there is no time (i.e., if the time
+	column displays "-"). Scripts read from files stored on a server are
+	not executed for security reasons.
+%% day_except
+	EXCEPT COLUMN
+
+	This button calls up a menu that allows specification of various
+	special modes, such as exception dates where the appointment will
+	not trigger, and exclusion flags that make it disappear from certain
+	menus.
+%% day_private
+	LOCK COLUMN
+
+	If pressed, the appointment is considered private. It is stored in
+	a separate file ".dayplan.priv" that has no read or write permissions
+	for other users. Specifically, locked appointments do not appear in
+	other users' yov views even if they named you in their file lists.
+
+	All appointments that are not locked will appear in other users' yov
+	views if they ask for them. Other users that look up your appointments
+	will not even be informed that you have locked appointments, although
+	they may be able to determine that your .dayplan.priv file is not
+	empty.
+
+	plan uses the current umask for the permissions of the public ~/.dayplan
+	file, and enforces rw------- permissions for the private ~/.dayplan.priv
+	file. Make sure that your home directory has no write permissions for
+	others, plan does not attempt to chmod it.
+%% day_todo
+	TODO COLUMN
+
+	This symbol indicates a todo item. Todo appointments in the future stay
+	where they were created, but todo items in the past are automatically
+	moved forward to today's date. This is intended for reminders that
+	should reappear daily after their time is reached, until the todo flag
+	is turned off again.
+%% day_note
+	NOTE COLUMN
+
+	This column allows entry of a short text that will appear in the
+	month calendar's day box, and in the window that pops up at trigger
+	times. Notes are convenient for short texts not exceeding 30
+	characters or so (although there is no hard limit); for longer
+	texts, use the message button.
+
+	If there is no note, then the first line of the message text is
+	displayed in the note column and in the day box. If there is no
+	message either, the first script line is displayed (the second if
+	the first begins with #!).
+
+	Note strings beginning with '-' and '=' are NO LONGER SUPPORTED,
+	use the exception menu (button with triangular warning sign) to enter
+	exclusion flags. plan will convert old notes when reading .dayplan
+	files to the new method.
+%% day_confirm
+	CONFIRM
+
+	While an appointment is entered, it is not stored in the database.
+	It is stored only when the Return key is pressed on the last column,
+	or when the Confirm button is pressed.  This prevents the new
+	appointment from disappearing because the list is resorted, or
+	because it does not even belong in this list.
+
+	Confirm is rarely used. To enter an appointment, simply press and
+	enter the time, length, and note. Pressing Return in the Note column
+	has the same effect as Confirm. The Done button, and pressing anywhere
+	in another row, implies Confirm.
+%% day_undo
+	UNDO
+
+	While entering an appointment, but before Confirming (or pressing
+	Return on the Note column or editing another appointment, which also
+	confirms), all changes can be discarded by pressing Undo. This prevents
+	the changes from being written to the database.
+%% day_dup
+	DUPLICATE
+
+	To duplicate an appointment, press on any text column (date, time,
+	length, or note), then press the dup button. The appointment, and
+	all the information attached to it (such as message and script)
+	are duplicated. The duplicated appointment can then be changed.
+%% day_del
+	DELETE
+
+	To delete an appointment, press on any text column (date, time,
+	length, or note), then press Delete. It is not possible to undo
+	deletions.
+%% day_quit
+	DONE
+
+	Destroy the appointment list menu. This has the side effect of
+	confirming the currently entered appointment, if any; use Delete
+	or Undo first to cancel the changes.
+%% day_own
+	OWN ONLY
+
+	If enabled, only your own appointments (from the ~/.dayplan and
+	~/.dayplan.priv files) are shown. If disabled, all appointments,
+	including those from other files (see File->File list), are shown.
+%% day_pin
+	PIN
+
+	Normally, an appointment list menu is re-used whenever another day
+	box is pressed or the Search pulldown is used. If the Pin flag is
+	turned on (is red), the menu will remain unchanged and a new
+	appointment list is created when one is needed.
+
+	Whenever the program needs an appointment list popup, it scans
+	through all the existing menus in the order they were created, and
+	kidnaps the first that has either been popped down (with its Done
+	button), or that is not pinned.
+#
+# week view menu
+#
+%% week
+	WEEK CALENDAR
+
+	The week view shows appointments on a hour vs. day chart. Appointments
+	are represented by horizontal bars, labeled by their note string
+	which is centered in the bar if it fits, or shown to the right of the
+	bar if not. The bar itself can optionally show the advance-warning
+	periods as gray shadows; this is controlled by the Show Warnings item
+	in the Config pulldown. The width of the chart (the begin and end hour)
+	can be specified by choosing Week View Range from the Config pulldown.
+
+	Suspended appointments, and advance warnings that appear several days
+	ahead of the actual appointment,are shown in the same gray color that
+	is used for advance warnings. If the Show Users toggle in the Configure
+	week view popup in the Config pulldown is on, the file name is also
+	shown in parentheses.
+
+	A bar is color-coded: blue bars are the user's own appointments. Other
+	files can also be shown with different colors; appointments from files
+	should appear can be specified by choosing File list from the File
+	pulldown. Other users' private appointments are not shown; appointments
+	are private if the user pressed the Lock button in the appointment
+	entry/edit menu in the entry's row. (To get the entry/edit menu, press
+	in any day box in the month or year menus, or press the Edit button in
+	the week menu. The lock button's icon is a little padlock.)
+
+	The mouse cursor changes as it is moved the calendar:
+
+	- over a date at the left edge, hand cursor:
+	   *  Zoom up to a day calendar for that day
+
+	- in an appointment, four-sided arrow or pencil or right-bar arrow:
+	   *  Press and release the left mouse button to edit the appointment.
+	       This will call a list popup that can be used to add, change, and
+	       delete appointments.
+
+	- in an appointment, four-sided arrow or pencil:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the appointment to a different date or time. Note that if
+	       the appointment is set to repeat on certain weekdays or days of
+	       the month, moving the appointment changes the first trigger date
+	       but the weekday or month day setting does not change, which
+	       means that the calender may seem unchanged after moving.
+
+	- in an appointment, right-bar arrow:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the length of the appointment to a different time.
+
+	- in blank space, pencil:
+	   *  Press and release the left mouse button to enter a new appointment
+	       on the day under the cursor
+%% week_prev
+	PREVIOUS WEEK
+
+	Skip seven days back, and re-display. To go back to the current week,
+	choose Goto today from the View pulldown.
+%% week_next
+	NEXT WEEK
+
+	Skip seven days forward, and re-display. To go back to the current
+	week, choose Goto today from the View pulldown.
+%% week_sync
+	SYNC DISPLAY
+
+	Once the week view is drawn, plan does not check whether appointments
+	stored in files have changed. Pressing Sync re-reads all public
+	appointment files. It is not necessary to use Sync to read appointments
+	read from a server, because servers broadcast changes. Chose File->File
+	list to see which files are not read from servers. If all files are read
+	from servers, the Sync button is grayed out.
+%% week_edit
+	EDIT APPOINTMENTS
+
+	Install a standard appointment entry/edit popup that contains all
+	entries that belong to the file visible in the week chart. For editing
+	individual appointments, double-click that appointment's bar.
+%% week_done
+	DONE
+
+	Remove the week view menu.
+#
+# day view menu
+#
+%% day
+	DAY CALENDAR VIEW
+
+	The week view shows appointments on a hour vs. day chart, similar to
+	the week view but with time being the vertical axis. Appointments
+	are represented by vertical bars, labeled with time, end time, file
+	name if applicable, and note string. Advance warnings that appear
+	several days ahead of the actual appointment are listed with "(warn)"
+	inserted after the time range, and the appointment background color is
+	gray. If the text is wider than the bar, it is word-wrapped until
+	vertical space in the bar runs out. To conserve space, words are split
+	in the middle if word wrapping would leave too much blank space.
+
+	The bar can optionally show the advance-warning periods as gray
+	shadows; this is controlled by the Show Warnings item in the Calendar
+	Views choice of the Config pulldown. The width of the chart (the begin
+	and end hour) can be specified by choosing Week View Range from the
+	same dialog. These and other configurations are shared with the week
+	view. Suspended appointments are shown in the same gray color that is
+	used for advance warnings.
+
+	A bar is color-coded: blue bars are the user's own appointments. Other
+	files can also be shown with different colors; appointments from files
+	should appear can be specified by choosing File list from the File
+	pulldown. Other users' private appointments are not shown; appointments
+	are private if the user pressed the Lock button in the appointment
+	entry/edit menu in the entry's row. (To get the entry/edit menu, press
+	in any day box in the month or year menus, or press the Edit button in
+	the week menu. The lock button's icon is a little padlock.)
+
+	The mouse cursor changes as it is moved the calendar:
+
+	- in an appointment, four-sided arrow or pencil or right-bar arrow:
+	   *  Press and release the left mouse button to edit the appointment.
+	       This will call a list popup that can be used to add, change, and
+	       delete appointments.
+
+	- in an appointment, four-sided arrow or pencil:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the appointment to a different date or time. Note that if
+	       the appointment is set to repeat on certain weekdays or days of
+	       the month, moving the appointment changes the first trigger date
+	       but the weekday or month day setting does not change, which
+	       means that the calender may seem unchanged after moving.
+
+	- in an appointment, down-bar arrow:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the length of the appointment to a different time.
+
+	- in blank space, pencil:
+	   *  Press and release the left mouse button to enter a new appointment
+	       on the day under the cursor
+%% week_prev
+%% day_prev
+	PREVIOUS WEEK
+
+	Skip one day back, and re-display. To go back to the current day,
+	choose Goto today from the View pulldown.
+%% day_next
+	NEXT WEEK
+
+	Skip one day forward, and re-display. To go back to the current
+	day, choose Goto today from the View pulldown.
+%% day_sync
+	SYNC DISPLAY
+
+	Once the day view is drawn, plan does not check whether appointments
+	stored in files have changed. Pressing Sync re-reads all public
+	appointment files. It is not necessary to use Sync to read appointments
+	read from a server, because servers broadcast changes. Chose File->File
+	list to see which files are not read from servers. If all files are read
+	from servers, the Sync button is grayed out.
+%% day_edit
+	EDIT APPOINTMENTS
+
+	Install a standard appointment entry/edit popup that contains all
+	entries that belong to the file visible in the day chart. For editing
+	individual appointments, double-click that appointment's bar.
+%% day_done
+	DONE
+
+	Remove the day view menu.
+#
+# year overview menu
+#
+%% yov
+	YEAR OVERVIEW
+
+	The year overview shows appointments on a 365-day chart. This is
+	intended for multi-day appointments such as vacations. By default,
+	only multi-day appointments are shown, defined as those that have
+	a "repeat every [1] days" and "repeat until [...]" set in the
+	repetition menu (reachable from the small circular recycle icon in
+	the appointment entry menu - press any day box in the month view
+	to install it).
+
+	Appointments are represented by horizontal bars, labeled by their
+	note string which is centered in the bar if it fits, or shown to the
+	right of the bar if not. Suspended appointments, and advance warnings
+	that appear several days ahead of the actual appointment, are shown in
+	a gray color. Bars always cover entire days.
+
+	A bar is color-coded: blue bars are the user's own appointments. Other
+	files can also be shown with different colors; appointments from files
+	should appear can be specified by choosing File list from the File
+	pulldown. Other users' private appointments are not shown; appointments
+	are private if the user pressed the Lock button in the appointment
+	entry/edit menu in the entry's row. (To get the entry/edit menu, press
+	in any day box in the month or year menus, or press the Edit button in
+	the year overview menu. The lock button's icon is a little padlock.)
+
+	Pressing on any bar gives the appointment time, the file name in
+	parentheses unless it is one of the user's own appointments, and the
+	note text. Double-clicking a bar pops up an appointment edit menu that
+	contains one entry (but can also be used to input new appointments).
+
+	The mouse cursor changes as it is moved the calendar:
+
+	- in an appointment, four-sided arrow or pencil or right-bar arrow:
+	   *  Press and release the left mouse button to edit the appointment.
+	       This will call a list popup that can be used to add, change, and
+	       delete appointments.
+
+	- in an appointment, four-sided arrow or pencil:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the appointment to a different date. Note that if the
+	       appointment is set to repeat on certain weekdays or days of the
+	       month, moving the appointment changes the first trigger date but
+	       the weekday or month day setting does not change, which means
+	       that the calender may seem unchanged after moving.
+
+	- in an appointment, right-bar arrow:
+	   *  Press and hold down the left mouse button and move the mouse to
+	       move the end date of the appointment to a different date. This
+	       creates a multi-day appointment.
+
+	- in blank space, pencil:
+	   *  Press and release the left mouse button to enter a new appointment
+	       on the day under the cursor
+%% yov_prev
+	PREVIOUS YEAR
+
+	Skip one year back, and re-display. To go back to the current year
+	overview, choose Week from the View pulldown.
+%% yov_next
+	NEXT YEAR
+
+	Skip one year forward, and re-display. To go back to the current year
+	overview, choose Week from the View pulldown.
+%% yov_zoom
+	ZOOM SLIDER
+
+	The zoom slider allows you to rescale the bar horizontally. If moved
+	all the way to the right, days are widest; all the way to the right the
+	entire year fits into the window. Vertical lines and day numbers
+	disappear when they move too close together. A thick line is drawn for
+	the beginning of the week, which is hardcoded to be Monday regardless
+	of the "week begins with" mode in Config->calendars.
+%% yov_sync
+	SYNC DISPLAY
+
+	Once the overview is drawn, plan does not check whether appointments
+	stored in files have changed. Pressing Sync re-reads all public
+	appointment files. It is not necessary to use Sync to read appointments
+	read from a server, because servers broadcast changes. Chose File->File
+	list to see which files are not read from servers. If all files are read
+	from servers, the Sync button is grayed out.
+%% yov_edit
+	EDIT APPOINTMENTS
+
+	Install a standard appointment entry/edit popup that contains all
+	entries that belong to the file visible in the year overview chart. For
+	editing individual appointments, double-click that appointment's bar.
+%% yov_disp
+	DISPLAY MODE
+
+	These buttons select which appointments are shown in the year overview.
+	You can either choose the default (as specified in the corresponding
+	column in the Config->Group/file dialog), or all files, or your own
+	only, or a specific group. The "Other" button lets you choose which
+	specific group.
+
+	Groups are files or users specified with the File->File list popup.
+	A common example is to create a new group file named "vacation" that
+	contains all vacations, and check its "YrOv" check button to make it
+	appear when the year overview is brought up in "Display: <> Default"
+	mode.
+%% yov_single
+	SINGLE-DAY APPOINTMENTS
+
+	If this mode is checked, the year overview also shows all single-day
+	appointments. These are appointments that do not repeat or repeat with
+	a period of more than one day. Appointments that repeat daily but whose
+	repeat-until date is on the first day do not aount as "single-day".
+%% yov_done
+	DONE
+
+	Remove the year overview menu.
+#
+# user popup
+#
+%% user
+	FILE LIST
+
+	The file list allows selection of files that should appear in the
+	various views. Any number of files can be entered. To distinguish
+	files, they can be color-coded. Eight colors are available; several
+	files can share the same color. The first row of the file list
+	specifies the default file for the user and cannot be deleted; all
+	others are extra files (either default files of other users or
+	other lists of appointment, such as vacation or room-reservation
+	lists).
+
+	If a file is recognized as an xmbase-grok database form, it is read
+	and converted to an appointment list according to the conversion
+	instructions specified in the database. See Help->Database access
+	for details.
+
+	To specify another file, press on the top empty button in the Name
+	column, and enter a name. Names should contains only decimal digits,
+	letters a-z and A-Z, and underscores. plan first checks whether the
+	name is the name of a user on the system and suggests that user's home
+	directory as default path. It also chooses a likely netplan server
+	host, and decides whether to default to file or server mode. These
+	choices can be changed by pressing on the corresponding column to the
+	right of the name. Names must be unique. If a non-unique name is found
+	during startup, 'x' is appended; in the file list popup duplicate names
+	are rejected.
+
+	The small buttons on the left enable or disable files in the month view,
+	week view, and year overview, respectively; disabled files do not appear
+	in the view. The color buttons cycle through the eight available colors
+	every time the color button is pressed.
+
+	Files can either be specified by path or by netplan server host:
+	
+	- If the "Server" mode button is off, the file is read directly from
+	   the given path. If the path is a directory, plan appends ".dayplan";
+	   this is useful for reading other users' default files in their home
+	   directories.
+
+	   vCalendar file (usually ending in .ics) can be specified here. Such
+	   files are written by Apple iCal, Zimbra, Google Calendar, Lotus, and
+	   many others. Only basic information is read; in particular, repeat
+	   information is ignored. vCalendar entries are always read-only and
+	   can not be edited and written back (this would lose data).
+
+	   Files read directly SHOULD NOT be shared because if there are
+	   multiple plans running that write to the same file, every change
+	   can get lost when another plan also makes a change. This is similar
+	   to editing a text file simultaneously with two text editors. Also,
+	   plan does not notice when somebody else changes a direct file; it
+	   does not automatically update its views.
+
+	- If the "Server" mode button is on, the file is read from the netplan
+	   IP daemon running on the specified server host. It is recommended
+	   that only one netplan host exists. Make sure the "netplan" program
+	   is running on that host.
+
+	   Files read from a server can be shared. The server broadcasts all
+	   changes to appointments to all connected plan's, which will update
+	   their views automatically. Servers also allow plan to detect when
+	   two plan users simultaneously attempt to edit the same appointment,
+	   and tell one of the two to wait until the first edit is finished.
+
+	   Scripts attached to appointments in files read from a server are not
+	   executed for security reasons. Keep your scripts in non-server files.
+
+	WARNING - avoid toggling back and forth between Server and non-Server
+	mode because you may end up with a local file and a server file that
+	do not agree with each other.
+
+	Entries can be deleted by pressing on the row to be deleted, and then
+	pressing the Delete button. The Sort button sorts first by color and
+	then by file name.
+
+	If the "Show group color" mode in the "Config->Calendar views" dialog
+	is enabled, the note text that appears in the day boxes in the month
+	view has the background color chosen in the "Group" column in this menu
+	for this user. Press the right mouse button for a color popup.
+
+	The netplan server supports primitive access control to restrict read
+	and/or write access to certain users, groups, and/or client hosts.
+	Refer to the netplan(4) manpage for details.
+%% user_delete
+	DELETE FILE
+
+	To delete a file, first press on any button in the file's row, then
+	press the Delete button. The row disappears, and all rows below move
+	one row up. If Delete is pressed again, the next file is deleted; it
+	is displayed in the row of the previously deleted file.
+
+	The file on disk and/or on the netplan server is not deleted, only
+	the reference disappears and your plan will no longer display the
+	name. To restore the file, you need to re-enter it. Make sure to use
+	the same Server mode as before, or plan will not find the file or
+	start a new one, which can lead to the original data being overwritten.
+%% user_sort
+	SORT FILES
+
+	Files are sorted first by color and then alphanumerically by name.
+%% user_done
+	DONE
+
+	Remove the file menu, re-read all files, and redraw all views. If a
+	connection to a server specified in the last column could not be made,
+	an error dialog is popped up and the file list dialog is not removed.
+
+	If this happens, do not temporarily avoid the problem by turning off
+	server mode with the intent to go back to server mode later; plan will
+	start a new file and you might end up with two versions of the same
+	data. Check the server host name and make sure there is a "netplan"
+	program running on the server host. If there isn't, you can start one
+	by typing "/usr/local/lib/netplan" at a shell prompt on the server host.
+%% user_enable
+	ENABLE COLUMN
+
+	There are three enable buttons. If depressed (the default), the left
+	enables the appointments in the file in the month view, the next
+	enables it in the week view, and the third enables it in "Default"
+	year overviews. The fourth button specifies whether appointments in
+	the file trigger alarms for you (pops up warning windows etc.).
+%% user_color
+	GROUP COLUMN
+
+	This button selects the color that will be used for the appointments
+	in the file for bars in the week view, and the background color under
+	the appointments in the month view. There are eight colors available.
+	Multiple files can have the same color; these files will be grouped by
+	the Sort button. To find out which file owns a bar in the week view or
+	year overview, press on the bar; the name will be shown in parentheses.
+
+	You cannot change the color of your own appointments (which are stored
+	in the file specified in the top row).
+%% user_name
+	NAME COLUMN
+
+	The file names. To add a new file, press an empty name button and enter
+	the new file name, and press Return. To add the appointments of another
+	user, enter that user's login name as file name. Plan will then look up
+	the user in /etc/passwd or in the NIS database (Yellow Pages), and
+	determine the home directory. For non-user file names, a default file
+	path is chosen.
+
+	The login name must be entered exactly, which usually means one to
+	eight lower-case letters. Do not enter the gecos (real) name.
+%% user_home
+	SERVER/PATH COLUMNS
+
+	Files can either be specified by path or by netplan server host:
+	
+	- If the "Server" mode button is off, the file is read directly from
+	   the given path. If the path is a directory, plan appends ".dayplan";
+	   this is useful for reading other users' default files in their home
+	   directories.
+
+	   Files read directly SHOULD NOT be shared because if there are
+	   multiple plan's running that write to the same file, every change
+	   can get lost when another plan also makes a change. This is similar
+	   to editing a text file simultaneously with two text editors. Also,
+	   plan does not notice when somebody else changes a direct file; it
+	   does not automatically update its views.
+
+	- If the "Server" mode button is on, the file is read from the netplan
+	   IP daemon running on the specified server host. It is recommended
+	   that only one netplan host exists. Make sure the "netplan" program
+	   is running on that host.
+
+	   Files read from a server can be shared. The server broadcasts all
+	   changes to appointments to all connected plan's, which will update
+	   their views automatically. Servers also allow plan to detect when
+	   two plan users simultaneously attempt to edit the same appointment,
+	   and tell one of the two to wait until the first edit is finished.
+
+	WARNING - avoid toggling back and forth between Server and non-Server
+	mode because you may end up with a local file and a server file that
+	do not agree with each other.
+#
+# server browser
+#
+%% serv
+	BROWSE SERVER
+
+	This dialog lists all files available on the netplan server on a host,
+	and select files from this list to be appended to your file list. To
+	obtain a list, enter the name of a host where a netplan server runs in
+	the pink text field near the top. The name of the local machine can be
+	specified as "localhost".
+	
+	After pressing Return, the list of files on that host is displayed in
+	the list below. Files can be added to your file list by double-clicking
+	or by dragging with the left mouse button, or shift-left-clicking to
+	specify ranges, or ctrl-left-clicking to toggle individual items and
+	then pressing the Add button. (Double-clicking is a shortcut for a
+	left-click followed by Add.)
+
+	When finished, press Done to remove the dialog.
+#
+# recycle popup
+#
+%% cyc
+	RECYCLE MENU
+
+	Repeating appointments trigger more than once. The time does not
+	change, the appointment triggers at the same time on every such date.
+	It can not trigger on any day more than once.
+
+	The appointment will repeat on any of the dates that satisfy at least
+	one of the three conditions: on the specified weekdays, on the
+	specified days of the month, and every n days after the initial date.
+
+	The appointment will expire on the day specified with "Stop repeating
+	on" if the mode button is green. The appointment may trigger for the
+	last time on the date specified, if the other conditions are satisfied.
+%% cyc_done
+	DONE
+
+	Remove the recycle popup.
+%% cyc_last
+	LAST DAY
+
+	The appointment will trigger on this date for the last time (if the
+	other conditions are satisfied). It will then expire, and will be
+	deleted if the Auto-delete-past-entries in the Config menu has been
+	turned on.
+
+	The notation "+n" means that the appointment will repeat on the next
+	n days; "+1" means today and tomorrow.
+
+	The last-day is in effect only if the green mode button on the left
+	is turned on (is green).
+%% cyc_every
+	EVERY N DAYS
+
+	If the button on the left is on (green), the appointment will
+	trigger every n days after the initial date. For example, if
+	a 2 is entered, the appointment will repeat every other day.
+%% cyc_weekdays
+	WEEKDAYS
+
+	The appointment will trigger on all the weekday specified. Weekdays
+	can be restricted to certain weeks of the month.
+%% cyc_days
+	MONTH DAYS
+
+	The appointment will trigger on every day of the month specified.
+%% cyc_yearly
+	YEARLY
+
+	If turned on, the appointment will trigger on the same day every year.
+%% msg
+	MESSAGES AND SCRIPTS
+
+	This menu is used for appointment messages and scripts. A message
+	is a text that is printed in a window when the alarm or one of its
+	warnings triggers, unless disabled.
+
+	Scripts are executed by the daemon when the alarm time (not the
+	warnings) trigger. The daemon forks and execs the script directly.
+	The environment is passed on unchanged. The umask is set to 077.
+	If the script is longer than the Unix pipe size (normally 10240
+	bytes), the daemon forks off a separate process to feed the script,
+	to avoid blocking the daemon.
+
+	Scripts are run even if the text alarm was turned off with the
+	advance-warning column.
+
+	The text may contain special placeholders that begin with a '%' sign
+	to insert appointment information when the alarm triggers:
+
+	  %N    the short note text
+	  %M    the message text
+	  %S    the script text
+	  %D    the final trigger date
+	  %T    the final trigger time
+	  %L    the length in hours:minutes
+	  %F    the file the appointment is stored in, or "private"
+	  %U    your login name
+	  %%	a percent sign, '%'
+
+	If a substituted string, such as the message text in case of %M,
+	contains % codes, they are not expanded. Note that % codes in the
+	short note text are also expanded. The calendar never expands %
+	codes; this is done only when an alarm triggers and a notifier
+	window is shown, a mail is sent, or a script is executed.
+%% msg_done
+	DONE
+
+	Remove the message popup.
+%% msg_delete
+	DELETE
+
+	Deletes the message or script, and removes the popup. The message
+	or script symbol in the appointment list row disappears.
+%% msg_clear
+	CLEAR
+
+	The text in the popup is cleared.
+%% msg_text
+	TEXT WINDOW
+
+	Messages and scripts are entered here. To clear the text and start
+	over, press the Clear button.
+%% except
+	EXCEPTIONS
+
+	The exception dates at the top of this menu specify dates on which
+	the appointment will not trigger (neither scripts nor alarms). Dates
+	are specified in one of the text entry boxes in the usual formats:
+	e.g., 24.12., 12/24, tomorrow, +14, mon. The Clear buttons delete
+	an exception date. The Split buttons create a new fill-in appointment
+	for the given exception date.
+
+	There are flag buttons below the exception dates that specify in
+	which calendar views (month, year, and week) the appointment should
+	be omitted. It is often useful to omit things like lunch hour notices
+	or cron-like jobs that would otherwise clutter up the calendars.
+	These buttons replace the old notation in version 1.3.2 that omitted
+	appointments whose note string begins with '-' or '='.
+
+	The Reminder flag button, if enabled, turns off the time of the
+	appointment. Neither scripts nor alarms will trigger in this mode,
+	but the appointment stays in the calendar views (without a time
+	display). In the month view, it looks much like a holiday string.
+	This is equivalent to entering '-' in the time column in the entry
+	menu.
+
+	The appointment text color changes the color of the appointment text
+	in the month view's day boxes. The default is pale blue; there are
+	eight more. Some of them have very low contrast.
+
+	All the choices here become effective and appear in the calendars when
+	both the exception menu and the appointment entry menu are removed by
+	pressing Done in each menu.
+%% exc_clear
+	CLEAR DATE
+
+	The exception dates at the top of this menu specify dates on which
+	the appointment will not trigger (neither scripts nor alarms). Dates
+	are specified in one of the text entry boxes in the usual formats:
+	e.g., 24.12., 12/24, tomorrow, +14, mon. The Clear buttons delete
+	an exception date (but leave fill-in appointments that were created
+	with the Split button intact).
+%% exc_split
+	SPLIT APPOINTMENT
+
+	This function creates a new appointment that is identical to the one
+	for which the exception date to the right was entered, except for its
+	date (which matches the exception date) and its repetition information
+	(which is cleared). The resulting appointment "fills in" the hole left
+	by the exception date.
+
+	The new appointment is shown at the end of the list menu and can now
+	be edited. For example, if a repeating appointment occurs every Monday
+	at 10:00 except on January 2nd, where it is at 11:00, enter January
+	2nd as exception date, press split, and change the last time in the
+	list from 10:00 to 11:00.
+
+	Multiple exceptions require multiple fill-in appointments. Without a
+	fill-in appointment created by Split, the appointment is simply
+	ignored on the exception date. If an exception date is first split
+	and then cleared, the split appointment is not deleted. Conversely,
+	exception dates can be split off multiple times.
+%% exc_flags
+	FLAGS
+
+	There are flag buttons below the exception dates that specify in
+	which calendar views (month, year, and week) the appointment should
+	be omitted. It is often useful to omit things like lunch hour notices
+	or cron-like jobs that would otherwise clutter up the calendars.
+	These buttons replace the old notation in version 1.3.2 that omitted
+	appointments whose note string begins with '-' or '='.
+
+	The Reminder flag button, if enabled, turns off the time of the
+	appointment. Neither scripts nor alarms will trigger in this mode,
+	but the appointment stays in the calendar views (without a time
+	display). In the month view, it looks much like a holiday string.
+	This is equivalent to entering '-' in the time column in the entry
+	menu.
+%% exc_acolor
+	APPOINTMENT COLOR
+
+	The appointment text color changes the color of the appointment text
+	in the month view's day boxes. The default is pale blue; there are
+	eight more. Some of them have very low contrast.
+%% exc_done
+	DONE
+
+	Remove the exception popup menu. The changes are displayed in the
+	calendar views when the Done button in the appointment entry menu
+	is also pressed.
+%% holiday_done
+	DONE
+
+	Write the definitions back to the ~/.holiday file and re-parse it.
+%% holiday_cancel
+	CANCEL
+
+	Discard all changes to the holiday list made since the holiday menu
+	was popped up, go back to the previous holiday list, and remove the
+	holiday popup. Use this button if you messed up.
+%% holiday
+	HOLIDAYS
+
+	Holidays are annotations of certain day boxes in the month and year
+	calendars. A holiday can define a text that can appear under the day
+	number (default) or next to the day number (small, because there is
+	less space for text there). Both the color of holiday name and the day
+	number can be set. For each day, only one holiday plus one "small"
+	holiday can be defined. Earlier definitions override later ones.
+
+	You don't need to define a holiday if you want an entry with no time
+	field; just define a normal appointment with "-" in the time column.
+	There is no limit on the number of those.
+
+	In addition to the user's holiday list, there may be a system-wide
+	holiday file in the LIB directory (LIB is from the Makefile, usually
+	/usr/local/bin). System-wide holidays cannot be edited from within plan.
+	User holidays override system-wide holidays on the same day.
+
+	The holiday format is: (optional parts are in [square brackets],
+	nonterminals are in CAPS, alternatives are separated by |, everything
+	must be entered in lower case)
+
+	   [small]  [STRINGCOLOR]  "name"  [DAYNUMBERCOLOR]
+	                                          on  [DATE]  [OFFSET]  [LENGTH]
+
+	(Although shown here on two lines, every holiday definition must be
+	entered on a single line.)
+
+	Available colors are black, red, green, yellow, blue, magenta, cyan,
+	white, and weekend (the same color used for Saturday and Sunday).
+	The string color is used for the name when printed into a day box; the
+	day number color is used to alter the color of the day number (1..31)
+	of the day box the holiday falls on. This can be used to promote a day
+	to an official holiday by using the "weekend" color. If there is a day
+	number color specified, but no string color, the string color is set to
+	the day number color. The name can be empty, but the quotes must be
+	present. There are several formats for DATE:
+
+	   DAY . MONTH [ . YEAR]
+	   MONTH / DAY [ / YEAR]
+	   DAY   MONTHNAME   [YEAR]
+	   MONTHNAME   DAY   [YEAR]
+	   [every   NTH]   WEEKDAY   [in   MONTH]
+	   WEEKDAY   before   LIT_DATE
+	   WEEKDAY   after   LIT_DATE
+	   easter
+	   pascha
+
+	DAY, MONTH, YEAR, NTH, and NUMBER can be C expressions; in
+	dates, they must be parenthesized.  The special values any and last are
+	also available. Any valid DATE description specifying a single day may
+	be converted to a NUMBER by enclosing it in square brackets [].
+	MONTHNAME is january, february, etc;  WEEKDAY is monday, tuesday,
+	etc.  NTH can alternatively be first, second, ..., fifth, last. The
+	words on, every, day, and days are syntactic sugar without meaning.
+	Easter is predefined because its definition is rather complicated.
+	LIT_DATE stands for one of the first two alternatives, DAY.MONTH[.YEAR]
+	or MONTH/DAY[/YEAR]. Pascha is the Christian Orthodox Easter.
+
+	The OFFSET after DATE is "[plus | minus   NUMBER   days", and
+	the LENGTH after that is "length   NUMBER   days". Offsets are
+	useful for holidays relative to Easter, and lengths are useful for trade
+	shows and vacations. Always define vacations last in the list so regular
+	holidays override them.
+
+	Dates can be converted to numbers by enclosing them in square brackets.
+	For example, the number of days between Easter and May 1 can be
+	computed with ([may 1] - [easter]). As with C expressions, bracketed
+	expressions must be parenthesized.
+
+	If you have /lib/cpp (see CPP_PATH in the Makefile), you can use #include
+	statements to include additional external holiday files. The external files
+	cannot be edited interactively with plan; use an editor.
+
+	Examples:
+	   small  "Easter"  weekend  on  easter
+	   small  "Surprise"  blue  on  last  sunday  in  april  plus  1  day
+	   small  green  "xmas"  weekend  on  12/25
+	   ""  weekend  on  july  4
+	   magenta  "Payday"  on  any/last
+	   green  "Vacation"  on  20.6.93  length  28  days
+	   #include "/usr/local/lib/vacations"
+
+	Restrictions: plus, minus, and length may not cross over to the next or
+	previous year, you cannot define New Year's as "last/last plus 1 day".
+%% print
+	PRINT
+
+	The print mode determines whether a day, year, month, week calendar,
+	or year overview is printed. These are the calendar views accessible
+	as windows through the View pulldown in the main menu. Week views can
+	be printed in landscape (sideways) or Portrait mode; landscape uses
+	larger print but has less space for long or very crowded calendars.
+	Printing always prints the time period last displayed in the respective
+	view window; to select it pop up the window from the View pulldown.
+
+	The "omission" flags, if turned on, remove all appointments or the
+	private appointments (those with a padlock in the appointment entry
+	menu) from the printed calendar. The color flag generates color
+	PostScript.
+
+	The spooler string is a shell command line that accepts the PostScript
+	calendar and prints it on a printer. Typical values are "lp" (on SGI
+	and other System V derived systems) or "lpr" (on BSD derived systems).
+	Redirection is also possible; use "cat > /tmp/file" to redirect the
+	PostScript output to a file. If printing of month and year calendars
+	fails, make sure that the "plan_cal.ps" PostScript skeleton file
+	exists (see Troubleshooting). Some systems require backquoting command
+	strings with shell metacharacters, as in `pr | lpr`.
+
+	Press Print to start printing, or Cancel to remove the popup without
+	printing.
+%% print_print
+	PRINT
+
+	Print the calendar specified by the mode select buttons, using the
+	shell command string specified in the spooler text area.
+%% print_cancel
+	CANCEL
+
+	Remove the print popup without printing anything. The spooler string,
+	if changed, remains changed.
+%% grok
+	DATABASE ACCESS
+
+	plan can read databases created with the xmbase-grok program, available
+	on all servers where plan is available. The primary ftp servers are
+	ftp.fu-berlin.de and ftp.x.org. Information on both plan and grok is
+	available on http://www.bitrot.de .
+
+	xmbase-grok is a configurable desktop database with a built-in user
+	interface editor for database form creation. It stores data in "cards",
+	like a rolodex. Each card contains a number of "fields" that contain
+	data. A todo list may have fields for start date, end date, descriptive
+	text, and so on. Version 1.4 and up of xmbase-grok let the form author
+	specify an optional meaning of each field for plan. The start date field
+	in the todo list form may become plan's date, and the descriptive text
+	may become plan's note or message. Fields not tagged in this way are
+	ignored by plan. As a minimum one field must be tagged as plan's date.
+
+	To make an xmbase-grok database accessible for plan, two steps are
+	required:
+
+	1. in the xmbase-grok program, use the Database pulldown to choose
+	    a database to be made accessible. Then start the form editor from
+	    the File pulldown. On the small canvas window, choose a field that
+	    should be read by plan, and use the radio buttons for "Calendar
+	    interface" in the main form to specify how plan should interpret
+	    the field data. Repeat for other fields. Exactly one field must be
+	    tagged this way as "Date+Time". Each tag can be used at most once;
+	    it is not possible to have two fields with the same plan tag.
+
+	2. in the plan program, call the file list from the File pulldown.
+	    Specify the database file name with a .gf extension. For the todo
+	    database, a typical file name is ~/.grok/todo.gf .
+
+	plan ignores all database cards that do not evaluate to a valid date,
+	and pops up a warning window if cards cannot be interpreted. If a card
+	specifies an end date but not a daily repeat, the daily repeat is
+	assumed to be 1 (every day, 7 would be weekly etc.) If the Date+Time
+	field only has a date and no time, the no-time flag is automatically
+	set (a minus appears in the time column). Date+Time fields that specify
+	only a time or duration and no date are ignored, this is an error. See
+	the online help for xmbase-grok's form editor for Date+Time formats.
+	The default for no-alarm is false.
+
+	If plan cannot find a Date+Time field or a note field, it will attempt tO
+	pick default fields for date and note. This allows plan to read untagged
+	databases, but the result is not always what one would expect.
+
+	In this version of plan and xmbase-grok, it is not possible to specify
+	defaults or grok expressions for interpretations, to combine multiple
+	fields into one plan message, to modify and write back database files
+	in plan, and to read databases from a netplan IP server. All of this
+	is useful but not currently at the top of my todo list.

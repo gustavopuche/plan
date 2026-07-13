@@ -1,0 +1,24 @@
+Begin3
+Title:          plan
+Version:        1.8
+Entered-date:   26FEB99
+Description:    plan - an X/Motif calendar and day planner,
+		homepage: http://www.bitrot.de/plan.html
+		mailing list: subscribe plan -> majordomo@bitrot.de
+Keywords:       plan pland netplan calendar planner appointment network
+		alarm reminder scheduler
+Author:         thomas@bitrot.de (Thomas Driemeyer)
+Maintained-by:  thomas@bitrot.de (Thomas Driemeyer)
+Primary-site:   bitrot.in-berlin.de /pub/plan
+		315KB plan-1.7.1.tar.gz
+Secondary-site: ftp.fu-berlin.de /pub/unix/graphics/plan
+		315KB plan-1.7.1.tar.gz
+Platforms:      SGI IRIX 4,5,6, Linux 2.x, HP/UX 9,10,11, IBM AIX, DEC Unix,
+		SunOS 4, Solaris 2, Ultrix, CDC/Mips, RISC/OS, DG/UX, SINIX,
+		Interactive Unix, SCO, NCR, USL SVR4, BSDI, NetBSD, FreeBSD,
+		Sony NEWS 4,6, Dynix/PTX, Convex BSD, UnixWare 1,2, Apollo/
+		DomainOS. Requires Motif or LessTif 0.86.1 libs to compile.
+		Static Linux version for Linux without Motif is available.
+Copying-policy: freeware, free private and commercial use and copying,
+		mandatory credits and change notes
+End

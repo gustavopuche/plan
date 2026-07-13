@@ -1,0 +1,21 @@
+#!/bin/perl
+#
+# convert plan.help to nroff -ms format.
+# by gregg hanna <gregor@kafka.saic.com>
+#
+$nofill = 0;
+$s = "";
+while (<>) {
+  if ( /^#/ ) { next; }
+  elsif ( /^%/ ) { $s = ".SH\n"; }
+  elsif ( /^\t(.*)\s*--\s*(.*)$/ ) { $s = ".IP \"\\fI$1\\fR\"\n$2\n"; }
+  elsif ( /^\t(\s\s\s\s\s\s.*)$/ ) {
+    if ( $nofill ) { print "$1\n"; next; }
+    else { $nofill = 1; print ".nf\n$1\n"; next; }
+  }
+  elsif ( /^\t\s*(.*)$/ ) { $s = "$1\n"; }
+  elsif ( /^$/ ) { $s = ".LP\n"; }
+  else { $s = $*; }
+  if ( $nofill ) { $nofill = 0; print ".fi\n"; }
+  print $s;
+}

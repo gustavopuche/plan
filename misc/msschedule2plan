@@ -1,0 +1,50 @@
+#!/usr/bin/perl
+#
+# This is a Perl script that converts Microsoft Schedule+ exports
+# CSV files to .dayplan files.
+# Cy Schubert - ITSD Open Systems Group <Cy.Schubert@uumail.gov.bc.ca>
+# 
+
+use Time::Local;
+
+<>;
+while (<>) {
+	($ADATE,$ATIME,$CREATOR,$DESC,$EDATE,$ETIME,$NOTES,$PRIVATE,$RECURR
+ING,$SDATE,$STIME,$TENTATIVE,$WHERE) = split('	',$_,13);
+	if ($ETIME =~ /PM/) {
+		$ETIME =~ s/ PM//;
+		($EHOUR,$EMIN) = split(':',$ETIME,2);
+		$EHOUR += 12;
+	} else {
+		$ETIME =~ s/ AM//;
+		($EHOUR,$EMIN) = split(':',$ETIME,2);
+	}
+	if ($STIME =~ /PM/) {
+		$STIME =~ s/ PM//;
+		($SHOUR,$SMIN) = split(':',$STIME,2);
+		$SHOUR += 12;
+	} else {
+		$STIME =~ s/ AM//;
+		($SHOUR,$SMIN) = split(':',$STIME,2);
+	}
+	($EMON,$EDAY,$EYEAR) = split('/',$EDATE,3);
+	($SMON,$SDAY,$SYEAR) = split('/',$SDATE,3);
+	$SUTIME = timelocal(0,$SMIN,$SHOUR,$SDAY,$SMON,$SYEAR);
+	$EUTIME = timelocal(0,$EMIN,$EHOUR,$EDAY,$EMON,$EYEAR);
+	$LENSEC = $EUTIME - $SUTIME;
+	$LENMIN = $LENMIN / 60;
+    $LENHRS = int $LENMIN / 60;
+    $LENMIN = $LENMIN % 60;
+
+	print "$SMON/$SDAY/$SYEAR  $SHOUR:$SMIN:0  $LENHRS:$LENMIN:0  
+0:15:0  0:5:0  ---------- 0 0\n";
+	chop $WHERE;
+	if ($WHERE =~ /\S/) {
+		print "N	$DESC @ $WHERE\n";
+	} else {
+		print "N	$DESC\n";
+	}
+	if ($NOTES =~ /\S/) {
+		print "M	$NOTES\n";
+	}
+}

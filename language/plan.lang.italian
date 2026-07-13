@@ -1,0 +1,381 @@
+\n(Provo ad accedere al file "%s".)
+\nCalendario versione %s\nCompilato %s\n\nAutore: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nInvia un messaggio a majordomo@bitrot.de per\niscriverti alla lista; oppure visita il mio sito:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nI sorgenti sono disponibili da\n\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (proprio)
+ (solalettura)
+ (avviso)
+%5d      ('pid' del 'lockfile' per %s, per l'utente %d)\n
+%d di %d appuntamenti dalla base-dati 'grok'\n%s scartati\nperché con data/tempo non validi.
+%s è una\nbase-dati 'grok', formato non disponibile
+%s è una\nbase-dati 'xmbase-grok', non posso scrivere il file
+%s: %s è la linea %d di %s\n
+%s: %s: linea illegale:\n%s
+%s: %s: non trovato\n
+%s: ATTENZIONE: non trovo %s\n
+%s: ATTENZIONE: non posso leggere nome utente.\n%s
+%s: ATTENZIONE: non posso segnalare al 'démone': 
+%s: ATTENZIONE: non posso avviare %s: 
+%s: ATTENZIONE: la versione del file %s è 
+%s: Attenzione: biforcazione fallita ('fork')\n
+%s: non posso allocare il colore per %s\n
+%s: non posso creare %s: 
+%s: non posso valutare ~%s in %s, uso .\n
+%s: non posso scrivere su %s: 
+%s: non posso creare 'lockfile' 
+%s: non posso aprire 'lockfile' 
+%s: non posso leggere 'lockfile' 
+%s: non posso rimuovere 'lockfile' 
+%s: non posso scrivere un 'lockfile' 
+%s: cancello programma "%s"\n
+%s: fallito tentativo di terminare il processo %d proprietario del 'lockfile' %s\n
+%s: blocco della basedati fallito dopo 3 secondi, vi accedo lo stesso\n
+%s: genero il programma "%s"\n
+%s: ignoro programma insicuro
+%s: terminato con segnale %d\n
+%s: utente uscito dal sistema, sto quieto.
+%s: programma di posta non definito\n
+%s: manca memoria
+%s: plan calendar daemon, version %s.\n
+%s: rileggo la base-dati\n
+%s: avvio "%s", argomenti
+%s: in quiescenza %d:%02d:%02d\n
+%s: avvio %s\n
+%s: colore sconosciuto per %s\n
+%s: nodo sconosciuto, non posso autenticarmi\n
+%s: 'utmp' funziona, tengo d'occhio per l'uscita dal sistema
+%s: sei uscito dal sistema, esco (prova -L?)\n
+(h:m)
+(h:m:s) al tempo di sistema
+-K\ttermina il 'dèmone' attivo, ed esce\n
+-L è il predefinito. Prova -l se ti trovi con troppi 'pland'.\n
+-L\tnon guarda 'utmp' (utmp è spesso difettoso)\n
+-d\tdebug: sta in primo piano,stampa azioni\n
+-k\ttermina il 'démone' attivo, poi continua\n
+-l è il predefinito. Prova -d o -L se 'pland' esce in anticipo.\n
+-l\tguarda 'utmp' ed esce quando l'utente esce dal sistema\n
+-s\tguarda 'utmp' e rimane quiescente finché l'utente è fuori dal sistema\n
+-t\tnon mostrare finestr di notifica, scrivi su 'stdout'\n
+formato ora 12-ore am/pm
+<sconosciuto>
+ALLARME al(le) %d:%02d%c
+Riguardo
+Riguardo...
+Aggiungi
+Regola Tempo
+Regola tempo...
+Avviso anticipato: %s
+Allarme
+Opzioni Allarme
+Opzioni allarme...
+Allarme:
+Tutti
+Tutti gli elementi
+Colore testo appuntamenti
+Colore testo appuntamenti:
+Aprile
+Agosto
+Auto-cancella elementi passati
+Auto-ridimensiona finestre
+DST automatico dal giorno Giuliano
+Archivi disponibili:
+Archivi disponibili, seleziona e aggiungi:
+Inizia vista alle
+Sfoglia
+Sfoglia Servente
+Configura vista calendario
+Viste calendario...
+Non trovo lo 'scheletro' PostScript\n "%s"
+Annulla
+Impossibile cambiare il proprio gruppo
+Impossibile cambiare il proprio percorso
+No posso collegarmi al servente \n'netplan' sul nodo %s
+Impossibile cancellare il proprio archivo
+Non posso modificare gli appuntamenti di %s perché sono\nstati letti da una base-dati 'grok'. Il salvataggio\nin quel formato non è implementato.\nL'archivio è\n%s
+Non posso modificare gli appuntamenti di %s,\nmancano permessi di scrittura su %s\no %s/.dayplan.\n\nRicontrolla i permessi con 'Archivi->Rileggi base-dati'.\nNon puoi disabilitare appuntamenti singoli, ma puoi\ndisabilitarli tutti dalla finestra 'Archivi->Lista Archivi'.
+Non posso modificare gli appuntamenti di %s,\nil servente su %s nega il permessodi scrittura.\nRicontrolla i permessi con 'Archivi->Rileggi base-dati'.\nNon puoi disabilitare appuntamenti singoli, ma puoi\ndisabilitarli tutti dalla finestra 'Archivi->Lista Archivi'.
+Non posso spostarlo lì, abortito.
+Non posso aprire un condotto ('pipe') su "%s"
+Non posso ridimensionare elemento privo di\nripetizione giornaliera
+Azzera
+Stampa a colori
+Sfondo colorato per gli altri archivi
+Configura
+Conferma
+Contesto
+Continua
+Continua senza 'démone'
+Accesso alla base-dati
+Data
+Data a cui spostarsi:
+Giorno
+Vista Giorno
+Impostazione ora legale
+Dicembre
+Predefinito
+Allarmi predefiniti:
+Definisci vacanze...
+Cancella
+Cancella eventi passati
+Chiudi
+Visualizza:
+Non mostra appuntamenti in Vista Giorno
+Non mostra appuntamenti in Vista Mese
+Non mostra appuntamenti in Vista Settimana
+Non mostra appuntamenti nel compendio annuale
+Non mostra appuntamenti in Vista Anno
+Non mostra eventi passati nel riquadro 'Oggi'
+Fatto
+Dup
+ERRORE:\n\n
+Pre-avvisi:
+Modifica
+Termina vista alle
+Immetti un nome prima
+Eventi da Vista Settimana
+Errore
+Errore in lettura file:\n%s
+Date d'eccezione
+Date d'eccezione:
+Esegui
+Copia fallita di %s,\nnon posso scrivere su %s
+Copia fallita della base-dati %s\nsu %s, scrittura abortita
+Creazione fallita dell'archivio\nappuntamenti %s
+Lettura fallita della copia\ndella base-dati utente %s
+Lettura fallita dell'archivio %s dell'utente %s, errore %d\n
+Lettura fallita dell'archivio principale %s, errore %d\n
+Lettura fallita dell'archivio privato %s, errore %d\n
+Scrittura fallita dell'archivio appuntamenti\n"%s".\nI tuoi cambiamenti recenti sono andati persi.\nControlla spazio su disco e permessi della cartella!
+Scrittura fallita dell'archivio appuntamenti\n"%s".\nI tuoi cambiamenti recenti sono andati persi.\nControlla spazio su disco e permessi della cartella!\n\nImpossibile ripristinare i contenuti originali. La copia è in\n%s, e richiede un recupero manuale
+Febbraio
+Archivi
+L'archivio %s contiene %d appuntamenti in %s\ne %d sul servente %s. Passo al servente e ignoro l'archivio\n%s.
+L'archivio %s sul servente %s non\nc'era. Creato e inizializzato con\ngli appuntamenti correnti caricati.
+Lista archivi
+Lista archivi...
+Archivi e programmi
+La prima settimana è la prima piena
+La prima settimana è la prima che include giovedi
+Ven
+Per ottenere aiuto
+Opzioni globali:
+Vai a data
+Vai a oggi
+Vai a...
+Finestra Verde
+Gruppo
+Selezione Gruppo
+Indovina
+Aiuto
+Vacanze
+Introduzione
+Gennaio
+Luglio
+Giugno
+Ricerca Parole Chiave
+Termina
+Lingua
+Lingue
+Mese, in grande
+Barre larghe per settimane senza orario
+Ultimo
+Ultimo giorno: ferma ripetizione alle
+Avviso ritardato:
+Non distingue Maiu./minu.
+Distingue Maiu./minu.
+Percorso locale
+Perso collegamento al servente 'netplan' %s.\n\nRiavvialo, quindi scegli\n`Archivi->Rileggi archivi' per ricollegarti e rileggere.\nPotresti aver perso i cambiamenti più recenti.
+Servente di posta:
+Marzo
+Maggio
+Messaggio
+Lun
+Mese
+Opzioni vista mese:
+Formato data: giorno/mese/anno
+Nome
+Il nome non è univoco, rifiutato
+Colleg. rete
+Succ
+Prossima settimana
+Nessun allarme attivo
+Nessuno
+Nota
+Novembre
+Ottobre
+Ometti tutti gli appuntamenti
+Ometti appuntamenti degli altri
+Ometti appuntamenti privati
+A contesto
+Un archivio...
+Solo il proprietario può scrivere nel relativo archivio appuntamenti
+Opzioni:
+Altri
+Proprio
+Solo Proprio
+Solo proprio
+Il percorso non è univoco, rifiutato
+Tieni
+Prima immetti orario o data
+Prima di impostare appuntamenti devi completare\nla 'lista archivi' e collegamenti rete.
+Prec
+Stampa
+Stampa fallita, con segnale %d\nControlla il tuo 'Comando di stampa'.
+Modalità di stampa:
+Stampa...
+Privato
+Problema nell'archivio di definizione delle festivita' %s:\n%.80s alla linea %d
+Esci
+Finestra rossa
+'Espressione Regolare'
+Semplice avviso: niente allarmi, tempo non mostrato
+Ripeti ogni
+Ripeti ogni anno
+Ripeti alle
+Ripeti sul
+Rileggi archivio
+Avvia programmi di 'netplan' (rischi di sicurezza!)
+Sab
+Programma
+Programma Ripetizioni
+Cerca
+Cerca:
+Cerca parole chiave...
+Modo di ricerca:
+Invia posta
+Settembre
+Serv.
+Nodo Servente
+Servente sul nodo "%s" errore di protocollo:\nAtteso codice di risposta `%c' ma ricevuto `%c'.\nIl messaggio completo in errore era:\n%s
+Servente sul nodo %s: riporta un problema:\n\n%s
+Servente sul nodo %s: non risponde\n
+Servente sul nodo %s:non raggiungibile.
+Servente sul nodo %s: errore di protocollo\n
+Programma della 'shell'
+Mostra calendario Giuliano
+Mostra i tempi di preavviso
+Mostra i nomi dei file nelle etichette delle barre
+Mostra appuntamenti per giorno singolo
+Mostra le settimane
+Mese, in piccolo
+Qualcun'altro sta modificando questo elemento. Prova più tardi.
+Spiacente, nessun aiuto disponibile
+Spiacente, nessun aiuto disponibile,\n%s non trovato
+Ordina
+Spezza
+Comando di stampa:
+Avvia il 'démone' ora
+Errore di conversione di stringa.\n
+Dom
+Sincro
+Il primo archivio nella lista archivi\n(%s)\nnon può essere una base-dati 'grok'!\nProseguendo, puoi perdere dati.
+Il demone 'netplan' ha restituito un errore\nquando questa riga è stata registrata.\nControlla i permessi d'accesso.\n
+La nuova data è posteriore alla data di 'ultimo-avviso', %s\nche, pertanto, è stata disabilitata. 
+La nuova lingua selezionata sara'\neffettiva solo dopo il riavvio di 'plan'. 
+La nuova data di 'ultimo avviso' è anteriore\nalla data di 'primo-avviso', %s. Ignorata.
+Non è stato possibile terminare l'altro programma.\n
+Questo mese
+Questa settimana
+Gio
+Tempo
+Il fuso orario è GMT
+Oggi
+Domani
+Troppi errori, abbandono.\n
+Risolviproblemi
+Prova ad avviare con l'opzione -L.\n
+Mar
+Annulla
+Uso: pland [-dkKlL]\n
+Usa numeri settimana GPS
+Usa finestra principale per tutte le viste
+Usa il pulsante destro del 'mouse' per cambiare colore
+Archvio utente %s su nodo %s: non posso collegarmi\n
+Archivio utente %s su nodo %s: non posso aprire un 'socket'\n
+Archivio utente %s su nodo %s: nodo sconosciuto\n
+Vista
+ATTENZIONE:\n\nOra puoi modificare gli appuntamenti di altri.\nplan di solito nota scritture multile contemporanee\n(eccetto su NFS), ma non s'accorge se un altro\nutente ha modificato lo stesso archivio mentre lo\nstavi cambiando tu.\n(Le modifiche più vecchie verrebbero perse in questo\n caso. Fai attenzione!)
+Avviso
+Attenzione
+Attenzione:\nUn altro programma %s è attivo.\n%s\nPremi 'Continua' per avviare lo stesso, o\n'Termina' per tentare di chiudere l'altro\nprogramma. Continuare può causare la \nperdita di appuntamenti nuovi, e \nl'assegnazione di appuntamenti da \nlinea-di-comando non funzionera'.
+Attenzione:\nNon è attivo alcun 'démone' 'pland'. Senza 'pland',\nnon vi saranno azioni allo scadere degli allarmi.\nAvvia "%s" ad es. dal tuo programma ~/.xsession o\n~/.sgisession, o avvia plan con l'opzione -S.
+Attenzione: allarme alle %d:%02d%c
+Attenzione: non posso eseguire 'chmod 0600' sull'\narchivio appuntamenti %s
+Attenzione: I propri archivi dati e di configurazione\n%s\nnon sono scrivibili\n
+Attenzione: I proprio archivio dati privato %s\nnon è scrivibile\n
+Mer
+Sett.
+Settimana (Orizzontale)
+Settimana (Verticale)
+Vista Settimana
+Opzioni vista Giorno e Settimana:
+La settimana comincia di domenica
+La vista Settimana contiene
+I messaggi spariscono dopo
+Risorse X
+Anno
+Sinottico Anno
+Vista Anno
+Finestra gialla
+Hai %d appuntamenti qui e\n%d sul servente %s. Salvati %s\nsu %s e scartati vecchi\nappuntamenti in %s.
+Il tuo proprio archivio dati è in sola lettura!
+Anno
+Zoom +
+mai attivo
+sempre attivo
+altro 'démone' attivo, usa %s -k
+'auth' su %s risponde %s\n
+fallita autenticazione su %s\n
+il servente di autenticazione su %s non risponde\n
+automatico
+iniz:
+non posso accedere
+non posso collegarmi al servente di autenticazione su %s\n
+non posso terminare il 'démone' attivo %s
+non posso aprire un 'socket' per l'autenticazione 
+giorni
+giorni:
+predefinito
+fine:
+ogni...
+quinto...
+archivio utente #%d non letto, nessun nome o percorso\n
+archivio utente #%d non scritto, nessun nome o percorso\n
+primo...
+quarto...
+avuto risposta "%s"\n
+incompleto
+ultimo...
+dur:
+durata %d:%02d, fino a %d:%02d%c
+min:
+mancante
+°
+servente 'netplan' da interrogare:
+nuovo archivio
+memoria esaurita
+memoria esaurita per la lista appuntamentni
+memoria esaurita per vista giorno
+memoria esaurita per 'pixmaps'
+memoria esaurita per vista settimana
+memoria esaurita per sinottico annuale
+nessun utente "%s"
+ore
+più vecchio di 90 gg
+più vecchio di un giorno
+più vecchio di un mese
+più vecchio di una settimana
+più vecchio di un anno
+opz:
+proprio
+plan: collegato al nodo %s: %s
+°
+secondo...
+°
+°
+terzo...
+a
+troppe eccezioni per questo appuntamento
+sconosciuto
+usa tempo di sistema
+utente %s
+errore di scrittura
+la base-dati xmbase-grok\n%s\nnon può essere letta perché l'interfaccia\ncalendario è %s, e non ci sono campi data\nper generarne una automaticamente.

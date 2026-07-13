@@ -1,0 +1,978 @@
+: =====================================================================
+:
+: .holiday file by Walter E Brown <wb@fnal.gov>
+:
+: Most country-specific contributions were taken from the plan
+: distribution; their respective authors are credited below.
+:
+: The data herein have been organized into a standard format.  All
+: countries' dates of interest have been grouped, and each entry is
+: prefixed by a country (or, in a few cases, by a country_region) code.
+: Each such code has a matching #define in Section 1; to enable a given
+: collection of dates, #define the code to nothing; to disable a given
+: collection of dates, #define the code to a colon (:).  As many codes
+: as desired may be concurrently enabled.
+:
+:
+: History:
+:   17-July-1998  WEB  Initial draft of consolidated file
+:   27-July-1998  WEB  Improved internal documentation
+:
+: ======================================================================
+
+
+:
+: ======================================================================
+:
+: Section 1:  country codes (per ISO 3166 version III-51)
+:
+: Ordered alphabetically by English name of country.
+: A few countries also have country_region codes.
+:
+: ======================================================================
+:
+
+: --------------------------------------------------  Australia
+: Peter Turnbull <peter@cbr.atr.com.au>
+:
+: Note:  some standard holidays vary widely by state.
+:
+#define AUS :
+#define AUS_ACT :
+#define AUS_NSW :
+#define AUS_NT :
+#define AUS_QLD :
+#define AUS_SA :
+#define AUS_TAS :
+#define AUS_VIC :
+#define AUS_WA :
+
+: --------------------------------------------------  Austria
+: Friedrich Leisch <Friedrich.Leisch@ci.tuwien.ac.at>
+:
+#define AUT :
+
+: --------------------------------------------------  Belgium
+: Guido van Rossum, CWI, Amsterdam <Guido.van.Rossum@cwi.nl>
+: Adapted from Dutch by Danny Backx <u27113@kb.be>
+:
+#define BEL :
+
+: --------------------------------------------------  Canada
+: Peter Littlefield <plittle@sofkin.ca>
+: Gildas Perrot <perrot@grbb.polymtl.ca>
+:
+#define CAN :
+#define CAN_QUE :
+
+: --------------------------------------------------  Denmark
+: <aneks@kom.auc.dk>
+: <thomas@bitrot.in-berlin.de>
+:
+#define DNK :
+
+: --------------------------------------------------  Finland
+: Steven Wahlberg <stegu@iki.fi>
+:
+#define FIN :
+
+: --------------------------------------------------  France
+: Jean-Claude Giese <giese@loria.fr>
+:
+: en vert les saisons
+: en bleu (texte) et rouge (jour) les jours ferie's
+: en cyan d'autres fetes non ferie'es ou dimanche
+: Je suis pas sur pour les fetes des peres et des meres
+:
+#define FRA :
+
+: --------------------------------------------------  Germany
+: Burkhard Ludwig <ludwig@zfe.siemens.de>
+:
+: Hints (to be understood by Germans):
+:
+: Schwalben...
+:  An OCULI da kommen sie
+:  An MARIÄ GEBURT, da sind sie wieder furt.
+: Geranien...
+:  pflanzt man auf dem Balkon nach den Eisheiligen (PANKRAZ bis kalte SOPHIE)
+: Gänse...
+:  Wer einen guten Braten macht hat auch ein gutes Herz. (MARTINI)
+: Spargel...
+:  wird bis höchstens JOHANNI gestochen.
+: Regen...
+:  Wenns ans SIEBENSCHLÄFER regnet, so regnet's sieben Wochen.
+:
+#define DEU :
+#define DEU_BAV :
+
+: --------------------------------------------------  Hungary
+: Kelemen Péter <fuji@heureka.inf.elte.hu>
+:
+#define HUN :
+
+: --------------------------------------------------  Israel
+:
+#define ISR :
+
+: --------------------------------------------------  Italy
+: Riccardo Scateni <riccardo@crs4.it>
+:
+#define ITA :
+
+: --------------------------------------------------  Japan
+: Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>
+:
+#define JPN :
+
+: --------------------------------------------------  Netherlands
+: Guido van Rossum, CWI, Amsterdam <Guido.van.Rossum@cwi.nl>
+:
+: Note:  Goede Vrijdag and Bevrijdingsdag are not holidays for everybody,
+: therefore I don't put them in the weekend color.  Government employees
+: usually have these days off, but for other categories it varies.  Check
+: with your employer!
+:
+: Also note:  if Koninginnedag falls on a Sunday, the official day off is
+: moved to Monday.
+:
+#define NLD :
+
+: --------------------------------------------------  Norway
+: <geiri@stud.cs.uit.no>
+: Jeroen C. Kessels <jeroenk@cnplss7.cnps.philips.nl>
+:
+#define NOR :
+
+: --------------------------------------------------  Spain
+:
+#define ESP :
+
+: --------------------------------------------------  Sweden
+: <wedberg@mednet.gu.se>
+:
+#define SWE :
+
+: --------------------------------------------------  Switzerland
+: Christian Iseli
+:
+#define CHE :
+
+: --------------------------------------------------  United Kingdom
+: Peter Lord <plord@uel.co.uk>
+:
+#define GBR :
+
+: --------------------------------------------------  United States
+: Ron Harichandran <harichan@cee.msu.edu>
+: Jeff Buhrt <jeff@amesbvap.ci.in.ameritech.com>
+:
+#define USA :
+
+
+:
+: ======================================================================
+:
+: Section 2:  abbreviations for plan's keywords
+:
+: ======================================================================
+:
+
+: =====  abbreviated colors  =====
+
+#define bk black
+#define rd red
+#define gr green
+#define ye yellow
+#define bl blue
+#define ma magenta
+#define cy cyan
+#define wh white
+#define wk weekend
+
+
+: =====  other keyword abbreviations  =====
+
+#define sm   small
+#define len  length
+#define pre  before
+#define post after
+
+
+: =====  abbreviated day names  =====
+
+#define Sun sunday
+#define Mon monday
+#define Tue tuesday
+#define Wed wednesday
+#define Thu thursday
+#define Fri friday
+#define Sat saturday
+
+
+: =====  abbreviated month names  =====
+
+#define Jan january
+#define Feb february
+#define Mar march
+#define Apr april
+#define May may
+#define Jun june
+#define Jul july
+#define Aug august
+#define Sep september
+#define Oct october
+#define Nov november
+#define Dec december
+
+
+:
+: ======================================================================
+:
+: Section 3:  secular holidays and other secular observances
+:
+: Ordered by month.
+: Within each month, exact dates come first, followed by relative dates.
+: Ties are resolved in country code order.
+:
+: ======================================================================
+:
+
+: -----
+:
+SWE           ""			bk      Sat
+
+: ----- January/Januar/Jänner/janvier
+:
+AUS     sm    "New Year's Day"		wk          on     Jan  1
+AUT     sm    "Neujahr"			wk          on     Jan  1
+BEL     sm    "Nieuwjaar"		wk          on     Jan  1
+CAN     sm    "New Year's Day"		wk          on     Jan  1
+CAN_QUE       "Jour de l'An"		wk          on     Jan  1
+CHE     rd    "Nouvel-An"		wk          on     Jan  1
+DEU     sm    "Neujahr"			wk          on     Jan  1
+DNK     wk    "Nytårsdag"		wk          on     Jan  1
+ESP     rd    "Año nuevo"		rd          on     Jan  1
+FIN     bl    "Uudenvuodenpäivä"	wk          on     Jan  1
+FRA     bl    "Jour de l'An"		wk          on     Jan  1
+GBR           "New Years Day"		rd          on     Jan  1
+HUN           "Újév"			wk          on     Jan  1
+ITA           "Capodanno"		wk          on     Jan  1
+JPN     sm    "New Year's Day"		wk          on     Jan  1
+NLD     sm    "Nieuwjaar"		wk          on     Jan  1
+NOR     wk    "1. Nyttårsdag"		wk          on     Jan  1
+SWE     wk    "Nyårsdagen"		wk          on     Jan  1
+USA     sm wk "New Year's Day"		wk          on     Jan  1
+NOR     bk    "2. Nyttårsdag"		            on     Jan  2
+BEL     sm    "Driekoningen"		wk          on     Jan  3
+ESP     sm ye "Rey Juan Carlos I"	            on     Jan  5
+JPN     sm    "Adults Day"		wk          on     Jan 15
+AUS     sm    "Australia Day"		wk          on     Jan 26
+ESP     sm ye "Príncipe de Asturias"	            on     Jan 30
+USA     sm wk "M L King B'day"		wk 3rd  Mon in     Jan
+
+: ----- February/Feber/février
+:
+BEL     sm    "Lichtmis"		wk          on     Feb  2
+DNK           "Kampen ved Myslunde 1864"            on     Feb  2
+USA     sm    "Groundhog Day"		            on     Feb  2
+JPN     sm    "National Foundation Day"	wk          on     Feb 11
+USA     sm    "Lincoln's Birthday"	            on     Feb 12
+CAN     sm    "Valentine's Day"		            on     Feb 14
+CAN_QUE       "St Valentin"		            on     Feb 14
+HUN     sm    "Valentin"		            on     Feb 14
+JPN     sm    "St. Valentine's Day"	            on     Feb 14
+USA     sm    "Valentine's Day"		            on     Feb 14
+USA     sm    "Susan B Anthony Day"	            on     Feb 15
+USA     sm    "Washington's Birthday"	            on     Feb 22
+NOR     bk    "Morsdag"			   2nd  Sun in     Feb
+DNK           "Stormen på København 1659"  2nd  Tue in     Feb
+USA     sm wk "President's Day"		wk 3rd  Mon in     Feb
+
+: ----- March/März/mars
+:
+JPN     sm    "Girls' Festival"		            on     Mar  3
+AUS_TAS sm    "TAS - Eight Hours Day"	wk          on     Mar  7
+HUN     sm    "Nônap"			            on     Mar  8
+HUN           "Nemzeti ünnep"		wk          on     Mar 15
+USA     sm    "St Patrick's Day"	            on     Mar 17
+AUS_ACT sm    "Canberra Day"		wk          on     Mar 21
+DNK           "Dronning Ingrid"		            on     Mar 28
+AUS_WA  sm    "WA - Labour Day"		wk 1st  Mon in     Mar
+AUS_VIC sm    "VIC - Labour Day"	wk 2nd  Mon in     Mar
+
+: ----- April/avril
+:
+USA     sm    "April Fool's Day"	            on     Apr  1
+DNK           "Slaget på reden 1801"	            on     Apr  2
+AUS_TAS sm    "TAS - Bank Holiday"	wk          on     Apr  5
+JPN     sm    "Buddha's Birthday"	            on     Apr  8
+DNK           "Danmarks Besættelse 1940"	    on     Apr  9
+DNK           "Dronning Margrete II"	            on     Apr 16
+DNK           "Slaget ved Dybbøl 1864"	            on     Apr 18
+AUS     sm    "Anzac Day"		wk          on     Apr 25
+ITA           "Liberazione"		wk          on     Apr 25
+FIN     bl    "Veteraanipäivä"		            on     Apr 27
+DNK           "Prinsesse Benedikte"	            on     Apr 29
+JPN     sm    "Greenery Day"		wk          on     Apr 29
+NLD     sm    "Koninginnedag"		wk          on     Apr 30
+USA     sm    "Arbor Day"		   last Fri in     Apr
+
+: ----- May/Mai/mai/Maj
+:
+AUT     sm    "Tag der Arbeit"		wk          on     May  1
+BEL     sm    "Feest van de Arbeid"	            on     May  1
+DEU     sm    "1.Mai"			wk          on     May  1
+ESP     rd    "Trabajo"			rd          on     May  1
+FIN     bl    "Vappu"			wk          on     May  1
+FRA     bl    "Fête du travail"		wk          on     May  1
+HUN           "Munka ünnepe"		wk          on     May  1
+ITA           "Festa del Lavoro"	wk          on     May  1
+JPN     sm    "May Day"			            on     May  1
+NOR     wk    "Off. høytidsdag"		wk          on     May  1
+SWE     wk    "Första Maj"		wk          on     May  1
+USA     sm    "Loyalty Day"		            on     May  1
+JPN     sm    "Constitution Day"	wk          on     May  3
+JPN     sm    "Holiday for the Nation"	wk          on     May  4
+DNK           "Danmarks befrielse 1945"	            on     May  5
+NLD     sm    "Bevrijdingsdag"		            on     May  5
+JPN     sm    "Boys' Festival"		            on     May  5
+JPN     sm    "Children's Day"		wk          on     May  5
+FRA     bl    "Armistice 1945"		wk          on     May  8
+DNK           "Kampen ved Helgoland 1864"	    on     May  9
+AUS_SA  sm    "Adelaide Cup Day"	wk          on     May 16
+NOR     wk    "Grunnlovsdag"		wk          on     May 17
+DNK           "Kronprins Frederik"	            on     May 26
+GBR           "May Day"			rd 1st  Mon in     May
+HUN     sm    "Anyák napja"		   1st  Sun in     May
+AUT     sm    "Muttertag"		   2nd  Sun in     May
+BEL     sm    "Moederdag"		   2nd  Sun in     May
+CAN     sm    "Mother's Day"		   2nd  Sun in     May
+DEU     sm bk "Muttertag"		   2nd  Sun in     May
+DNK           "Mors dag"		   2nd  Sun in     May
+FIN     bl    "Äitienpäivä"		   2nd  Sun in     May
+NLD     sm    "Moederdag"		   2nd  Sun in     May
+JPN     sm    "Mother's Day"		   2nd  Sun in     May
+USA     sm    "Mothers' Day"		   2nd  Sun in     May
+USA     sm    "Armed Forces Day"	   3rd  Sat in     May
+CAN     sm    "Victoria Day"		wk      Mon before May 24
+CAN_QUE       "Jour de la Reine (Fete de Dollard)" wk Mon before May 24
+AUS_NT  sm    "NT - May Day"		wk 1st  Mon in     May
+AUS_QLD sm    "QLD - Labour Day"	wk 1st  Mon in     May
+CAN_QUE       "Fetes des Meres"		   2nd  Sun in     May
+GBR           "Spring Bank Holiday"	rd last Mon in     May
+USA     sm wk "Memorial Day"		wk last Mon in     May
+HUN     sm    "Gyermeknap"		last Sun in May
+
+: ----- June/Juni/juin
+:
+ITA     sm    "Festa della Repubblica"	            on     Jun  2
+FIN     bl    "Puolustusvoimien lippujuhla"	    on     Jun  4
+DNK     wk    "Grundlovsdag/Fars dag"	wk          on     Jun  5
+SWE     bk    "Nationaldagen"		bk          on     Jun  6
+DNK           "Prins Joachim"		            on     Jun  7
+DNK           "Prins Henrik"		            on     Jun 11
+AUS     sm    "Queen's Birthday"	wk          on     Jun 13
+USA     sm wk "Flag Day"		wk          on     Jun 14
+DNK           "Valdemarsdag/Genforeningsdag"	    on     Jun 15
+CAN     sm    "St-Jean Baptiste"	            on     Jun 24
+DNK           "Prinsesse Alexandra"	            on     Jun 30
+FRA     cy    "Fête des mères"		   1st  Sun in     Jun
+AUS_WA  sm    "WA - Foundation Day"	wk 1st  Mon in     Jun
+BEL     sm    "Vaderdag"		   3rd  Sun in     Jun
+CAN     sm    "Father's Day"		   3rd  Sun in     Jun
+CAN_QUE       "Fetes des Peres"		   3rd  Sun in     Jun
+NLD     sm    "Vaderdag"		   3rd  Sun in     Jun
+JPN     sm    "Father's Day"		   3rd  Sun in     Jun
+USA     sm    "Fathers' Day"		   3rd  Sun in     Jun
+FRA     cy    "Fête des pères"		   last Sun in     Jun
+
+: ----- July/Juli/juillet
+:
+CAN     sm    "Canada Day"		wk          on     Jul  1
+CAN_QUE       "Fete de la Confederation" wk         on     Jul 1
+USA     sm wk "Independence Day"	wk          on     Jul  4
+DNK           "Slaget ved Fredericia 1849"	    on     Jul  6
+JPN     sm    "Festival of the Weaver Star"	    on     Jul  7
+BEL     sm    "Vlaamse feestdag"	wk          on     Jul 11
+FRA     bl    "Fête Nationale"		wk          on     Jul 14
+JPN     sm    "Oceans' Day"		wk          on     Jul 20
+BEL     sm    "Nationale feestdag"	            on     Jul 21
+DNK           "Slaget ved Isted 1850"	            on     Jul 25
+AUS_NT  sm    "Alice Springs Show Day"	wk 1st  Fri in     Jul
+AUS_NT  sm    "Tennant Creek Show Day"	wk 2nd  Fri in     Jul
+AUS_NT  sm    "Katherine Show Day"	wk 3rd  Fri in     Jul
+USA     sm    "Parents' Day"		   4th  Sun in     Jul
+AUS_NT  sm    "Darwin Show Day"		wk last Fri in     Jul
+
+: ----- August/août
+:
+CHE     rd    "Premier Août"		wk          on     Aug  1
+BEL     sm    "OLV Hemelvaart"		            on     Aug 15
+ITA           "Assunzione"		wk          on     Aug 15
+ITA     sm    "Ferragosto"		            on     Aug 15
+CAN     sm    "Civic Holiday"		wk 1st  Mon in     Aug
+AUS_ACT sm    "ACT - Bank holiday"	wk 1st  Mon in     Aug
+AUS_NT  sm    "NT - Picnic Day"		wk 1st  Mon in     Aug
+GBR           "Summer Bank Holiday"	rd last Mon in     Aug
+
+: ----- September/septembre
+:
+JPN     sm    "Respect for the Aged"	wk          on     Sep 15
+USA     sm    "Citizenship Day"		            on     Sep 17
+AUS_VIC sm    "Melbourne Show Day"	wk          on     Sep 22
+AUS_WA  sm    "WA - Queen's Birthday"	wk          on     Sep 26
+BEL     sm    "Waalse feestdag"		wk          on     Sep 27
+CAN     sm    "Labour Day"		wk 1st  Mon in     Sep
+CAN_QUE       "Jour du Travail"		wk 1st  Mon in     Sep
+USA     sm    "Child Health Day"	   1st  Mon in     Sep
+USA     sm wk "Labor Day"		wk 1st  Mon in     Sep
+USA     sm    "Grandparents' Day"	   1st  Mon in     Sep    plus   6 days
+CHE     rd    "Jeune Federal"		wk 3rd  Sun in     Sep
+CHE     rd    "Lundi du Jeune"		wk 3rd  Sun in     Sep    plus   1 day
+
+: ----- October/Oktober/octobre
+:
+DEU     sm    "Tag d. Einheit"		wk          on     Oct  3
+DNK           "Stormen på Frederiksstad 1850"	    on     Oct  4
+JPN     sm    "Physical Culture Day"	wk          on     Oct 10
+ESP     rd    "Nacional"		rd          on     Oct 12
+USA     sm    "World Poetry Day"	            on     Oct 15
+HUN           "Nemzeti ünnep"		wk          on     Oct 23
+DNK           "FN-dag"			            on     Oct 24
+USA     sm    "United Nations Day"	            on     Oct 24
+AUT     sm    "Nationalfeiertag"	wk          on     Oct 26
+USA     sm    "Halloween"		            on     Oct 31
+DEU_BAV sm bk "1. Wies'nsonntag		   1st  Sun in     Oct    minus 14 days
+AUS_ACT sm    "Labour Day"		wk 1st  Mon in     Oct
+AUS_NSW sm    "Labour Day"		wk 1st  Mon in     Oct
+AUS_SA  sm    "Labour Day"		wk 1st  Mon in     Oct
+CAN     sm    "Thanksgiving"		wk 2nd  Mon in     Oct
+CAN_QUE       "Action de Graces"	wk 2nd  Mon in     Oct
+USA     sm wk "Columbus Day"		wk 2nd  Mon in     Oct
+
+: ----- November/novembre
+:
+ITA     sm    "Defunti"			            on     Nov  2
+JPN     sm    "Culture Day"		wk          on     Nov  3
+ITA     sm    "Anniversario Vittoria"	            on     Nov  4
+FIN     bl    "Svenska dagen"		            on     Nov  6
+AUS_TAS sm    "TAS - Recreation Day"	wk          on     Nov  7
+CAN     sm    "Remembrance Day"		wk          on     Nov 11
+CAN_QUE       "Jour du Souvenir (Armistice 1918)" wk on    Nov 11
+FRA     bl    "Armistice 1918"		wk          on     Nov 11
+USA     sm wk "Veteran's Day"		wk          on     Nov 11
+JPN     sm    "Labor Day"		wk          on     Nov 23
+USA     sm wk "Election Day"		wk      Tue after  Nov  2
+AUS     sm    "Melbourne Cup"		gr 1st  Tue in     Nov
+AUS_VIC sm    "Melbourne Cup"		wk 1st  Tue in     Nov
+FIN     bl    "Isänpäivä"		   2nd  Sun in     Nov
+NOR     bk    "Farsdag"			   2nd  Sun in     Nov
+USA     sm wk "Thanksgiving"		wk 4th  Thu in     Nov
+
+: ----- December/Dezember/décembre
+:
+ESP     rd    "Constitución"		rd          on     Dec  6
+FIN     bl    "Itsenäisyyspäivä"	wk          on     Dec  6
+USA     sm    "Bill of Rights Day"	            on     Dec 15
+USA     sm    "Wright Brothers' Day"	            on     Dec 17
+JPN     sm    "Emperor's Birthday"	wk          on     Dec 23
+AUS     sm    "Boxing Day"		wk          on     Dec 26
+BEL     sm    "Tweede kerstdag"		            on     Dec 26
+CAN     sm    "Boxing Day"		wk          on     Dec 26
+GBR           "Boxing Day"		rd          on     Dec 26
+AUS_SA  sm    "SA - Proclamation Day"	wk          on     Dec 28
+AUT     sm    "Silvester"		            on     Dec 31
+BEL     sm    "Oudjaar"			            on     Dec 31
+DEU     sm    "Sylvester"		            on     Dec 31
+FRA     cy    "St Sylvestre"		            on     Dec 31
+HUN     sm    "Szilveszter"		            on     Dec 31
+ITA     sm    "S.Silvestro"		            on     Dec 31
+NLD     sm    "Oudjaar"			            on     Dec 31
+NOR     bk    "Nyttårsaften"		            on     Dec 31
+SWE     bk    "Nyårsafon"		            on     Dec 31
+
+
+:
+: ======================================================================
+:
+: Section 4:  seasons and such (hardcoded? calculated?)
+:
+: Ordered by season: spring, summer, autumn, winter.
+:
+: ======================================================================
+:
+
+: -----
+:
+ESP           "Llega la Primavera"	            on     Mar 20
+FRA     gr    "Printemps"		            on     Mar 20
+JPN     sm    "Vernal Equinox Day"	wk          on     3/21/1991
+JPN     sm    "Vernal Equinox Day"	wk          on     3/20/1992
+JPN     sm    "Vernal Equinox Day"	wk          on     3/20/1993
+JPN     sm    "Vernal Equinox Day"	wk          on     3/21/1994
+JPN     sm    "Vernal Equinox Day"	wk          on     3/21/1995
+JPN     sm    "Vernal Equinox Day"	wk          on     3/20/1996
+USA           "Spring Begins"		            on     Mar 22
+
+: -----
+:
+AUT     bl    "Sommerzeit"		   last Sun in     Mar
+DEU     bl    "Sommerzeit"		   last Sun in     Mar
+DNK     sm bl "Sommertid"		   last Sun in     Mar
+ESP           "Llega el Verano"		            on     Jun 21
+FIN     cy    "Kesäaika (+1)"		   last Sun in     Mar
+FIN     bl    "Juhannuspäivä"		wk      Sat after  Jun 20
+FRA     gr    "Eté"			            on     Jun 21
+HUN     sm    "Szentivánéj"		            on     Jun 24
+NOR     bl    "Sommertid"		   last Sun in     Mar
+SWE     bk    "Midsommarafton"		bk      Fri before Jun 26
+SWE     wk    "Midsommardagen"		wk      Sat before Jun 27
+SWE     bl    "Sommartid"		   last Sun in     Mar
+USA           "Summer Begins"		            on     Jun 22
+
+: -----
+:
+ESP           "Llega el Otoño"		            on     Sep 23
+FRA     gr    "Automne"			            on     Sep 23
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1991
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1992
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1993
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1994
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1995
+JPN     sm    "Autumnal Equinox Day"	wk          on     9/23/1996
+USA           "Fall Begins"		            on     Sep 22
+
+: -----
+:
+AUT     bl    "Winterzeit"		   last Sun in     Oct
+DEU     bl    "Winterzeit"		   last Sun in     Oct
+DEU_BAV bl    "Winterzeit"		   last Sun in     Oct
+DNK     sm bl "Vintertid"		   last Sun in     Oct
+FIN     cy    "Kesäaika (-1)"		   last Sun in     Oct
+FRA     gr    "Hiver"			            on     Dec 21
+ESP           "Llega el Invierno"	            on     Dec 22
+NOR     bl    "Vintertid"		   last Sun in     Sep
+SWE     bl    "Vintertid"		   last Sun in     Sep
+USA           "Winter Begins"		            on     Dec 22
+
+
+:
+: ======================================================================
+:
+: Section 5:  Ecclestiastical holidays and observances
+:
+: General, saints' days, Christmas-related, Easter-related.
+:
+: ======================================================================
+:
+
+: ----- General, in date order
+:
+FIN     rd    "Loppiainen"		wk          on     Jan  6
+FRA     cy    "Epiphanie"		   1st  Sun in     Jan
+ITA     sm    "Festa della donna"	            on     Mar  8
+NLD     sm    "Dodenherdenking"		            on     May  4
+NLD     sm    "Bevrijdingsdag"		            on     May  5
+DEU_BAV sm    "Einheistag"		wk          on     Oct  3
+NLD     sm    "Dierendag"		            on     Oct  4
+AUT     sm    "Maria Himmelfahrt"	wk          on     Aug 15
+DEU_BAV sm    "Mariä Himmelfahrt"	wk          on     Aug 15
+ESP     rd    "Asunción"		rd          on     Aug 15
+FRA     bl    "Assomption"		wk          on     Aug 15
+DEU     sm    "Reformationstag"		            on     Oct 31
+HUN     sm    "Halottak napja"		bk          on     Oct 31
+AUT     sm    "Allerheiligen"		wk          on     Nov  1
+BEL     sm    "Allerheiligen"		            on     Nov  1
+DEU     sm    "Allerheiligen"		wk          on     Nov  1
+ESP     rd    "Todos los Santos"	rd          on     Nov  1
+FRA     bl    "Toussaint"		wk          on     Nov  1
+HUN     sm    "Mindenszentek napja"	            on     Nov  1
+ITA           "Ognissanti"		wk          on     Nov  1
+NLD     sm    "Allerheiligen"		            on     Nov  1
+AUT     sm    "Allerseelen"		            on     Nov  2
+BEL     sm    "Allerzielen"		wk          on     Nov  2
+NLD     sm    "Allerzielen"		            on     Nov  2
+DNK           "Mortensdag"		            on     Nov 11
+FIN     rd    "Pyhäinpäivä"		wk 1st  Sat in     Nov
+SWE     wk    "Alla helgons dag"	wk 1st  Sun in     Nov    minus 1
+AUT     sm    "Maria Empfängnis"	wk          on     Dec  8
+ESP     rd    "Inmaculada"		rd          on     Dec  8
+ITA           "Immacolata"		wk          on     Dec  8
+
+: ----- Selected saints' days, in date order
+:
+DEU_BAV sm bk "Lichtmeß"	                    on     Feb  2
+ESP     rd    "San José"		rd          on     Mar 19
+ITA     sm    "S.Giuseppe"		            on     Mar 19
+DEU_BAV sm bk "Pankraz"			            on     May 11
+DEU_BAV sm bk "Servaz"			            on     May 12
+DEU_BAV sm bk "Bonifaz"			            on     May 13
+DEU_BAV sm bk "Sophie"			            on     May 14
+NOR     bk    "St. Hans"		            on     Jun 23
+CAN_QUE       "St-Jean Baptiste"	            on     Jun 24
+DEU_BAV sm bk "Johanni"			            on     Jun 24
+DNK           "Skt. Hans dag"		            on     Jun 24
+DEU_BAV sm bk "Siebenschläfer"		            on     Jun 27
+ITA     sm    "SS.Pietro e Paolo"	            on     Jun 29
+HUN           "Szt. István, az államalapítás ünnepe" wk on Aug 20
+DEU_BAV sm bk "Mariä Geburt"		            on     Sep  8
+ITA     sm    "S.Francesco"		            on     Oct  4
+AUT     sm    "Martini"			            on     Nov 11
+DEU_BAV sm bk "Martini"			            on     Nov 11
+AUT     sm    "Leopoldi"		            on     Nov 15
+AUT     sm    "Krampus"			            on     Dec  5
+AUT     sm    "Nikolaus"		            on     Dec  6
+DEU_BAV sm bk "Nikolaus"		            on     Dec  6
+HUN     sm    "Mikulás"			            on     Dec  6
+
+: ----- Christmas-related
+:
+#define XmasEve Dec 24
+#define Xmas Dec 25
+
+NOR     wk    "Bots & bededag"		   last Sun in Oct
+DEU     sm    "Buß- und Bettag"		   Sun before XmasEve minus 32 days
+DEU_BAV sm    "Buß- und Bettag"		wk Sun before XmasEve minus 32 days
+DEU_BAV sm bk "Christkönig"		   Sun before Dec 23  minus 28 days
+
+AUT     sm    "1. Advent"		   Sun before XmasEve minus 21 days
+DEU     sm    "1. Advent"		   Sun before XmasEve minus 21 days
+DNK     wk    "1. Advent"		wk Sun before Xmas    minus 21 days
+FIN     rd    "1. adventtisunnuntai"	   Sun before XmasEve minus 21 days
+NOR     bk    "1. Advent"		   Sun before Dec 23  minus 21 days
+SWE     bk    "1. Advent"		   Sun before Dec 23  minus 21 days
+
+AUT     sm    "2. Advent"		   Sun before XmasEve minus 14 days
+DEU     sm    "2. Advent"		   Sun before XmasEve minus 14 days
+DNK     wk    "2. Advent"		wk Sun before Xmas    minus 14 days
+FIN     rd    "2. adventtisunnuntai"	   Sun before XmasEve minus 14 days
+NOR     bk    "2. Advent"		   Sun before Dec 23  minus 14 days
+SWE     bk    "2. Advent"		   Sun before Dec 23  minus 14 days
+
+AUT     sm    "3. Advent"		   Sun before XmasEve minus  7 days
+DEU     sm    "3. Advent"		   Sun before XmasEve minus  7 days
+DNK     wk    "3. Advent"		wk Sun before Xmas    minus  7 days
+FIN     rd    "3. adventtisunnuntai"	   Sun before XmasEve minus  7 days
+NOR     bk    "3. Advent"		   Sun before Dec 23  minus  7 days
+SWE     bk    "3. Advent"		   Sun before Dec 23  minus  7 days
+
+DEU     sm    "4. Advent"		   Sun before XmasEve
+DNK     wk    "4. Advent"		wk Sun before Xmas
+FIN     rd    "4. adventtisunnuntai"	   Sun before XmasEve
+NOR     bk    "4. Advent"		   Sun before Dec 23
+SWE     bk    "4. Advent"		   Sun before Dec 23
+AUT     sm    "4. Advent"		   Sun before XmasEve
+
+AUT     sm    "Hl. Abend"		       on     XmasEve
+DEU     sm    "Hl. Abend"	               on     XmasEve
+DNK     wk    "Juleaftensdag"		wk     on     XmasEve
+NOR     bk    "Julaften"		       on     XmasEve
+SWE     bk    "Julafton"		bk     on     XmasEve
+
+AUS     sm    "Christmas"		wk     on     Xmas
+AUT     sm    "Christtag"		wk     on     Xmas
+BEL     sm    "Kerstmis"		       on     Xmas
+CHE     rd    "Noel"			wk     on     Xmas
+DEU     sm    "Weihnachten"		wk     on     Xmas len 2
+DNK     wk    "Jul 1edag"		wk     on     Xmas
+FIN     rd    "Joulupäivä"		wk     on     Xmas
+FRA     bl    "Noël"			wk     on     Xmas
+GBR           "Christmas Day"		rd     on     Xmas
+HUN           "Karácsony"		wk     on     Xmas len 2
+ITA           "Natale"			wk     on     Xmas
+NLD     sm    "Kerstmis"		wk     on     Xmas len 2
+NOR     wk    "1. Juledag"		wk     on     Xmas
+SWE     wk    "Juldagen"		wk     on     Xmas
+USA     sm wk "Christmas"		wk     on     Xmas
+
+AUT     sm    "Stephani"		wk     on     Dec 26
+DNK     wk    "Jul 2edag"		wk     on     Dec 26
+FIN     rd    "2. joulupäivä"		wk     on     Dec 26
+ITA           "S.Stefano"		wk     on     Dec 26
+NOR     wk    "2. Juledag"		wk     on     Dec 26
+SWE     wk    "Annandag Jul"		wk     on     Dec 26
+
+NLD     sm    "Driekoningen"		       on     Jan  3
+SWE     bk    "Trett.d.afton"		bk     on     Jan  5
+AUT     sm    "Hl. 3 Koenige"		wk     on     Jan  6
+DEU     sm    "Hl.3 Könige"		wk     on     Jan  6
+DNK           "Hellig tre Konger"	       on     Jan  6
+ESP     rd    "Reyes"			rd     on     Jan  6
+HUN     sm    "Vízkereszt"		       on     Jan  6
+ITA           "Epifania"		wk     on     Jan  6
+SWE     wk    "Trett.d. Jul"		wk     on     Jan  6
+USA     wk    "Epiphany"		wk     on     Jan  6
+
+: ----- Easter-related
+:
+#define Easter easter
+
+ITA     sm    "Giovedi Grasso"		              Easter minus 52 days
+
+DNK     wk    "Fastelavn"		wk            Easter minus 49 days
+FIN     rd    "Laskiaissunnuntai"		      Easter minus 49 days
+NOR     wk    "Søn. før faste"		wk            Easter minus 49
+
+AUT     sm    "Rosenmontag"		              Easter minus 48 days
+DEU     sm    "Rosenmontag"		              Easter minus 48 days
+SWE     bk    "Alla hjärtans dag"	              Easter minus 48 days
+
+AUT     sm    "Faschingsdienstag"	              Easter minus 47 days
+BEL     sm    "Vastenavond"		wk            Easter minus 47 days
+DEU     sm    "Fasching"		              Easter minus 47 days
+FIN     rd    "Laskiaistiistai"		              Easter minus 47 days
+ITA     sm    "Martedi Grasso"		              Easter minus 47 days
+NLD     sm    "Vastenavond"		              Easter minus 47 days
+SWE     bk    "Fettisdagen"		              Easter minus 47 days
+USA     sm wk "Shrove Tuesday"		              Easter minus 47 days
+
+AUT     sm    "Aschermittwoch"		              Easter minus 46 days
+BEL     sm    "Aswoensdag"		wk            Easter minus 46 days
+DEU     sm    "Aschermittwoch"		              Easter minus 46 days
+ESP     sm    "Miércoles de ceniza"		      Easter minus 46 days
+ITA     sm    "Ceneri"			              Easter minus 46 days
+NLD     sm    "Aswoensdag"		              Easter minus 46 days
+SWE     bk    "Askonsdagen"		              Easter minus 46 days
+USA     sm wk "Ash Wednesday"		              Easter minus 46 days
+
+DEU_BAV sm bk "1. Fastensonntag"		      Easter minus 42 days
+DEU_BAV sm bk "2. Fastensonntag"		      Easter minus 35 days
+DEU_BAV sm bk "3. Fastensonntag"		      Easter minus 28 days
+DEU_BAV bl    "Oculi"		                      Easter minus 28 days
+DEU_BAV sm bk "4. Fastensonntag"		      Easter minus 21 days
+DEU_BAV sm bk "5. Fastensonntag"		      Easter minus 14 days
+FIN     rd    "Marianpäivä"		              Easter minus 14 days
+
+AUT     sm    "Palmsonntag"		              Easter minus  7 days
+BEL     sm    "Palmzondag"		              Easter minus  7 days
+DEU_BAV sm bk "Palmsonntag"		              Easter minus  7 days
+DNK     wk    "Palme søndag"		wk            Easter minus  7 days
+FIN     rd    "Palmusunnuntai"		              Easter minus  7 days
+NLD     sm    "Palmzondag"		              Easter minus  7 days
+USA     sm bk "Palm Sunday"		              Easter minus  7 days
+
+DEU_BAV sm gr "Karwoche"		   Mon before Easter               len 6
+
+AUT     sm    "Gruendonnerstag"		              Easter minus  3 days
+BEL     sm    "Witte Donderdag"		wk            Easter minus  3 days
+DNK     wk    "Skærtorsdag"		wk            Easter minus  3 days
+ESP     sm    "Jueves Santo"		wk            Easter minus  3 days
+NLD     sm    "Witte Donderdag"		              Easter minus  3 days
+NOR     wk    "Skjærtorsdag"		wk            Easter minus  3 days
+USA     sm wk "Maundy Thursday"		              Easter minus  3 days
+
+AUS     sm    "Good Friday"		wk            Easter minus  2 days
+AUT     sm    "Karfreitag"		              Easter minus  2 days
+BEL     sm    "Goede Vrijdag"		wk            Easter minus  2 days
+CAN     sm    "God Friday"		wk            Easter minus  2 days
+CHE     rd    "Vendredi Saint"		wk            Easter minus  2 days
+DEU     sm    "Karfreitag"		wk            Easter minus  2 days
+DNK     wk    "Langfredag"		wk            Easter minus  2 days
+ESP     sm    "Viernes Santo"		wk            Easter minus  2 days
+FIN     rd    "Pitkäperjantai"		wk            Easter minus  2 days
+GBR           "Good Friday"		rd            Easter minus  2 days
+NLD     sm    "Goede Vrijdag"		              Easter minus  2 days
+NLD     sm    "Goede Vrijdag"		              Easter minus  2 days
+NOR     wk    "Langfredag"		wk            Easter minus  2 days
+CAN_QUE sm    "Vendredi Saint"		wk            Easter minus  2 days
+SWE     wk    "Långfredagen"		wk            Easter minus  2 days
+USA     sm wk "Good Friday"		              Easter minus  2 days
+
+AUT     sm    "Karsamstag"		              Easter minus  1 day
+NOR     bk    "Påskeaften"		              Easter minus  1 day
+SWE     bk    "Påskafton"		bk            Easter minus  1 day
+
+AUS     sm    "Easter Sunday"		wk            Easter
+AUT     sm    "Ostern"			wk            Easter               len 2
+BEL     sm    "Pasen"			wk            Easter
+CAN     sm    "Easter"			wk            Easter
+CHE     rd    "Paques"			wk            Easter
+DEU     sm    "Ostern"		        wk            Easter               len 2
+DNK     wk    "Påskedag"		wk            Easter
+ESP     sm    "Pascua"			wk            Easter
+FIN     rd    "Pääsiäinen"		wk            Easter
+FRA     bl    "Pâques"			wk            Easter               len 2
+GBR           "Easter Sunday"		rd            Easter
+HUN           "Húsvét"			wk            Easter               len 2
+ITA           "Pasqua"			wk            Easter
+NLD     sm    "Pasen"			wk            Easter               len 2
+NOR     wk    "1. Påskedag"		wk            Easter
+CAN_QUE sm    "Paques"			wk            Easter
+SWE     wk    "Påskdagen"		wk            Easter
+USA     sm wk "Easter"			wk            Easter
+
+AUS     sm    "Easter Monday"		wk            Easter plus   1 day
+BEL     sm    "Paasmaandag"		wk            Easter plus   1 day
+CAN     sm    "Easter Monday"		wk            Easter plus   1 day
+DNK     wk    "2. Påskedag"		wk            Easter plus   1 day
+FIN     rd    "2. pääsiäispäivä"		wk    Easter plus   1 day
+GBR           "Easter Monday"		rd            Easter plus   1 day
+ITA           "Lunedi dell'Angelo"	wk            Easter plus   1 day
+NOR     wk    "2. Påskedag"		wk            Easter plus   1 day
+CAN_QUE sm    "Lundi de Paques"		wk            Easter plus   1 day
+SWE     wk    "Annandag påsk"		wk            Easter plus   1 day
+USA     sm wk "Easter Monday"		              Easter plus   1 day
+
+DNK     wk    "Store bededag"		wk            Easter plus  26 days
+
+FIN     rd    "Rukoussunnnuntai"	wk            Easter plus  35 days
+
+AUT     sm    "Christi Himmelfahrt"	wk            Easter plus  39 days
+BEL     sm    "Hemelvaart"		wk            Easter plus  39 days
+CHE     rd    "Ascension"		wk            Easter plus  39 days
+DEU     sm    "Himmelfahrt"		wk            Easter plus  39 days
+DEU_BAV sm    "Christi Himmelfahrt"	wk            Easter plus  39 days
+DNK     wk    "Kristi himmelfart"	wk            Easter plus  39 days
+ESP     sm    "Ascension"		              Easter plus  39 days
+FIN     rd    "Helatorstai"		wk            Easter plus  39 days
+FRA     bl    "Ascension"		wk            Easter plus  39 days
+ITA     sm    "Ascensione"		              Easter plus  39 days
+NLD     sm    "Hemelvaart"		wk            Easter plus  39 days
+NOR     wk    "Kristi Him.f.dag"	wk            Easter plus  39 days
+SWE     wk    "Kristi Him.f."		wk            Easter plus  39 days
+
+USA     sm wk "Ascension"		              Easter plus  40 days
+
+ESP     sm    "Trinidad"		              Easter plus  46 days
+USA     sm wk "Trinity"			              Easter plus  46 days
+
+NOR     bk    "Pinseaften"		              Easter plus  48 days
+SWE     bk    "Pingstafton"		bk            Easter plus  48 days
+
+AUT     sm    "Pfingsten"		wk            Easter plus  49 days len 2
+BEL     sm    "Pinksteren"		wk            Easter plus  49 days len 2
+CHE     rd    "Pentecote"		wk            Easter plus  49 days
+DEU     sm    "Pfingsten"		wk            Easter plus  49 days len 2
+DEU_BAV sm    "Pfingsten"		wk            Easter plus  49 days len 2
+DNK     wk    "Pinsedag"		wk            Easter plus  49 days
+ESP     sm    "Pentecostes"		wk            Easter plus  49 days
+FIN     rd    "Helluntaipäivä"		              Easter plus  49 days
+FRA     bl    "Pentecôte"		wk            Easter plus  49 days len 2
+HUN           "Pünkösd"			wk            Easter plus  49 days len 2
+ITA     sm    "Pentecoste"		              Easter plus  49 days
+NLD     sm    "Pinksteren"		wk            Easter plus  49 days len 2
+NOR     wk    "1. Pinsedag"		wk            Easter plus  49 days
+SWE     wk    "Pingstdagen"		wk            Easter plus  49 days
+USA     sm wk "Pentecost"		              Easter plus  49 days
+
+DNK     wk    "2. Pinsedag"		wk            Easter plus  50 days
+CHE     rd    "L. de Pentecote"		wk            Easter plus  50 days
+NOR     wk    "2. Pinsedag"		wk            Easter plus  50 days
+SWE     wk    "Annandag Pingst"		wk            Easter plus  50 days
+USA     sm wk "Corpus Christi"		              Easter plus  53 days
+USA     sm    "Corpus Christi"		              Easter plus  53 days
+
+AUT     sm    "Fronleichnam"		wk            Easter plus  60 days
+DEU     sm    "Fronleichnam"		wk            Easter plus  60 days
+ESP     sm    "Corpus Christi"		              Easter plus  60 days
+
+
+:
+: ======================================================================
+:
+: Section 6:  Jewish holidays and observances
+:
+: Arranged by year.
+:
+: ======================================================================
+:
+
+ISR     wk    "Shabbat"			wk      Sat
+: ----- 5757
+ISR     sm ye "Pesach"			cy           on    4/22/1997 len 8
+ISR     sm ye "Shavuos"			cy           on    6/11/1997 len 2
+: ----- 5758
+ISR     sm ye "Rosh Hashanah"		cy           on    10/2/1997 len 2
+ISR     sm ye "Yom Kippur"		cy           on    10/11/1997
+ISR     sm ye "Chanukah"		cy           on    12/24/1997 len 8
+ISR     sm ye "Pesach"			cy           on    4/11/1998 len 8
+: ----- 5759
+ISR     sm ye "Rosh Hashanah"		cy           on    9/21/1998 len 2
+ISR     sm ye "Yom Kippur"		cy           on    9/30/1998
+ISR	sm ye "Succot"			cy           on    10/5/1998 len 8
+ISR	sm ye "Shemini Atzeret"		cy           on    10/12/1998
+ISR	sm ye "Simchat Torah"		cy           on    10/13/1998
+ISR	sm ye "Chanukah"		cy           on    12/14/1998 len 8
+ISR	sm ye "Tu B'Shvat"		cy           on    2/1/1999
+ISR	sm ye "Purim"			cy           on    3/2/1999
+ISR	sm ye "Pesach"			cy           on    4/1/1999 len 8
+ISR	sm ye "Yom HaAtzmaut"		cy           on    4/21/1999
+ISR	sm ye "Lag B'Omer"		cy           on    5/4/1999
+ISR	sm ye "Shavuot"			cy           on    5/21/1999
+ISR	sm ye "Tisha B'Av"		cy           on    7/22/1999
+: ----- 5760
+ISR     sm ye "Rosh Hashanah"		cy           on    9/11/1999 len 2
+ISR     sm ye "Yom Kippur"		cy           on    9/20/1999
+ISR	sm ye "Succot"			cy           on    9/25/1999 len 8
+ISR	sm ye "Shemini Atzeret"		cy           on    10/2/1999
+ISR	sm ye "Simchat Torah"		cy           on    10/3/1999
+ISR	sm ye "Chanukah"		cy           on    12/4/1999 len 8
+: ----- 5761
+ISR     sm ye "Rosh Hashanah"		cy           on    9/30/2000 len 2
+ISR     sm ye "Yom Kippur"		cy           on    10/9/2000
+ISR	sm ye "Succot"			cy           on    10/14/2000 len 8
+: ----- 5762
+ISR     sm ye "Rosh Hashanah"		cy           on    9/18/2001 len 2
+ISR     sm ye "Yom Kippur"		cy           on    9/27/2001
+ISR	sm ye "Succot"			cy           on    10/2/2001 len 8
+: ----- 5763
+ISR     sm ye "Rosh Hashanah"		cy           on    9/7/2002 len 2
+ISR     sm ye "Yom Kippur"		cy           on    9/16/2002
+ISR	sm ye "Succot"			cy           on    9/21/2002 len 8
+
+
+:
+: ======================================================================
+:
+: Section 7:  THESE NEED TO BE INSERTED ABOVE, BUT I DON'T SPEAK FINNISH!
+:
+: Arranged by year.  In need of standard alignment
+:
+: ======================================================================
+:
+
+: pääsiäisen määräämät
+
+: Kaikki muut
+
+FIN     bl    "Runebergin päivä"		     on 5 Feb
+FIN     bl    "Ystävänpäivä"		on 14 Feb
+: karkauspäivä vain karkausvuotena. Kuinka määritellään plan:lle?
+:FIN bl    "Karkauspäivä"		on 29 Feb minus 5 days
+FIN     bl    "Karkauspäivä"		on 24 Feb 1964
+FIN     bl    "Karkauspäivä"		on 24 Feb 1968
+FIN     bl    "Karkauspäivä"		on 24 Feb 1972
+FIN     bl    "Karkauspäivä"		on 24 Feb 1976
+FIN     bl    "Karkauspäivä"		on 24 Feb 1980
+FIN     bl    "Karkauspäivä"		on 24 Feb 1984
+FIN     bl    "Karkauspäivä"		on 24 Feb 1988
+FIN     bl    "Karkauspäivä"		on 24 Feb 1992
+FIN     bl    "Karkauspäivä"		on 24 Feb 1996
+FIN     bl    "Karkauspäivä"		on 24 Feb 2000
+FIN     bl    "Karkauspäivä"		on 24 Feb 2004
+FIN     bl    "Karkauspäivä"		on 24 Feb 2008
+FIN     bl    "Karkauspäivä"		on 24 Feb 2012
+FIN     bl    "Karkauspäivä"		on 24 Feb 2016
+FIN     bl    "Karkauspäivä"		on 24 Feb 2020
+FIN     bl    "Karkauspäivä"		on 24 Feb 2024
+FIN     bl    "Karkauspäivä"		on 24 Feb 2028
+FIN     bl    "Karkauspäivä"		on 24 Feb 2032
+FIN     bl    "Karkauspäivä"		on 24 Feb 2036
+FIN     bl    "Karkauspäivä"		on 24 Feb 2040
+FIN     bl    "Kalevalan päivä"		on  28 Feb
+
+FIN     bl    "Naistenpäivä"		on 8 Mar
+
+FIN     bl    "Acricolanpäivä"		on 9 Apr
+
+FIN     bl    "Snellmanin päivä"		on 12 May
+FIN     bl    "Kaatuneiden muistopäivä"		3rd  Sun in May
+
+FIN     bl    "Unikeonpäivä"		on 27 Jul
+
+FIN     bl    "Kansainvälinen last en päivä"	on 7 Oct
+FIN     bl    "Aleksis Kiven päivä"	on 10 Oct
+FIN     bl    "YK:n päivä"		on 24 Oct
+
+FIN     bl    "Viattomien last en päivä"	on 28 Dec

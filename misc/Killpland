@@ -1,0 +1,27 @@
+#! /usr/local/bin/perl
+#
+# KillPlanD
+#
+# Perl Script to kill off a running 'pland'
+# To be run from $HOME/.logout
+#
+# by cliff@shadow.phys.ucalgary.ca (Cliff Marcellus)
+#
+$myUID          = $<;
+$Template       = "/tmp/.pland";
+
+   $TargetFile = sprintf("%s%s", $Template, $myUID);
+
+   if (! -e $TargetFile) {
+     exit(1);                           # no /tmp/.planXXX file
+   };
+
+   open(PIDFILE, "< $TargetFile") || die "Cannot open $TargetFile ($!)\n";
+   chop($InputLine = <PIDFILE>);
+   close(PIDFILE);
+
+   $InputLine =~ s/^\s+//;
+   ($PID, $rest) = split(/ /, $InputLine, 2);
+   kill 'QUIT', $PID;
+
+exit(1);

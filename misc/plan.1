@@ -1,0 +1,313 @@
+.TH PLAN 1
+.SH NAME
+plan \- interactive X/Motif calendar and day planner
+.br
+pland \- daemon for
+.I plan
+.br
+notifier \- X/Motif text displayer for
+
+.SH SYNOPSIS
+.B plan
+[options]
+.br
+.B plan
+[[yyyy]mmdd]hhmm [options] [\fImessage\fR]*
+.br
+.B pland
+[-d] -[kK] -[lL]
+.br
+.B /usr/lib/plan/notifier
+[-hdv123] [-t\fItitle\fR] [-s\fIsubtitle\fR] [-i\fIicontitle\fR] [file]
+
+.SH DESCRIPTION
+.B plan
+is a schedule planner based on X/Motif. It displays a month calendar
+similar to xcal, but every day box is large enough to show appointments
+in small print. By pressing on a day box, the appointments for that day
+can be listed and edited. This manual page describes the command line
+options of
+.BR plan .
+For information on how to use
+.BR plan ,
+refer to the on-line help pages.
+.LP
+.B plan
+has three modes: GUI, which starts up with a window in interactive mode,
+append, which adds an appointment from the command line without windows,
+and batch, which prints miscellaneous information without windows. Batch
+mode is mainly useful for external scripts (CGI and otherwise) that process
+appointment data.
+.LP
+.B pland
+is a daemon that watches for appointment triggers. The daemon is normally
+started from your .sgisession or .xsession file. It puts itself in the
+background. If
+.B plan
+is started, it checks for the existence of the daemon, and offers to start
+one if it can't find it.
+.LP
+.B notifier
+displays the standard input in a window, with appropriate titles and
+background colors. The only program that ever uses it is the daemon; it
+is a separate program only to keep the daemon small.
+
+.SS OPTIONS OF PLAN, GUI MODE
+.IP \-s
+Standalone, don't offer to start daemon if none exists. Without daemon, no
+appointment alarms and warnings will trigger. If a daemon happens to exist,
+it is notified when the database changes, but no warning is printed if it
+doesn't.
+.IP \-S
+When plan starts up, silently start the daemon if it does not exist.
+.IP \-f
+Don't fork on startup. This is useful for debugging.
+.IP \-k
+If there appears to be another
+.B plan
+running, start up anyway. This is useful if a ~/.plan.dir/lock.plan file got
+accidentally left behind, and plan fails to check whether the older plan
+still exists. This option is largely obsolete in version 1.2.
+
+.SS OPTIONS OF PLAN, APPEND MODE
+.IP [mmdd]hhmm
+Add an appointment at mm/dd hh:mm (month/day hours:minutes). If mmdd is not
+specified, today's date is used. No menus will start up. No option may be
+specified. Instead of the mmddhhmm notation, a date and time may be specified,
+such as '24.12. 12:34'.
+.IP \-u\ U
+add appointment to user file U instead of your own appointment file.
+.IP \-l\ T
+Set the length of the new appointment to N, in the form hours:minutes.
+.IP \-n\ T
+Set new appointment will have no time associated with it. This overrides
+the time set with the [mmdd]hhmm option, which must be specified anyway.
+.IP \-r\ N
+The new appointment repeats every N days. N is an integer greater than zero.
+.IP \-d\ N
+The new appointment repeats on day N of the month. N is an integer between
+1 and 31. There can be multiple -d options.
+.IP \-D\ N
+The new appointment repeats on weekday N. N=0 indicates Sunday, 1 is Monday,
+2 is Tuesday, 3 is Wednesday, 4 is Thursday, 5 is Friday, and 6 is Saturday.
+There can be multiple -D options.
+.IP \-O\ N
+The -D days only repeat the Nth time of the month.  May be repeated.  For
+example, '-D 2 -O 2 -O 4' means the 2nd and 4th Tuesdays of each month. '-O 6' 
+means the last one.
+.IP \-e\ D
+The new appointment stops repeating on date D. D is a string such as '31.12.' 
+or '12/31'.
+.IP \-w\ N
+Set the early warning time of the new appointment to N minutes.
+.IP \-W\ N
+Set the late warning time of the new appointment to N minutes.
+.IP [message]*
+The note message associated with the new appointment. It should be quoted
+if it contains shell metacharacters.
+
+.SS OPTIONS OF PLAN, BATCH MODE
+.IP \-h
+List available options.
+.IP \-d
+Print fallback X resources and exit. The output can be appended directly
+to the ~/.Xdefaults file for modification of the geometry, color, and font
+defaults.
+.IP \-v
+Print the program version and patchlevel and exit.
+.IP \-W\ [S]
+Indicates that
+.B plan
+is not called by a user but by the web front-end. In this case, there
+are no ``own'' appointments because the CGI script that executes
+.B plan
+is probably run by the pseudo-user ``nobody'' or ``httpd''. A dummy user
+``webplan'' is substituted instead, whose home directory is assumed to
+be /tmp. All database files from netplan server S will be read. If S is
+omitted, ``localhost'' is assumed. This mode is possible only if there
+is a netplan server running on S (or localhost). This option is also
+available with -t mode and in non-interactive mode; in this case it
+determines which files can be listed with -o -t, and which files can be
+edited.
+.IP \-F
+Print a list of all appointment files found on a given netplan server.
+By default the server on the local host is queried, unless a -W option
+specifies another server host.
+.IP \-H\ Y
+Print all holidays in the year Y (1970..2037) to stdout and exit. This
+is used by the web front-end.
+.IP \-o
+If used with -t or -T, also prints appointments of all users configured
+with the Config->Users popup.
+.IP \-u\ L
+If used with -t or -T, prints appointments of all users named in the
+comma-separated list L. The -o and -u options are mutually exclusive.
+.IP \-t\ [D\ [n]]
+Print a list of today's appointments to stdout. Don't start up interactive
+windows. The exit status is 0 if there are appointments on the specified
+date, and 1 otherwise. If a date D is specified, print appointments on that
+date. All standard date specifiers work:
+.RS
+.IP -t\ +3 13
+Print appointments in three days
+.IP -t\ -1 13
+Print yesterday's appointments
+.IP -t\ tomorrow 13
+Print appointments for tomorrow
+.IP -t\ thursday 13
+Print appointments for Thursday
+.IP -t\ 25.12. 13
+Print appointments for Christmas, if 24-hour mode is selected
+.IP -t\ 12/25 13
+Print appointments for Christmas, if 12-hour mode is selected.
+12/24 hour mode is selected with the Config pulldown in the main window.
+.LP
+If a second argument n is given, n days are printed beginning with day D.
+The default is 1. For example, "plan -t today 7" prints one week.
+.RE
+.IP \-T\ [D\ [n]]
+Same as -t, but print the end time instead of the length (hi Vera).
+.IP \-i
+If used with the -t or -T options, print the data in a form that is easy
+to parse for other programs. This is used by the web front-end.
+.IP \-W\ [S]
+switch to web front-end mode and read the files from the netplan server
+on host S, or localhost if S is omitted. These files can then be chosen
+from with -u. See above for details.
+
+.SS OPTIONS OF PLAND
+.IP \-d
+Debug mode. Runs pland in the foreground without forking, and prints
+debugging information. Recommended if pland seems to die unexpectedly.
+(The most common cause of disappearing pland's is a nonfunctional utmp;
+if -d is used pland recommends to recompile with the -DRABBITS option.)
+This option must precede the other options.
+.IP \-l
+Periodically check the system utmp to see if the user is still logged
+in. If not, exit. This is the default on SGI, Sun, and other SYSV systems.
+.IP \-L
+(capital L) Do not check utmp. Use this option if pland dies frequently,
+and running pland with the \-d options reports ``logout, exiting'' for no
+apparent reason. On many systems utmp is not reliable, and some programs
+like xterm so not create utmp records unless configured properly. Use \-L
+on such systems.  This has been made the default for Debian GNU/Linux,
+as it is safer that \-l.
+.IP \-k
+If another daemon exists, kill it and restart.
+.IP \-K
+(capital K) If another daemon exists, kill it and exit.
+
+.SS OPTIONS OF NOTIFIER
+.IP \-h
+List available options.
+.IP \-d
+Print fallback X resources and exit. The output can be appended directly
+to the ~/.Xdefaults file for modification of the geometry, color, and font
+defaults.
+.IP \-v
+Print the program version and patchlevel and exit.
+.IP \-1
+Set the window background color to green (early warning).
+.IP \-2
+Set the window background color to yellow (late warning).
+.IP \-3
+Set the window background color to red (alarm). This is the default.
+.IP \-t\fItitle\fR
+Set the title string above the message text (which is read from stdin).
+.IP \-s\fIsubtitle\fR
+Set the subtitle string below the main title, in a small font.
+.IP \-i\fIicontitle\fR
+Set the icon title string that is printed below the mwm/4Dwm icon.
+.LP
+In addition to these options, plan and notifier support the usual X options
+-iconic and -geometry.
+
+.SH FILES
+In Debian, all user files are located in the
+.I ~/.plan.dir/
+directory, and slightly renamed.
+.IP ~/.plan.dir/dayplan
+Database with all public entries and configuration options of
+.BR plan .
+See plan(4) for details.
+.IP ~/.plan.dir/dayplan.priv
+Database with all private entries.
+.IP ~/.plan.dir/holiday
+Definition of holidays. See the help text for the "Define Holiday" popup
+menu that can be installed with the Holiday pulldown.
+.IP ~/.plan.dir/lock.plan
+Lockfile that contains the PID of
+.BR plan .
+Used to prevent multiple
+.B plan
+instances, and to send HUP signals to if a non-interactive
+.B plan
+invocation changed the database.
+.IP ~/.plan.dir/lock.pland
+Lockfile that contains the PID of the
+.B pland
+daemon. Used to prevent multiple daemons, and to send HUP signals to if
+the database changed for any reason.
+.IP /usr/bin/plan
+.br
+The
+.B plan
+program.
+.IP /usr/bin/pland
+The
+.B pland
+daemon.
+.IP /usr/lib/plan/notifier
+The
+.B notifier
+program.
+.IP /usr/share/plan/plan.help
+The online help texts used by
+.BR plan .
+.IP /usr/lib/plan/plan.help.X
+This help file replaces plan.help if the language is set to X in the Config
+Languages pulldown menu.
+.IP /etc/plan/holiday
+Definition of system standard holidays. They are read before ~/.holiday,
+and can be overridden in ~/.holiday. They must be edited manually with a
+text editor.  This files used to live in /usr/lib/plan/.
+.IP /usr/lib/plan/plan_cal.ps
+A PostScript skeleton file required for month and year calendar printouts.
+.IP /usr/lib/plan/plan.lang.english
+The standard message file. All messages used in
+.B plan
+must be listed here in ASCII order. If this file is missing, only English
+messages are supported.
+.IP /usr/lib/plan/plan.lang.X
+The message file for language X. At startup,
+.B plan
+scans the /usr/lib/plan directory and puts every file X it finds into the Config
+Language pulldown menu. A message is translated by first looking it up in the
+plan_cal_english file. If the message is found in line n, it is translated
+by using line n of plan.lang.X instead if X was selected with the Language
+pulldown. See the Languages item in the online help menu for instructions
+for creating new language files.
+.LP
+Note that no support for access control is provided by the
+.BR plan
+front-end in this version.
+
+.SS SEE ALSO
+plan(4)
+
+.SS AUTHOR
+Thomas Driemeyer <thomas@bitrot.de>
+.LP
+Please send all complaints, comments, bug fixes, and porting experiences to
+me. Always include your plan version as reported by "plan -v" in your mail.
+To be added to the mailing list, send mail to majordomo@bitrot.de
+with the line "subscribe plan" (without the quotes) in the message body (not
+the subject).
+.LP
+See http://www.bitrot.de/plan.html or https://www.joonet.de/plan/ for new releases.
+
+.SS DEBIAN NOTE
+.LP
+Please note that the Debian GNU/Linux package does not install all
+executables in the locations where the upstream author places them.
+The locations documented in this manpage are the Debian ones.

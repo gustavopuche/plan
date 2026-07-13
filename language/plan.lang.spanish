@@ -1,0 +1,381 @@
+\n(Tentativa de acceso al fichero "%s".)
+\nPlanificadir versión %s\nCompilado %s\n\nAutor: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nSuscripciones en majordomo@bitrot.de. \n  O visita la Web:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nLos fuentes estan disponibles en: \nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (propietario)
+ (solo lectura)
+ (alerta)
+%5d      (pid del fichero llave %s, del utilizador %d)\n
+%d de las %d citas de la base grok\n%s han sido ignoradas\npor una fecha/hora no valida.
+%s es una\nbase de datos grok, no soportada
+%s es una\nbase de datos xmbase-grok, no es posible escribir en el fichero
+%s: %s en la lineas %d en %s\n
+%s: %s: linea no valida:\n%s
+%s: %s: no encontrado\n
+%s: CUIDADO : Imposible de encontrar %s\n
+%s: CUIDADO : No se puede leer el nombre del usuario.\n%s
+%s: WARNING: can't signal daemon: 
+%s: CUIDADO : Imposible iniciar %s: 
+%s: CUIDADO : El fichero %s es la versión 
+%s: CUIDADO : fork imposible\n
+%s: impossible registrar el color %s\n
+%s: impossible crear %s: 
+%s: impossible la evaluación ~%s en %s, utilización de .\n
+%s: impossible escribir en %s: 
+%s: creación del fichero llave imposible
+%s: apertura del fichero llave imposible
+%s: lectura del fichero llave imposible
+%s: borrado del fichero llave imposible
+%s: escritura en el fichero llave imposible
+%s: borrado del script "%s"\n
+%s: fracaso en la terminacion del proceso %d propietario del fichero llave %s\n
+%s: Imposible bloquear la base depués de 3 minutos, no obstante se permite el acceso\n
+%s: generación del script "%s"\n
+%s: script sín seguridad ignorado
+%s: Terminando con la señal %d\n
+%s: Desconexión, me callo...
+%s: Ningun mailer definido\n
+%s: Falta memoria ¿ Como es eso ?
+%s: demonio plan calendar, versión %s.\n
+%s: relectura de la base de datos\n
+%s: en marcha "%s", args
+%s: durmiendo para %d:%02d:%02d\n
+%s: incio de %s\n
+%s: color desconocida para %s\n
+%s: usuario desconocido, autentificación imposible\n
+%s: utmp funciona, vigilando la desconexión
+%s: estas desconectado, fin (prueba -L?)\n
+(h:m)
+(h:m:s) En el reloj del sistema
+-K\tsolo mata el demonio existente\n
+-L es por defecto. Intenta -l si has iniciado demasiados pland.\n
+-L\tno verifica utmp (utmp tiene errores a menudo)\n
+-d\tdebug: en primer plano, mostrara todas las acciones\n
+-k\tmata el demonio existente y continua\n
+-l es por defecto. Intenta -d o -L si pland ya existia antes.\n
+-l\tvigila utmp y sale cuando el usuario se deconecta\n
+-s\tvigila utmp y se duerme cuando el usuario se desconecta\n
+-t\tmuestra las ventanas de notificación en la salida estándar
+Formato de tiempo 12h am/pm
+<desconocido>
+ALARMA a %d:%02d%c
+A proposito
+A proposito...
+Añadir
+Ajustar la hora
+Ajustar la hora...
+Llamada de atención: %s
+Alarma
+Opciones de alarma
+Opciones de alarma
+Alarma:
+Todo
+Todas las entradas
+Color del texto de la cita
+Color del texto de la cita:
+Abril
+Agosto
+Auto borrado de las entradas pasadas
+Ventanas redimensionadas automaticamente
+DST automatico en el calendario Juliano
+Ficheros disponibles :
+Ficheros disponibles, seleccionar y añadir:
+Iniciar la vista en
+Recorrer
+Recorrer el servidor
+Parametrado de la vista del calendario
+Vistas del calendario...
+Imposible encontrar un fichero/esqueleto Postcript\n "%s"
+Anular
+Imposible cambiar el grupo del propietario
+Imposible cambiar el camino del propietario
+Conexión imposible al \nserveur netplan %s
+Imposible suprimir el fichero del propietario
+Imposible modificar los apuntes de %s porque\nfueron leidos de una base de datos grok. Salvar no esta\nimplementado para bases de datos grok. El fichero es\n%s
+No puedo modificar apuntes de %s,\nno tengo permiso de escritura para %s\ o bien %s/.dayplan.\n\nRe-verifica los permisos con Fichero->Releer datos.\nNo puede deshabilitar apuntes individuales, pero puede\ndeshabilitar todos con Configuración->Usuario popup lista.
+No puedo modificar apuntes de %s,\nservidor en %s deniega permiso de escritura.\nRe-verifica los permisos con Fichero->Releer datos.\nNo puede deshabilitar apuntes individuales, pero tu\npuedes deshabilitarlos todos con Configuración->Usuario popup lista.
+Imposible desplazarse a ese lugar, abandono.
+Imposible redirigir la apertura hacia ")%s"
+Imposible recortar una entrada que comporta una repetición no diaria
+Borrar
+Impresión color
+Fondo coloreado para los otros ficheros
+Parametros
+Confirmar
+Contexto
+Continuar
+Continuar sín demonio
+Acceso a base de datos
+Fecha
+Fecha a mostrar :
+Día
+Vista del día
+Ajustes DST son
+Diciembre
+Defecto
+Alertas por defecto :
+Definir festivos...
+Borrar
+Borrar los apuntes pasados
+Ignorar
+Mostrar :
+No mostrar citas en la vista diaria
+No mostrar citas en la vista del mes
+No mostrar citas en la vista de la semana
+No mostrar citas en la vista del año
+No mostrar citas en la vista del año
+No mostrar citas pasadas en la vista del día
+Terminado
+Duplicar
+ERROR :\n\n
+Pre-alarma:
+Editar
+Terminar la vista en
+Dar primero un nombre
+Apunte relativo a la vista de la semana
+Error
+Error en lectura de los ficheros :\n%s
+Fechas de excepción
+Fechas de excepción:
+Ejecutar
+Fracaso en la salvaguardia %s,\nimposible escribir en %s
+Imposible salvaguardar la base %s\nen %s, escritura abortada
+Imposible crear la cita en la\nbase %s
+Imposible leer la copia de usuarios existente en la\nbase %s
+Imposible leer el fichero %s del utilizador %s, error %d\n
+Imposible leer el fichero principal %s, error %d\n
+Imposible leer el fichero privado %s, error %d\n
+Imposible escribir en la base de citas\n"%s".\nTus más recientes modificaciones han sido ignoradas.\nVerifica el espacio y permisos del directorio !
+Imposible escribir en la base de citas\n"%s".\nTus más recientes modificaciones han sido ignoradas.\nVerifica el espacio y permisos del directorio !\n\nImposible restaurar el contenido de origen. La salvaguardia se encuentra en \n%s, y requiere una restauración manual
+Febrero
+Fichero
+Fichero %s tiene %d apuntes en %s\ny %d en servidor %s. Cambiando a modo servidor e ignorando\nfichero %s.
+Fichero %s en el servidor %s no\nexiste. Creado uno e inicializado con\ncon los apuntes cargados.
+Lista de fichero
+Lista de fichero...
+Ficheros y programas
+La primera semana debe ser completa
+La primera semana debe contener un jueves
+Vie
+Obtener ayuda
+Opciones globales :
+Ir a la fecha
+Ir a hoy
+Ir a...
+Ventana verde
+Grupo
+Selección del grupo
+Estimar
+Ayuda
+Festivos
+Introducción
+Enero
+Julio
+Junio
+Búsqueda por palabra clave
+Terminar
+Idioma
+Idiomas
+Mes extendido
+Raya larga para los apuntes de semana sín hora
+Ultimo
+Ultimo día : no repetir el
+Post-Alarma:
+Irrompible
+Rompible
+Camino local
+Conexión perdida con el servidor netplan %s.\n\nVuelve a iniciar la SVO, y elije\n`Fichero->Releer ficheros' para reconectarte.\nPuedes haber perdido tus más recientes modificaciones.
+Correo:
+Marzo
+Mayo
+Mensaje
+Lun
+Mes
+Opciones de vistas por mes :
+Formato de fecha mes/dia/año
+Nombre
+El nombre no es único, rechazado
+Redes
+Siguiente
+Próxima semana
+Sín alarma el
+Ninguno
+Nota
+Noviembre
+Octubre
+Omitir todas las citas
+Omitir las citas de los demás
+Omitir las ditas privadas
+Ayuda contextual
+Un fichero...
+Solo el propietario puede escribir ficheros de citas
+Opciones :
+Otro
+Propietario
+Solo propietario
+Solo propietario
+El camino no es único, rechazado
+Fijar
+Ingresar la fecho u hora primero
+Por Favor, termina de definir la lista de fichero\ny la red, antes de realizar apuntes.
+Prcd.
+Imprimir
+fallo en la impresión, abandono com error %d\nVerifica el comando de impresión.
+Modo de impresión :
+Imprimir...
+Privado
+Problemas con el fichero festivos %s:\n%.80s linea %d
+Salir
+Ventana roja
+Expresión regular
+Recordatorio : ninguna alarma, hora no mostrada
+Repetir cada
+Repetir cada año
+Repetir el
+Repetir el
+Releer los ficheros
+Ejecutar los scripts netplan (¡ La seguridad puede estar comprometida !)
+Sab
+Planificador
+Planificador de reciclado
+Buscar
+Buscar :
+Buscar por palabra clave...
+Modo de búsqueda :
+Enviar un mensaje
+Septiembre
+Servidor
+Máquina servidora
+Máquina servidora "%s" error de protocolo:\nEsperando código `%c' código recibido `%c'.\nLa respuesta erronea completa es:\n%s
+Máquina servidora %s informa de un problema :\n\n%s
+Maquina servidora %s no responde\n
+Máquina servidora %s inaccesible.
+Error de protocolo con la máquina servidora %s\n
+Shell Script
+Mostrar las fechas Julianas
+Mostrar las horas de las alarmas adelantadas
+Nombres de ficheros de fichero en la barra de los labeles
+Mostrar las dictas de un solo día
+Mostrar los números de la semana
+Mes reducido
+Otro usuario esta editandoi este apunto. Reintentalo más tarde.
+Lo siento, no existe ayuda
+Lo siento, no existe ayuda,\n%s no ha sido encontrado
+Elegir
+Desligar
+Orden impresión :
+Iniciar el demonio
+Error de conversion de cadena de caracteres.\n
+Dom
+Sincro
+El primer fichero de la lista\n(%s)\nno debe sr una base de datos grok!\nDe intentar continuar podrias perder datos.
+El servidor netplan reporta un error\ncuando este registro es guardado. Mira\nlos permisos de acceso.\n
+La nueva fecha es posterior a la fecha de disparo,\n %s. La última fecha disparo ha sido deshabilitada.
+El nuevo idioma sera actrivo\ndespués de reiniciar plan.
+La nueva fecha disparo es anterior a la\nfecha disparo, %s. Ignorado.
+El otro programa no ha acabado.\n
+Mes actual
+Semana actual
+Jue
+Hora
+El huso horario es GMT
+Hoy
+Manaña
+Demasiados errores, abandono.\n
+Problemas
+Prueba utilizar la opción -L.\n
+Mar
+Deshacer
+Uso: pland [-dkKlL]\n
+Utzar los números de semana GPS
+Mostrar las vistas en la ventana principal
+Utilizar el botón derecho para configurar el color
+Fichero usuario %s en máquina %s: imposible conectar\n
+Fichero usuario %s en máquina %s: imposible abrir un socket\n
+Fichero usuario %s en máquina %s: maquina desconocida\n
+Vista
+CUIDADO:\n\nAhora puedes editar las citas de los otros usuarios.\nplan, normalmente, detecta las escrituras simultaneas\n(salvo via NFS), pero será incapaz de saber si un\nusuario a modificado el mismo fichero de citas, mientras tu lo\ncambiabas. Las modificaciones más antiguas serán perdidas\nen este caso se prudente !)
+Alarma
+Cuidado
+CUIDADO:\nOtro programa %s en funcionamiento.\n%s\npresiona "Continuar" para ... continuar, o "Terminer" para\nintentar cerrar ese otro programa. de continuar\nvpodrias perder las nuevas citas definidas,\nasi mismo tampoco funcionarán las citas definidas desde la linea de comandos.
+Cuidado:\nNingun demonio planificador esta activo. Sin este,\nninguna acción se iniciara cuando una alarma se dispare.\nInicia "%s" en su fichero ~/.xsession ou\n~/.sgisession, o inicia plan con la opción -S.
+Cuidado: alarma a %d:%02d%c
+CUIDADO: chmod 0600 imposible con la cita\nen la base %s
+CUIDADO: Ficheros de configuración y datos %s no son accesibles en escritura\n
+CUIDADO: tu propio fichero de datos %s no es accesible en escritura\n
+Mie
+Semana
+Semana (Composición)
+Semana (Retrato)
+Vista de la semana
+Opciones de vista por semana y día : 
+La semana empieza en domingo
+La vista de la semana contiene
+Auto confirmación de alarmas después
+Recursos X
+Año
+Resumen del año
+Vista del año
+Ventana amarilla
+Aqui tienes %d citas, y\n%d en el servidor %s. Salvado %s\nen %s desechado viejas\citas de %s.
+Tu fichero de citas es de solo lectura seule !
+YrOv
+Acercar
+aún inactivos
+aún activos
+otro demonio existe, utiliza %s -k
+ident. en %s responde %s\n
+fracaso en la identificación en %s\n
+el servidor de identificación de %s no responde\n
+automatico
+Inicio:
+acceso imposible
+imposible conectar el servidor de identificación de %s\n
+imposible terminat con el demonio %s 
+imposible abrir un socket para la identificación
+dias
+dias:
+defecto
+fin:
+cada...
+quinto...
+Fichero usuario #%d no leido, no existe camino y/o nombre\n
+Fichero usuario #%d no escrito, no existe camino y/o nombre\n
+primer...
+cuarto...
+Respuesta recibida "%s"\n
+incompleto
+Ultimo...
+Dura.:
+duración %d:%02d, hasta %d:%02d%c
+min:
+faltante
+do.
+Servidor netplan a interrogar:
+Nuevo fichero
+No hay memoria suficiente 
+No hay memoria suficiente para la lista de las citas
+No hay memoria suficiente para la vista del día
+No hay memoria suficiente para los pixmaps
+No hay memoria suficiente para la vista de la semana
+No hay memoria suficiente para la vista del año
+ningún usuario "%s"
+hora
+Fechados de más de 90 días
+Fechados de más de un día
+Fechados de más de un mes
+Fechados de más de una semana
+Fechados de más de un año
+opt:
+proprio
+plan: conectado al servidor %s: %s
+do.
+segundo...
+er
+(er/o)
+tercer...
+para
+Demasiadas fechas de excepción para esa cita
+desconocido
+usar el reloj del sistema
+usuario %s
+error de escritura
+La base xmbase-grok %s\nno ha podido ser leida porque el interfaz del\ncalendario es %s, y no hay campos de fecha\npara generar uno automaticamente.

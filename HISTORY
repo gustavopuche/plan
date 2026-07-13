@@ -1,0 +1,1015 @@
+====== 1.0 release 5/16/93 =======
+
+====== 1.1 release 6/13/93 =======
+
+NEW PLATFORMS:
+
+    *  OSF1/AXP, by Dave Hill <ddhill@zk3.dec.com>
+    *  IBM/AIX, by Johan Eksteen <johan@boer.ee.up.ac.za>
+               and Vance R. Bass <vrbass@vnet.IBM.COM>
+               and David W. Sanderson <dws@ssec.wisc.edu>
+    *  HP/UX 9.01, by Sylvain Picard <lmcsypi@LMC.ericsson.se>
+    *  NCR, by Keith Shafer <kshafer@cheers.sandiego.NCR.COM>
+    *  SUN, by Dave Brennan <brennan@hal.com>
+    *  ULTRIX 4.3, by Jeroen C. Kessels <jeroenk@cnplss7.cnps.philips.nl>
+
+    [Note that some of the patches I received for these systems were
+     mutually exclusive. I had to manually merge them into the baseline
+     sources. I can't test them; if they don't work, complain to me and
+     not to the authors listed above. thomas@bitrot.in-berlin.de]
+
+NEW FEATURES:
+
+    *  fancy holiday parser
+    *  optional fast advance-warning column in list menus
+    *  new -K option of pland to kill daemon (for ~/.logout)
+    *  new option: don't show expired entries in today's day box
+    *  appointments without time field added (for birthdays etc)
+    *  snoozing alarms for 5 minutes
+
+MAJOR BUGFIXES:
+
+    *  pland no longer crashes if database becomes empty
+    *  plan no longer crashes when there are more than 100 entries
+    *  months outside the current DST zone were sometimes one day off;
+       rewrote time conversion routines to not use localtime and mktime
+    *  recycle ending date didn't work
+    *  readfile now avoids feof(), it seems to be broken on some systems
+    *  if colors cannot be allocated, use black&white rather than exiting
+
+OTHER CHANGES:
+
+    *  added time display in month calendar menu
+    *  if appts don't fit in day box, print three dots
+    *  in year view, click month to see that month
+    *  -s option does not start daemon, and now does not print warnings
+    *  notifier now beeps
+    *  Done button is now always the rightmost button, Quit renamed to Done
+    *  use tzset() to ensure that DST is interpreted correctly
+    *  multiple expose events mostly eliminated
+    *  notifier now deals correctly with empty messages, no more warnings
+    *  new Makefile option to remove all pulldown menu separator lines
+    *  help messages and other typos fixed
+    *  bottom day box note was incorrectly clipped
+    *  fflushed stdout after printing resources
+    *  fixed list locking problem in sublist.c
+    *  fixed keyword search for single-character search strings
+    *  it's no longer necessary to press Return in keyword search
+    *  X resources are now correctly propagated to submenus
+    *  sometimes day boxes stayed shaded yellow after the day menu exits
+
+
+====== 1.1.1 release 6/20/93 =======
+
+NEW PLATFORMS:
+
+    *  MIPS Magnum, by Milton Scritsmier <milton@gastric.arraytech.com>
+    *  SNI SINIX 5.4, by Martin Kraemer <martin@deejai>
+    *  Data General DG/UX, Makefile patches by Andy Dennie
+       <adennie@mercury.hyperdesk.com>
+
+BUGFIXES:
+
+    *  fixed major bug that lost paths beginning with ~, like ~/.dayplan
+    *  holiday parser: <Nth> <weekday> syntax didn't work correctly
+    *  daemon didn't recycle appointments if plan wasn't running
+    *  corrected and added German holidays
+    *  new dutch holiday file, by Guido van Rossum <Guido.van.Rossum@cwi.nl>
+    *  -iconic option doesn't cause popups to come up iconic any more
+    *  dates in ~/.dayplan now stored with years in 4-digit format
+    *  replaced caddr_t with XtPointer, some HPs wouldn't compile otherwise
+    *  fixed undefined __DATE__ problem on Ultrix
+    *  fixed bug in appointment list re-allocation
+    *  new color resources to make the month view look like the year view
+    *  repeat-until date fixed
+
+
+====== 1.1.2 release 6/28/93 =======
+
+NEW PLATFORMS:
+
+    *  Another SNI Sinix 5.4x Makefile patch by Gerald Rinske
+       <Gerald.Rinske@ap.mchp.sni.de>
+    *  NCR, by Keith Shafer <kshafer@cheers.sandiego.NCR.COM>
+    *  SCO Open Desktop/Open Server 3.0, Makefile patches by Nathan Peterson
+       <nathan@sco.com>
+    *  Solaris 2.2, by Jean-Claude Giese <Jean-Claude.Giese@loria.fr>
+    *  USL's SVR4.2 V1 with mdev package, by Peter Lord <plord@uel.co.uk>
+
+BUGFIXES:
+
+    *  daemon now exits automatically when user logs out
+    *  new French and Dutch holiday files
+    *  fixed Makefile bug for Ultrix and sung (-DGMTOFF)
+    *  fixed help button in holiday menu, it used to cancel the menu
+
+
+====== 1.2 PL 0 release 10/11/93 =======
+
+NEW FEATURES:
+
+    *  week views that graphs hours vs. weekdays
+    *  reads other people's appointments and displays them in the week view
+    *  show every instance of a repeating entry
+    *  new syntax: "nth weekday before/after date" (Advent/Buss&Bettag)
+    *  recycler: every/Nth/last <weekday> of the month
+    *  distinguish private and public appointments
+
+OTHER CHANGES:
+
+    *  option to switch off time in icon
+    *  parse TZ directly, don't use standard library for timezone calc
+    *  if there is a /tmp/.planUID, check if it's valid
+    *  added error popup for "another plan is running"
+    *  display holiday at the top of the day menu
+    *  scroll bars in help windows
+    *  improved help messages
+    *  year up/down now changes year menu too
+    *  separate path for manpages
+    *  documented important resources
+
+
+====== 1.2 PL 1 release 10/16/93 =======
+
+NEW PLATFORMS:
+
+    *  BSDI386 and BSDI386 with gcc, by Tetsuji Rai <tetsuji@rai.juice.or.jp>
+
+NEW FEATURES:
+
+    *  time adjustment and timezone config menu
+    *  use search paths for executables and help file
+
+
+====== 1.2 PL 2 release 11/10/93 =======
+
+BUG FIXES:
+
+    *  non-interactive mode no longer removes lockfile
+    *  minor cleanups in the help text
+
+
+====== 1.2 PL 3 release 11/21/93 =======
+
+BUG FIXES:
+
+    *  fixed repeat-until in recycling menu
+
+
+====== 1.2 PL 4 release 12/12/93 =======
+
+BUG FIXES:
+
+    *  preventing user from entering user directory before user name (crash)
+    *  added -DRABBITS on HPs because utmp appears to be unreliable
+    *  removed #ifdef NCR around FIXMBAR in calmenu.c, fixes empty pulldowns
+    *  replace fchmod with chmod (SCO has no fchmod)
+    *  Ultrix 4.3A has fcntl.h in sys
+    *  OSF/1 and Ultrix require -DRABBITS
+    *  later instances of repeating week bars got overdrawn by other bars
+    *  Makefile OSF_C: added -DOSF
+    *  put notifier -d into help text
+    *  when searching for programs (find_file), ignore directories
+    *  replace palatino with a standard font
+    *  fast warning on; bring up appt menu; fast warning off -> core
+    *  read_file ignores timezone setting
+    *  repeat-every-n-days could slow down redrawing significantly
+    *  if a user is added to the week view, pland sometimes died
+
+NEW FEATURES:
+
+    *  raise week and year window when user requests one
+    *  -hhmm notation for appt length (until hhmm)
+    *  +n notation for parsing dates
+    *  if note begins with '-' or '=', remove from month/year/week or m/y view
+    *  help-on-context buttons in the help window
+    *  quit button for year view
+    *  resource to put black frame into today's day box (for 1-bit graphics)
+
+NEW PLATFORMS:
+
+    *  Linux, by Dirk Melchers <dirk@merlin.nbg.sub.org>
+    *  SunSoft Interactive (ISC) 4.0, by akf@august.com (Andrew Fullford)
+
+
+====== 1.3 release 6/1/94 =======
+
+BUG FIXES:
+    *  non-interactive mode and -v should not init X
+    *  clip bars in week views at midnight
+    *  Suns have no utopia
+    *  no stdarg.h (Sparc 1+,h SunOS 4.1.3, X11R5pl25, Motif 1.2.1)
+    *  week view range menu was mangled on Suns and a few others
+    *  HPs may get unknown color background
+    *  bars of appts with no time don't reserve space in week chart
+    *  crash if null user is entered
+    *  align ':' in times vertically in month day boxes (hi Andreas)
+    *  pulldown string resources now hardcoded, easier to maintain this way
+    *  crashes when accessing other users fixed (fix by Rob Gabbard)
+    *  couldn't enter durations "12:xx" in 12-hour mode
+    *  when switching 12/24 hour mode, time display now changes immediately
+    *  fall back to "variable" or "fixed" font if some font can't be found
+    *  long "small" holiday names in large month day boxes could overrun buffer
+    *  various minor fixes in the week menu, some bars were drawn incorrectly
+
+NEW FEATURES:
+    *  PostScript output, by Karl Bunch <karl@ttank.ttank.com>
+    *  Japanese version, by Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>
+    *  support for SGI desktop look&feel
+    *  new RGB icon picture for SGIs running the 4Dwm window manager
+    *  holiday file accepts #include statements if /lib/cpp is available
+    *  optional user name in week view before note (new week config popup)
+    *  rearranged header above month view
+    *  reads LIB/holiday after reading ~/.holiday
+    *  new recycle option: every year (for birthdays etc)
+    *  -t option that prints appointments on a day to stdout
+    *  Delete-past-entry command now has five maximum-age choices
+    *  EditRes, by Klaus Guntermann <gunterma@iti.informatik.th-darmstadt.de>
+    *  better parse_timestring: 100 -> 1:00
+    *  click day in week view -> edit day
+    *  swedish holiday file, by Kristian Wedberg <wedberg@mednet.gu.se>
+    *  switch to today / to a specific date using a text entry popup
+    *  today now highlighted green in week view
+    *  in fast warning entry mode, entering '=' uses default warning times
+    *  first partial week in Jan is counted as 1. See FULLWEEKS in mondraw.c.
+    *  NODAEMON_ONCE in popup.c is defined to suppress multiple error popups
+
+NEW PLATFORMS:
+    *  SunOS 4.1.3 with K&R cc, replaces stdarg with varargs if -DVARARGS,
+       by Michael P. Shevenell <mshev@express.ctron.com>
+    *  Sony NEWS with/without gcc, by Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>
+    *  Sequent running Dynix/ptx v2.[12], by Mike Gilpin <mgilpin@sequent.com>
+
+NOTE: the comment character in ~/.holiday files was changed from '#' to ':'
+      to allow cpp to parse the file. Not changing these characters will cause
+      cpp "undefined control" errors.
+
+
+====== 1.3.1 released 7/11/94 =======
+
+BUG FIXES:
+    *  DEC alpha: fixed black-on-black notifier windows
+    *  XtPopup order wrong for Sun X11R5 in create_adjust_popup
+    *  -geometry didn't work
+    *  repeat on last weekday of a month didn't work
+    *  ISO characters in calendar windows didn't work
+    *  stripping leading blanks from config exec cmds, confused some shells
+    *  improved 12-hour time parsing, "5p" is now accepted in place of "5:00p"
+    *  appt menu: press date, press time with no entry -> wrong default in date
+    *  corrected left adjustment of appts without time in the month menu
+    *  Linux has problems with XtDestroyWidget. Workaround leaks memory!
+    *  fixed pland crashes after many sighup's if compiled without -DRABBITS
+
+NEW PLATFORMS:
+    *  IBM PS/2, AIX 1.3, gcc, by David W. Schuler <dschuler@vnet.ibm.com>
+
+
+====== 1.3.2 released 11/11/94 =======
+
+NEW PLATFORMS:
+    *  Convex C220
+    *  SGI IRIX 6.0
+
+FEATURES:
+    *  Australian holiday file, by Peter Turnbull (petert@dha.gov.au)
+    *  new date format added: "-n" is n days ago (useful for -t option)
+
+BUG FIXES:
+    *  only refresh changed window regions (Daniel Williams <dan@sass.com>
+    *  week view ignored other user's appts that were earlier than first own
+    *  history files no longer run through cpp if file is empty ("error 0")
+    *  in the Adjust Time menu, the hour was printed incorrectly
+    *  new TZ parser for SVR4 syntax, by Klaus Guntermann <guntermann@
+       iti.informatik.th-darmstadt.de>
+    *  fast warning entry reversed early and late (mmorriso@mipos2.intel.com)
+    *  output of plan -t disappeared if stdout was redirected
+    *  date input now less eager to default to today's date
+
+
+====== 1.4 released 2/22/95 =======
+
+NEW PLATFORMS:
+    *  UnixWare 1.1 and 2.0, jay@summit.novell.com
+
+FEATURES:
+    *  PostScript printouts of week views
+    *  appointments of other users or shared lists can be displayed in the
+       month and/or week views, and can be created, deleted, and modified. No
+       inetd daemon yet, but proposed "workgroup" functions are implemented.
+    *  appointments of other users can optionally trigger own alarms
+    *  up to four exception dates per appt where alarm is suspended, fill-in
+       appointments for each of these can be created automatically ("split")
+    *  appointment texts in month view can be highlighted with one of 8 colors
+    *  options and preferences consolidated into new calendar config popup
+    *  config first week of year (full or partial)
+    *  appointments can now be selectively removed from month/year/week views
+    *  number of days in week view is now configurable (1..28 days)
+    *  user list now accepts file names in addition to directories
+    *  added flags to omit appointments in printouts
+    *  printout now uses message text if there is no note
+    *  do scripts even if alarms are turned off
+    *  files are written using backup and temp copies to recover from errors
+    *  dump to stdout with -t now accepts second parameter for number of days
+    *  entries without time may be displayed as large bar in week view
+
+BUG FIXES:
+    *  updated Swedish holiday file
+    *  when cursor is in note column, pressing lock made appt disappear
+    *  don't use the plainfile/. trick, DEC's ASF claims the directory exists!
+    *  appt menu: press date, press time -> wrong default in date
+    *  default for print is now month, not year
+    *  week view overlaps were wrong if start<minhour, some bars were missing
+
+
+====== 1.4.1 released 4/1/95 (mailing list release only) =======
+
+NEW PLATFORMS:
+    * Solaris2 with gcc port, bk@kullmar.se (Bo Kullmar)
+
+FEATURES:
+    * -o print other users too, -T is like -t but with end times, not lengths
+    * print-only-my-appointments toggle added, Richard G. Hash (rgh@shell.com)
+
+BUG FIXES:
+    * alarm mode button in Config->User popup was lost
+    * UnixWare needs -lgen to compile
+    * if there was no .dayplan, the week view ranges were not initialized
+    * the ?: operator in the holiday parser didn't work, Kai Hofmann
+      <i07m@Informatik.Uni-Bremen.DE>
+    * notes were invisible in week view in Japanese mode, Takanori Nishijima
+      <racsho@cpdc.canon.co.jp>
+
+
+====== 1.4.2 released 5/23/95 =======
+
+FEATURES:
+    * if pland is started after an alarm time but before its end, trigger it
+    * the own-only flag in appointment entry menus is saved for future menus
+    * debugging option -d for pland, more info about what is going on
+    * pland makes sure that its version number matches plan
+    * delete-pending-selection mode for holiday and message text windows
+
+BUG FIXES:
+    * lock could crash if argv[0] is very long (mikee@wfc.com (Mike Eggleston))
+    * better handling of user name input
+    * much better performance if many other users exist but are disabled
+    * no longer detects spurious file write errors
+    * notifier position now uses better randomization to avoid piling up
+    * PostScript printouts often printed disabled appointments
+    * Sync button in week view could lose recently edited appointments
+    * no more "cannot write backup" messages on IBM systems
+    * time displayed after startup could be wrong for up to one minute
+
+
+====== 1.4.3 released 7/7/95 =======
+
+BUG FIXES:
+    * pland didn't pop up advance-warning popups
+
+
+====== 1.4.4 released 9/19/95 =======
+
+FEATURES:
+    * Italian holiday file (Riccardo Scateni (riccardo@crs4.it))
+    * user assignment popup shows multi-column user list if the list is long
+    * notifier popups contain user, length, end time, and optional note string
+    * "Execute" commands in alarm options may contain %s, replaced with note
+
+BUG FIXES:
+    * notifier snooze now works (Karsten Gaier)
+    * pland ignored some repeating appointments
+    * plan -t yesterday now works
+    * error message bugs for fonts, colors, and holiday syntax (Bob Tomlinson)
+
+
+====== 1.4.5 released 12/14/95 =======
+
+Special thanks to Johan Borkhuis <johan@borksoft.xs4all.nl> for his work!
+
+NEW PLATFORMS:
+    * Apollo Domain/OS (Vince Skahan <vds7789@aw101.iasl.ca.boeing.com>)
+
+FEATURES:
+    * empty day boxes in month view show previous/next month (Johan Borkhuis)
+    * week views can switch years (Johan Borkhuis)
+    * user selection popup in appt entry menu got DONE button (Johan Borkhuis)
+
+BUG FIXES:
+    * added void declarations, moved externals to conf.h (Johan Borkhuis)
+
+
+====== 1.4.7 (1.5 beta) released 2/22/96 =======
+
+NEW PLATFORMS:
+    * Makefile change for Solaris 2.4 by Paul Eggert <eggert@twinsun.com>
+
+FEATURES:
+    * new IP server for distributed file management, safe multiuser access
+    * new year overview that plots appointment groups on a 365-day timeline
+    * new resource plan*noteWidth for width of note column in entry dialog
+    * plan doesn't allow entry of stop-repeating date < trigger date
+    * single-number time entries "0".."23" are interpreted as 0:00..23:00
+
+BUG FIXES:
+    * fixed shift/reduce conflicts ('%' operator had no association priority)
+    * some systems required print mode button to be pressed twice, fixed
+    * Linux picked a default forground color that made help texts unreadable
+
+Note: the default LIB directory is now /usr/local/lib, not /usr/local/bin.
+
+
+====== 1.4.8 (1.5 beta2) released 3/8/96 =======
+
+FEATURES:
+    * new Cancel button in File list
+    * pressing Return on Note column auto-confirms again
+    * netplan now writes files periodically and tries to write when crashing
+    * netplan can now safely be started as root or setuid root. Instead of
+      refusing to start, it switches to compiled-in <nobody> UID and GID.
+      netplan can now be started in /etc/rc2.d/S99netplan or /etc/rc.local.
+
+BUG FIXES:
+    * desensitize text instead of printing '---' in File list
+    * ensure that names in File list are unique by appending 'x'
+    * netplan now fails if its home directory doesn't exist
+    * plan crashed on Suns with "no memory" when connecting to netplan
+    * replaced references to obsolete menus and terms in the help texts
+
+
+====== 1.5 released 3/22/96 =======
+
+BUG FIXES:
+    * netplan accepted far fewer clients than available file descriptors allow
+
+
+====== 1.5.1 released 4/21/96 =======
+
+FEATURES:
+    * Japanese support (Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>)
+    * added resource to restrict month views to the days of that month
+
+BUG FIXES:
+    * pland now refuses to execute scripts that come from an (insecure) server
+    * newly entered appointments could end up in the wrong file on the server
+    * on first startup, the top line in the file list contained a garbage path
+    * missing colon in three default resources (plan -d)
+    * SCO has no fchmod and needs -lsocket (stefan.bittner@erlangen.netsurf.de)
+    * a resource list was too small (Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>)
+    * command-line appointment entry (plan hhmm text...) didn't work
+    * it's now necessary to enter an appointment before choosing its file assoc
+    * plan -t without -o never printed anything
+    * IP port number now byte-swapped for Linux (Klaus.Steinberger@Physik.
+      Uni-Muenchen.DE)
+
+
+====== 1.5.2 released 8/1/96 =======
+
+NEW PLATFORMS:
+    * Sequent Dynix/ptx 4.0 or 4.1 (Mike Gilpin <mgilpin@sequent.com>)
+
+FEATURES:
+
+BUG FIXES:
+    * -t/-T options don't need the X server (Glenn Trigg <ggt@tpg.tpg.oz.au>)
+    * -t/-T options were using the wrong timezone
+    * scripts were rejected as insecure even when read from local files
+    * week view printouts with "omit all appointments" ticked crashed plan
+    * file list modifications were not immediately written back to the files
+    * when editing an appointment, it moved in list if others have same time
+    * print month: all appointments missing if "omit other users" flag is on
+    * if trying to kill old plan process, make sure its pid was different
+    * press on Note, then Delete -> deletes wrong appointment. No longer.
+
+
+====== 1.5.3 released 8/1/96 =======
+
+FEATURES:
+    * new search modes: one file, private only
+    * new alternative small month view
+    * preference menu now scrolls if the screen is too small (640x480)
+    * new GPS week mode (GPS=Global Positioning System)
+
+BUG FIXES:
+    * modified file list was not immediately written back to disk
+    * what-to-show bar in year overviews was confused
+    * netplan always refused to run as root (wrong setuid/seteuid order)
+    * "delete older than" function didn't delete on netplan servers
+    * when making an entry on a server private, it stayed on the server too
+    * a new plan offered to kill an already running plan, but always failed
+    * plan -t could crash due to uninitialized message string
+    * less strict testing for font sizes to allow week numbers on 640x480
+    * fixed various minor porting issues (struct list->plist, file->pfile)
+
+
+====== 1.5.4 released 11/14/96 =======
+
+FEATURES:
+    * Finnish holiday file by Steven Wahlberg <stegu@prosperous.ee.hit.fi>
+
+BUG FIXES:
+    * wrong date defaults in appointment entry dialogs fixed
+    * changing appointment group fixed by Johan Vromans <JVromans@squirrel.nl>
+
+
+====== 1.6 released 2/5/97 =======
+
+FEATURES:
+    * new day view (does not work in Japanese yet, sorry)
+    * configuration option to use main window for all views
+    * read-only access to xmbase-grok databases (see Help->Database access)
+    * improved holiday grammar, Erwin Achermann <acherman@inf.ethz.ch>
+    * new netplan -f option to prevent daemonizing, like -d but without logging
+
+BUG FIXES:
+    * now translating national special characters to PostScript when printing
+    * fixed crash under DEC OSF/1, which doesn't declare malloc in <malloc.h>
+    * fixed crash if drawn strings contain characters not defined in the font
+
+
+====== 1.6.1 released 4/12/97 =======
+
+FEATURES:
+    * implemented simple access list features in netplan
+    * Belgian holiday file (Danny Backx <u27113@kb.be>)
+    * pland got new -l/-L options to enable/disable auto-exit on logout
+    * fixes to compile under NetBSD 2.1 (Petter Reinholdtsen <pere@link.no>)
+
+BUG FIXES:
+    * the prev/next buttons in the day and week views no longer crash plan
+    * opening a nonexisting file on a netplan server could crash the server
+    * views no longer lose window margins and resize correctly under X11R6.4 
+    * year views now draw significantly faster (factor >100 for some files)
+    * text in week bars exceed normal max length (<kaplan@cs.rochester.edu>)
+    * pland deleted past appointments on servers
+    * can no longer re-assign appointments in or to write-protected files
+    * edit menu: deleting with Note selected doesn't delete wrong appt now
+
+
+====== 1.7 released 1/1/98 =======
+
+Special thanks to Georg-Wilhelm Koltermann <gwk@crmunich0.cray.com>, who
+sent a large number of improvements and bug fixes, especially in netplan.
+His changes (sometimes modified by me) are marked (gwk) below.
+
+FEATURES:
+    * redesigned appointment entry: direct entry of multiday appts, up/down
+      arrow buttons for most fields
+    * implemented advance warnings several days ahead
+    * netplan overhaul: (gwk)
+      .  symbolic host/user/group names
+      .  multiple groups per user (a la BSD)
+      .  magic 'owner' ACL record, applies if file name == user name
+      .  detect ACL file changes and re-read automatically
+      .  support for identd (RFC 1413) authentication
+    * clicking on empty space in year overviews calls appt edit menu
+    * appointment color entry uses X OptionMenu on systems that support it
+    * now 16 instead of 8 group colors available in the file list menu
+    * added keyboard accelerators for common pulldown menu items
+    * Norwegian holidays (Petter Reinholdtsen <pere@minerva.link.no>)
+    * Austrian holidays (Friedrich Leisch <Friedrich.Leisch@ci.tuwien.ac.at>)
+    * Hungarian holidays (Kelemen Péter <fuji@heureka.inf.elte.hu>)
+    * FreeBSD Makefile and patches (Stefan `Sec` Zehl <sec@42.org>)
+    * SNI Sinix 5.42 Makefile (Bernhard Metzger <Bernhard.Metzger@mch.sni.de>)
+
+BUG FIXES:
+    * netplan overhaul: (gwk)
+      .  fixed file readonly mgmt, now kept per client open, not per file
+      .  fixed row ID wraparounds
+      .  files read were initialized as "modified", causing writeback.
+      .  file reference counter must only be incremented for the first
+         open by a specific client (pland reopens many times)
+      .  ACL netmask defaults to 255.255.255.255, not to the whole network
+      .  fixed readonly or inaccessible files for an user's own appts
+      .  plan could crash when modifying appts read from a crashed netplan
+      .  host names in the ACL may now contain '-' characters
+    * fixed bad attachment in month view, caused LessTif problems (gwk)
+    * private appointments were often written to the server (gwk)
+    * year overview skipped daily appts if the first day was an exception (gwk)
+    * lost exception dates if the dialog was closed by pressing "split" (gwk)
+    * split exceptions appeared in the day view but turned blank when any
+      field was clicked for editing. (gwk)
+    * if pland was started by plan instead of from the user's .xsession file,
+      it inherited a copy of plan's file descriptors and never closed them,
+      leading to stale locks and dangling netplan connections (gwk)
+    * netplan ACL could ignore lines and failed for large ACL files. Also,
+      little-endian machines got IP addresses wrong. (Bruno Achauer
+      <bruno@tk.uni-linz.ac.at>)
+    * BSD fixes (Jay Vassos-Libove <libove@felines.org>)
+    * netplan could crash if a data file grows (Dag Nygren <dag@newtech.fi>)
+    * fixed a file descriptor leak in the help system
+    * year and year-overview mode buttons in the Print menu were swapped
+    * auto DST did not work in the southern hemisphere, where begin > end
+      (Glen Pringle <pringle@cs.monash.edu.au>)
+
+
+====== 1.7.1 released 2/22/98 =======
+
+FEATURES:
+    * Danish holiday file (Arne Norre Ekstroem <aneks@kom.auc.dk>)
+
+BUG FIXES:
+    * month view crashed if large holiday messages fall on grayed-out days
+    * random text when the first day of a multiday holiday overlaps another
+    * netplan authentication by host failed on little-endian machines
+    * fixed a PostScript bug that prevented printing months and years >= 2000
+    * some online help messages in the edit menu were assigned incorrectly
+    * fixed File->delete past entries (Pace Willisson <pace@blitz.com>)
+    * command-line appointment entry did not update netplan database
+    * drag-and-drop wireframes are more visible
+    * HP/UX 9 target is now "hp9", "hp" is HP/UX 10; updated Control Data
+      EP/IX 2.1.1 target (Geert Albert Smant <smant@nlr.nl>)
+    * new target "hpg" for building plan on HP/UX10 systems with gcc
+    * print iso-latin characters (Detlef Liem <detlef@kammer.uni-hannover.de>)
+    * fixed netplan "group" verification (Jens Krinke <krinke@ips.cs.tu-bs.de>)
+    * no locking on OSF/1 (Henrik Seidel <seidel@MPIMG-Berlin-Dahlem.MPG.DE>)
+    * grok date+time entries that begin with a blank were parsed incorrectly
+    * when entering a new appointment, the time field opens blank, not 0:00
+    * fixes for FreeBSD (Stefan `Sec` Zehl <sec@42.org>)
+
+
+====== 1.7.1 released 2/22/98 =======
+
+FEATURES:
+    * pland only checks for logout after verifying that the login was noted
+
+BUG FIXES:
+    * fixed netplan ACL malloc (Harald Böhme <boehme@informatik.hu-berlin.de>)
+    * fixed drag&drop crash (Cy Schubert <cschuber@uumail.gov.bc.ca>)
+
+
+====== 1.7.2 released 14.7.98 =======
+
+FEATURES:
+    * Japanese port updated by OGURA Yoshito <ogura@apd.cpg.sony.co.jp>,
+      NISHIJIMA Takanori <racsho@cpdc.canon.co.jp>
+    * new resource showIconDate puts date and time into icon label
+    * day view now shows holidays
+    * pland -s sleeps while user is logged out but stays around
+    * pland -t prints alarms to stdout instead of popping up windows
+    * plan -S starts pland if it does not exist without asking
+    * plan '22.11.99 15:23' now also works, replacement for plan [mmdd]hhmm
+    * dates with years in the range 0..37 now mean 2000..2037, it is no longer
+      necessary to enter four-digit years after 1999.
+    * support for window managers handling client window groups (Pete Bentley
+      <pete@sorted.org>).
+
+BUG FIXES:
+    * when changing appt time to "-", clear length and advance time fields
+    * goto and goto-today did not switch day view
+    * no longer prints wrong time after startup (Adrian Miranda <ade@psg.com>)
+
+
+====== 1.8 released 30.3.99 =======
+
+FEATURES:
+    * CGI scripts and HTML pages for web browser access, Michel Bourget
+      <michel@montreal.sgi.com> (hacked by thomas@bitrot.de, bugs are
+      probably my fault)
+    * national language support and a German language file. No support for
+      pulldown accelerators. Foreign-language help files are supported but
+      none are supplied yet.
+    * French language file by Guy Brand <guybrand@chimie.u-strasbg.fr>
+    * new automatic DST mode that attempts to get the time from the system
+      (experimental, available only for some systems, mostly untested)
+    * simple Todo appointments that keep appearing after they first trigger
+    * implemented default advance-warning times (Config->Calendar views)
+    * color PostScript printouts (Kevin Earls <wke@sh-gpl.ti.com>)
+    * new config mode that allows daemon to exeute insecure netplan scripts
+    * new config mode that makes Thursday the selector for the first week
+    * new combination holiday file by Walter Brown <wb@fncrdg.fnal.gov>
+    * new Portuguese holiday file by Jose Paulo Moitinho de Almeida
+      <moitinho@civil.ist.utl.pt>
+    * support for Christian Orthodox Easter (new holiday keyword "pascha")
+    * ported again to FreeBSD (Stefan `Sec` Zehl <sec@42.org>)
+    * converted remaining old code to ANSI C
+    * new Czech holiday file by Hanus Adler <had@articon.cz>
+
+BUG FIXES:
+    * Linux once again scrambled some header files and made plan uncompilable
+    * small holidays crash day view (Sjoerd Mullender <Sjoerd.Mullender@cwi.nl>
+    * if pland was started between 0:00 and 2:59:59, it overlooked appointments
+    * fixed "W:" note prefix (Sjoerd Mullender <Sjoerd.Mullender@cwi.nl>)
+    * netplan identd queries went to the local host instead of the remote host
+    * fixed Y2K problem in PostScript printout. It works now but I don't under-
+      stand why. Fixed by Vincent Everett <vincent.everett@mrc-bsu.cam.ac.uk>.
+    * plan -t/-T will now mark warnings with "Warn:".
+    * fixed removal of appointment edit menu for LessTif (Anders Melchiorsen
+      <and@kampsax.dtu.dk>)
+    * netplan: group authentication and memory allocation bug fixed by Jens
+      Krinke <j.krinke@gmx.de>
+    * purge unnecessary lines in empty edit menus, manually adjust edit list
+      size to fix LessTif problem (Anders Melchiorsen <and@kampsax.dtu.dk>)
+    * toggle buttons in print menu did not work with some Motif implementations
+    * notifier now resizes correctly, text area grows instead of buttons
+    * day view got holidays wrong near the end of the year (Anders Melchiorsen
+      <and@kampsax.dtu.dk>)
+    * LessTif optimizations (Rick Scott <rwscott@omnisig.com>)
+    * user ID was freed twice in netplan (Jeff Dairiki <dairiki@dairiki.org>)
+    * it is now possible to inspect messages attached to read-only appts
+    * plan -t had multiday problems (Aaron Kaplan <kaplan@cs.rochester.edu>)
+    * fixed PostScript Y2K bug (James E. Rowley <jer@research.att.com>)
+    * fixed zombie problem caused by plan automatically starting pland
+
+
+====== 1.8.1 released 16.5.99 =======
+
+FEATURES:
+    * Japanese port of 1.8 by Takafumi Hayashi <takafumi@u-aizu.ac.jp>
+    * port to OS/2 with X by Alexander Mai <st002279@hrzpub.tu-darmstadt.de>
+    * new configure script that simplifies modifications for default, SGI,
+      and Linux installations.
+
+BUG FIXES:
+    * plan -F: stdout could not be redirected, added missing fflush
+    * various error popups are now modal, to prevent them from being overlooked
+    * small Ultrix fixes (no pland -l) by Maarten Vergauwen
+      <Maarten.Vergauwen@esat.kuleuven.ac.be>
+    * fixed month and year PostScript printing, texts were in the wrong places
+
+
+====== 1.8.2 released 5.7.99 =======
+
+FEATURES:
+    * Spanish language support by Manuel Soriano <manu@europa3.com>
+    * Port to LynxOS mag 2.5.1 092297-D i386 by Marius Groeger <mag@sysgo.de>
+    * if the X server fails to send X timer events, switch to synchronous file
+      writing to avoid data loss. Works around bug or incompatibility in XFree.
+    * new script to convert Microsoft Schedule+ files to .dayplan format by
+      Cy Schubert - ITSD Open Systems Group <Cy.Schubert@uumail.gov.bc.ca>
+
+BUG FIXES:
+    * fixed configure script problems and clarified man page locations
+    * more fixes by Phil Sackinger <pasacki@sass2604.engsci.sandia.gov>
+    * fixed output of -W -i for web interface
+    * the .plan.dir choice in the configure script caused path trouble in plan
+    * another PostScript bug fix causing text in wrong positions fixed by
+      Daniel Robitaille <daniel@robitaille.com>
+    * more OS/2+X patches by Alexander Mai <st002279@hrzpub.tu-darmstadt.de>
+    * weekday before/after syntax was wrong in holiday parser, Thomas Henlich
+      <henlich@mmers1.mw.tu-dresden.de> and Henning Daum <henning@daum.com>
+    * LessTif 0.88.1 fix by Thomas Henlich <henlich@mmers1.mw.tu-dresden.de>
+    * improved man pages, foreground/background is now configurable from the
+      script for Debian/Linux compatibility, netplan should not always run as
+      nobody, and a French holiday fix by Yann Dirson <ydirson@multimania.com>
+    * enter webplan mode if the program is called "webplan", reading netplan
+      user list crashed if there were no users, fixed possible crash when
+      closing file list menu, renamed welcome.html to bottom.html by Murray
+      Jensen <Murray.Jensen@mlb.dmt.csiro.au>
+
+
+====== 1.8.3 released 8.12.99 =======
+
+FEATURES:
+    * new options -N, -c, and -h to control more options when adding entries
+      from the command line (Tovar <tvr@value.net>)
+
+BUG FIXES:
+    * Fixed language file order, causing untranslated messages. Also replaced
+      OK button with Kill button in "another plan is running" dialog. Thomas
+      Henlich <henlich@mmers1.mw.tu-dresden.de>
+    * fixed manpage names, Kai Großjohann <Kai.Grossjohann@CS.Uni-Dortmund.DE>
+    * fixed pascha (Orthodox Easter) calculation and added greek holiday file,
+      Efthimios Mavrogeorgiadis <emav@enl.auth.gr>
+    * fixed timezones on the other side of the dateline (Truxton Fulton
+      <trux@truxton.com>)
+    * fixed toggle buttons in print menu (Ekkehard Hoffmann <ehoffman@fzi.de>)
+    * new timezone code for DEC OSF/1 (Petrie L M <lmp@ornl.gov>)
+    * client connection failures now close the connection cleanly and do not
+      leak memory
+    * non-netplan files incorrectly became read-only after the first change
+    * fixed recognition of -u users (Ekkehard Hoffmann <ehoffman@fzi.de>)
+    * changed two-digit year display in month/year printouts to four digits
+      (Goran Larsson <hoh@lorelei.approve.se>)
+
+
+====== 1.8.4 released 17.7.00 =======
+
+FEATURES:
+    * Changed configure script, Makefile, and manpages to conform to Debian
+      Linux conventions, Yann Dirson <dirson@debian.org>
+    * another configure preset for SuSE Linux
+    * new SysV alarm signals that prod the X timer events that write modified
+      data, as a workaround for broken XFree86 X servers, by Francis Montagnac
+      <Francis.Montagnac@sophia.inria.fr>
+    * netplan now listens on two ports (unless overriden in /etc/services):
+      5444 for backwards compatibility, and 2983, the new IANA-registered port.
+    * "user" lines in netplan ACLs now accept "user@host" arguments, by Jochen
+      Bern <bern@TI.Uni-Trier.DE>
+    * the "another plan window is running, kill/continue" popup now blocks
+      until answered.
+    * OpenMotif support (XFree 4.0.1, OpenMotif 2.1.30) by Wes Kaefer
+      <kaefer@mciworld.com>
+
+BUG FIXES:
+    * OS/2 Makefile fixes, Alexander Mai <st002279@hrzpub.tu-darmstadt.de>
+    * fixes by Francis Montagnac <Francis.Montagnac@sophia.inria.fr>:
+      - reading and writing of appt files of another user could access this
+        user's file instead, by Francis Montagnac
+      - don't redraw twice after deleting, can crash, by Francis Montagnac
+      - warn when using more than one server, by Francis Montagnac
+      - don't expand home-dirs in "File List" but put simply "~user". This
+        prevent absolute pathnames in dayplan for user appointment files.
+      - change writefile to return true for any readonly files, without doing
+        anything. Fix call of fclose on NULL when creating a new file.
+      - fix accept_new_list to update the views even for non server files.
+      - fix in resolve_tilde: ~user gave /home/user/user
+    * color-shaded backgrounds in month view are now printed, by Brad Jorsch
+      <anomie@users.sourceforge.net>
+    * huge numbers of lines in the large month view can cause heap corruption,
+      by Paul Anderson <paul@dcs.ed.ac.uk>
+    * fixed umlauts in Austrian holiday file, by Friedrich Leisch
+      <Friedrich.Leisch@ci.tuwien.ac.at>
+    * note: on SGI IRIX6 I appear to be unable to compile with -mips2, sorry.
+
+
+====== 1.8.5 released 16.2.03 =======
+
+FEATURES:
+    * plan's FTP home site has a new name: plan.ftp.fu-berlin.de, shown in
+      the About popup. The old address will continue to work. (Thanks, Heiko!)
+    * set locale to support other character sets such as Czech, by Petr Kristan
+      <petr.kristan@epos.cz>
+    * OpenBSD port by Armin Wolfermann <armin.wolfermann@viscomp.com>
+    * new plan2vcs perl script that converts plan appointments to korganizer
+      format, by Bert Bos <bert@w3.org>
+    * if there is a ~/.holiday file, don't read LIB/holiday as well.
+    * skip junk in entries synced from PalmPilot DateBk4 messages, by Johan
+      Vromans <jvromans@squirrel.nl>
+    * allow new holiday syntax "workday before/after <date>", by Ian Holland
+      <irh@statscout.com>
+    * Italian language translations by Paolo Panizza <pp@ieee.org>
+    * accept yyyy/mm/dd date input, Brian T. Schellenberger <bts@babbleon.org>
+    * Slovak holidays by Mikulas Sustak <sustak@kte.sjf.stuba.sk>
+
+BUG FIXES:
+    * fixed Debian bug 157425: color selection dropbox always starts on Default
+    * Suns apparently still run X11R5 and don't have XtSignalId et. al.
+    * configure script had problems with defaults when using bash (Michael
+      Mauch <michael.mauch@gmx.de>
+    * fixed configure script problems on Solaris 2.6, by Horst Scheuermann
+      <scheuerm@uni-trier.de>
+    * fixed Dutch Driekoningen holiday date, by Johan Vromans
+      <JVromans@squirrel.nl>
+    * IBM AIX doesn't have Xt timers and doesn'd compile plan 1.8.4, excluded
+      XFree workaround for IBM
+    * week number 2 appeared twice in 2001. Fixed by Helmut Jarausch
+      <jarausch@igpm.rwth-aachen.de>
+    * Search->One file could not select the "own" file (top menu choice).
+    * cleanup: removed remaining K&R varargs and sunkr target
+    * fixed '@' user notation in netplan server, by Gennadi Umanski
+      <umanskij@ti.uni-trier.de>
+    * fixed Japanese string converion, by Tomoko Hayashi <tomoko@u-aizu.ac.jp>
+    * other people's .dayplan file references ('L' lines in ~/.dayplan) over-
+      wrote own file entries (Heiko Schlichting <heiko@FU-Berlin.DE>)
+
+
+====== 1.8.6 released 18.3.03 =======
+
+FEATURES:
+    * reversed the change in 1.8.5, at popular demand, that lets a personal
+      holiday file replace the system holiday file. plan 1.8.6 again reads
+      both, system first. The new "reset" keywords can be used to clear all
+      system holidays, following an idea by Heiko Schlichting.
+
+BUG FIXES:
+    * the edit menu was broken in 1.8.5, fixed by Heiko Schlichting
+      <heiko@FU-Berlin.DE>
+
+
+====== 1.8.7 released 30.9.03 =======
+
+FEATURES:
+    * deleted support for SCO
+    * pland -p pops up all alarms that triggered since the last time pland
+      ran, not just those from the past three hours, by Brian L. Shaver
+      <shaker.lxxv@verizon.net>
+    * more room for appointments in year overview, moved year to left edge
+
+BUG FIXES:
+    * newly entered appointments no longer vanish from the edit menu.
+    * fixed errno compiler errors on SMP systems, Thomas Ribbrock
+      <emgaron@gmx.net>
+    * Italian language translations by Paolo Panizza <pp@ieee.org> were
+      missing from the 1.8.5 and 1.8.6 distributions, now included
+
+
+====== 1.9 released 6.2.05 =======
+
+FEATURES:
+    * saved space in various calendar views such as the year overview
+    * the week view repeats the hour title every few day rows; it was too easy
+      to get lost without scrolling all the time
+    * remove obsolete warning windows when the next warning or the main alarm
+      is reached.
+    * Linux: when a lockfile from a previous plan process is found, do not kill
+      it if it's dead and some non-plan process now uses the old process ID.
+    * if user "netplan" exists on the system, netplan runs as that user instead
+      of nobody. Needed for Debian. Petter Reinholdtsen <pere@hungry.com>
+    * added Belgian French holiday file, Nicolas E'vrard <nicoe@wanadoo.be>
+    * command-line option -V: experimental and incomplete vCalendar export.
+      File can be read by calendar programs such as Mozilla Calendar.
+    * plan is now distributed under the GPL license, at your choice.
+    * netplan has a new option -s that sends all messages to syslog.
+
+BUG FIXES:
+    * fixed Italian language file, Carlo Mandelli
+      <carlo.mandelli@consulenti.fastweb.it>
+    * fixed misspelling in the Italian language file, littledark
+      <littledark@swissinfo.org>
+    * "Delete past entries" did not remove repeating entries whose end date is
+      in the past, Aaron Kaplan <kaplan@cs.rochester.edu>
+    * fixed choice 1 of configure script on Solaris, Aaron Kaplan
+      <kaplan@cs.rochester.edu>
+    * after running a long time (months), alarms stopped triggering. Fixed by
+      Aaron Kaplan <kaplan@cs.rochester.edu>
+    * fixed Spanish holiday file, Fernando Tricas "Garci'a"
+      <ftricas@amon.cps.unizar.es>
+    * fixed loads of inane gcc warning messages
+
+
+====== 1.10 released 9.4.07 =======
+
+FEATURES:
+    * implemented limited read-only support for vCalendar/iCalendar (.ics)
+      files (Apple, Zimbra, Lotus, etc), which can be specified in File ->
+      File list like other files. Repetition information is ignored.
+    * added "make linux64" target. Some 64-bit Linux installations, notably
+      OpenSUSE 10.2, omit 32-bit libraries or links, causing compilation errors
+      for -lXt and others.
+    * ported to MacOS X with X11 and OpenMotif. Requires X11 from the MacOS X
+      install DVD, and OpenMotif from www.ist-inc.com/DOWNLOADS/motif_files/
+      openmotif-compat-2.1.31_IST.macosx10.3.dmg . The X server must run, and
+      DISPLAY must be set properly (like, localhost:0) or plan won't start up.
+      This is not a proper Aqua/Cocoa/Carbon port, although I made some feeble
+      attempts to fix the color scheme.
+    * new Polish language file by Jaroslaw Arlet <j.arlet@awf-gorzow.edu.pl>
+    * new command-line option -Y allows entering annual (yearly) appointments,
+      by Steffen Pietsch <Steffen.Pietsch@berlinonline.de>
+    * when alarms trigger, '%' codes in the short note text, message, and the
+      script are expanded. (See the help text in plan's Message/Script help.)
+      Eg., you can write message texts like "remember to see %U on %D at %T".
+	  %N    the short note text
+	  %M    the message text
+	  %S    the script text
+	  %D    the final trigger date
+	  %T    the final trigger time
+	  %L    the length in hours:minutes
+	  %F    the file the appointment is stored in, or "private"
+	  %U    your login name
+	  %%	a percent sign, '%'
+
+BUG FIXES:
+    * fixed a timezone bug that could make alarms go off exactly 24 hours late,
+      Aaron Kaplan <kaplan@cs.rochester.edu>
+    * manpage files were installed without the trailing ".1" and ".4"
+    * fixed compiler errors under Cygwin because the symbol linux was not set.
+    * added -m32 option for Linux; gcc 4 defaults to 64 bits but the required
+      libraries are not usually installed.
+    * entering a day of the month as a date will now correctly find the next
+      date with that day. A bug caused it to switch to a random date in 2000.
+    * fixed a language file read error that omitted a trailing null byte.
+      By Julien Soula <jsoula@univ-lille2.fr>
+    * an incomplete X resource file crashed plan. Now defaults are used; the
+      resulting windows are not very usable but it doesn't crash.
+
+
+====== 1.11 released 3.7.07 =======
+
+BUG FIXES:
+    * fixed "last weekday in month" expressions in holiday file, by Arnaud
+      Giersch <arnaud.giersch@iut-bm.univ-fcomte.fr>
+    * fixed mother's day definition in French holiday file, by Arnaud Giersch
+      <arnaud.giersch@iut-bm.univ-fcomte.fr>
+
+
+====== 1.12 released 25.12.07 =======
+
+BUG FIXES get from Debian project.
+
+
+====== 1.13 released 11.10.09 =======
+
+BUG FIXES
+    * Correcting manpages (get from Debian project).
+
+
+====== 1.14 released 22.02.14 =======
+
+BUG FIXES get from Debian project.
+
+
+====== 1.15 released 12.02.19 =======
+
+    * Move to UTF8 fonts in resources.h
+    * Add German names of weekdays in convert.c
+    * Optimize file src/Makefile
+    * Fix typo in main.c
+    * Enable displaying strings as UTF-8
+
+
+====== 1.16 released 22.11.19 =======
+
+    * Remove all code creating netplan binary,
+      because of newer security risks.
+    * Remove manpages of netplan and some hints.
+

@@ -1,0 +1,381 @@
+\n(Zugriffsversuch auf Datei "%s".)
+\nTagesplaner Version %s\nCompiliert am %s\n\nAutor: Thomas Driemeyer\n<thomas@bitrot.de, thomas@bitrot.in-berlin.de>\n\nAbonnieren der Mailing-Liste durch Mail an\nmajordomo@bitrot.de . Siehe auch meine Homepage:\n\nhttp://www.bitrot.de\nhttp://www.in-berlin.de/User/bitrot\n\nDie Sourcen stehen in\nftp://bitrot.in-berlin.de/pub/plan\nftp://plan.ftp.fu-berlin.de\n
+ (eigene)
+ (nur lesen)
+ (Warnung)
+%5d      (pid der Lockdatei für %s, für Benutzer %d)\n
+%d von %d Terminen der grok-Datenbank\n%s fallengelassen\nwegen falschen Datums oder Zeit.
+%s ist eine\ngrok-Datenbank, wird nicht unterstützt
+%s ist eine\ngrok-Datenbank, kann nicht geschrieben werden
+%s: %s in Zeile %d in %s\n
+%s: %s: ungültige Zeile:\n%s
+%s: %s: nicht gefunden\n
+%s: WARNUNG: kann %s nicht finden\n
+%s: WARNUNG: kann Benutzername nicht finden.\n%s
+%s: WARNING: can't signal daemon: 
+%s: WARNUNG: kann %s nicht starten: 
+%s: WARNUNG: Datei %s hat Version 
+%s: Warnung: fork gescheitert\n
+%s: kann Farbe %s nicht erzeugen\n
+%s: Kann %s nicht erzeugen: 
+%s: kann ~%s in %s nicht auswerten, benutze .\n
+%s: kann %s nicht schreiben: 
+%s: Kann Lockfile nicht erzeugen 
+%s: Kann Lockfile nicht öffnen 
+%s: Kann Lockfile nicht lesen 
+%s: Kann Lockfile nicht unlinken 
+%s: Kann Lockfile nicht schreiben 
+%s: lösche Skript "%s"\n
+%s: kann Prozeß %d (Eigentümer von Lockfile %s) nicht beenden\n
+%s: kann Datenbank nach 3 Sekunden nicht locken, lese trotzdem\n
+%s: erzeuge Skript "%s"\n
+%s: ignoriere unsicheres Skript
+%s: Abbruch mit Signal %d\n
+%s: Ausgelogt, Ausgaben werden unterdrückt
+%s: kein Mailer\n
+%s: kein Speicher
+%s: plan Kalender-Daemon, Version %s.\n
+%s: lade Datenbank neu\n
+%s: starte "%s", args
+%s: schlafe für %d:%02d:%02d\n
+%s: starte %s\n
+%s: unbekannte Farbe für %s\n
+%s: unbekannter Host, Authentifizierung nicht möglich\n
+%s: utmp funktioniert, überwache Logouts
+%s: ausgelogt, breche ab (-L verwenden?)\n
+(h:m)
+(h:m:s) auf die Systemzeit
+-K\tnur Abbruch des laufenden Daemons\n
+-L ist die Voreinstellung. -l verhindert überzählige plands.\n
+-L\tnicht überwachen (utmp funktioniert oft nicht)\n
+-d\tDebug: im Vordergrund bleiben, Ausgabe aller Aktionen\n
+-k\tBreche existierenden Daemon ab und starte\n
+-l ist die Voreinstewllung. -d oder -L bei vorzeitigem Abbruch.\n
+-l\tutmp überwachen und beim Ausloggen abbrechen\n
+-s\tutmp überwachen und beim Ausloggen Ausgaben unterdrücken\n
+-t\tkeine Windows, nur Ausgaben auf stdout\n
+12-Stunden (am/pm) Zeitformat
+<unbekannt>
+ALARM um %d:%02d%c
+Über
+Über...
+Addiere
+Zeiteinstellung
+Zeiteinstellung...
+Vorwarnung: %s
+Alarm
+Alarm-Optionen
+Alarm-Optionen...
+Alarm:
+Alle
+Alle Termine
+Termin-Textfarbe
+Termin-Textfarbe:
+April
+August
+Alte Termine automatisch löschen
+Windows automatisch vergrößern
+von Tag
+Verfügbare Dateien:
+Verfügbare Dateien, auswählen und addieren:
+Kalender beginnt um
+Abfrage
+Server abfragen
+Kalender-Konfiguration
+Kalenderansicht...
+PostScript-Skeleton "%s"\nnicht gefunden
+Abbruch
+Kann eigene Gruppe nicht ändern
+Kann eigenen Pfad nicht ändern
+Keine Verbindung zur netplan-\nServer-Maschine %s möglich
+Kann eigene Datei nicht ändern
+Termine von %s können nicht geändert werden,\nweil sie von einer grok-Datenbank stammen, und\ndie kann plan nicht schreiben. Die Datei ist\n%s
+Kann Termine von %s nicht ändern,\nkeine Schreiberlaubnis für %s\noder %s/.dayplan.\n\nDatei->Neu ladet die Datenbank neu. Einzelne Termine\nkönnen nicht abgeschaltet werden, aber ganze\nDateien können mit Konfiguration->Dateiliste abgeschaltet werden.
+Termine aus %s können nicht geändert\nwerden, der Server auf %s erlaubt kein Schreiben. Einzelne\nTermine können nicht abgeschaltet werden, aber ganze\nDateien können mit Konfiguration->Dateiliste abgeschaltet werden.
+Ziel nicht erlaubt, Abbruch.
+Pipe zu "%s" nicht moeglich
+Länge von nicht-täglichen Terminen kann nicht verändert werden.
+Löschen
+Farbiger Ausdruck
+Farbiger Hintergrund für andere Dateien
+Konfig
+Bestätigen
+Kontext
+Weiter
+Weiter ohne Daemon
+Datenbankzugriff
+Datum
+Zieldatum:
+Tag
+Tages-Ansicht
+Sommerzeit ist
+Dezember
+Std
+Standard-Vorwarnung:
+Feiertage...
+Löschen
+Alte Termine löschen
+Ende
+Anzeige:
+Nicht in der Tages-Ansicht zeigen
+Nicht in der Monats-Ansicht zeigen
+Nicht in der Wochen-Ansicht zeigen
+Nicht in der Jahres-Übersicht zeigen
+Nicht in der Jahres-Ansicht zeigen
+Vergangene Termine unterdrücken
+OK
+Kopie
+Fehler:\n\n
+Frühe Warnung:
+Ändern
+Kalender endet um
+Bitte zuerst den Namen eingeben
+Termin von der Wochen-Ansicht
+Fehler
+Lesefehler:\n%s
+Ausnahmedaten
+Ausnahmedaten:
+Kommando
+Sicherheitskopie von %s nicht möglich,\n%s ist nicht schreibbar.
+Sicherheitskopie von %s in %s\nnicht möglich, Schreibabbruch.
+Kann Datenbank %s nicht erzeugen
+Kann keine Kopie von der Benutzerdatenbank\n%s erzeugen
+Kann Benutzer-Termindatei %s\nnicht lesen, Fehler %d\n
+Kann Haupt-Termindatei %s nicht lesen, Fehler %d
+Kann private Termindatei %s nicht lesen, Fehler %d
+Kann Termindatei "%s" nicht schreiben.\nLetzte Änderungen können verlorengehen.\nBitte Plattenplatz und Zugriffsrechte prüfen!
+Kann Termindatei "%s" nicht schreiben.\nLetzte Änderungen können verlorengehen.\nBitte Plattenplatz und Zugriffsrechte prüfen!\n\nOriginal kann nicht wiederhergestellt werden.\nBitte Kopie "%s" manuell wiederherstellen.
+Februar
+Datei
+Datei %s enthält %d Termine in %s\nund %d auf Server %s. Umgeschaltet\nauf Server, Datei %s\nwird ignoriert.
+Datei %s auf Server %s existiert nicht.\nDatei wurde mit den aktuell geladenen\nTerminen erzeugt.
+Dateiliste
+Dateiliste...
+Dateien und Programme
+Erste Woche ist erste vollständige Woche
+Erste Woche ist erste Woche mit Donnerstag
+Fr
+Das Hilfesystem
+Globale Optionen:
+Zu Datum
+Heute
+Zu...
+Grünes Fenster
+Gruppe
+Gruppenauswahl
+Raten
+Hilfe
+Feiertage
+Übersicht
+Januar
+Juli
+Juni
+Schlüsselwortsuche
+Beenden
+Sprache
+Sprachen
+Große Monats-Ansicht
+Lange Balken für Wochen-Termine ohne Zeit
+Letzten
+Letzter Tag: Wiederholung beenden am
+Späte Warnung:
+Groß/Kleinschreibung ignorieren
+Groß/Kleinschreibung beachten
+Lokaler Pfad
+Verbindung zum netplan-Server %s unterbrochen.\n\nBitte Server neu starten, und Datei->Neulesen\nfür eine neue Verbindung wählen.\nLetzte Änderungen können verloren gegangen sein.
+Mailer:
+März
+Mai
+Meldung
+Mo
+Monat
+Monats-Optionen:
+Monat/Tag/Jahr-Format
+Name
+Fehler, Name ist nicht eindeutig
+Netzwerk
+Weiter
+Nächste Woche
+Kein Termin um
+Keine
+Notiz
+November
+Oktober
+Alle Termine weglassen
+Fremde Termine weglassen
+Private Termine weglassen
+Kontext
+Eine Datei...
+Nur Eigentümer kann ändern
+Optionen:
+Andere
+Eigene
+Eigene
+Eigene
+Fehler: Pfad ist nicht eindeutig
+Halten
+Bitte zuerst Zeit oder Datum eingeben
+Bitte zuerst Dateiliste und Netzwerkverbindungen\neingeben, bevor Termine eingegeben werden.
+Zurück
+Drucken
+Drucken mit Signal %d abgebrochen.\nDruckkommando überprüfen.
+Druckmodus:
+Drucken...
+Privat
+Fehler in Feiertagsdatei %s:\n%.80s in Zeile %d
+Ende
+Rotes Fenster
+Regulärer Ausdruck
+Erinnerung: kein Alarm, keine Zeitangabe
+Wiederholen alle
+Jährliche Wiederholung
+Wiederholung an
+Wiederholung am
+Neulesen
+netplan-Skripte ausführen (Sicherheitsrisiko!)
+Sa
+Terminplan
+Terminplan-Wiederholer
+Suche
+Suchtext
+Schlüsselwortsuche...
+Suchmodus:
+Mail schicken
+September
+Server
+Server-Host
+Protokollfehler auf Server-host "%s":\nErwartet Antwortcode `%c', aber Server schickt `%c'.\nAntwortmeldung vom Server war:\n%s
+Server-Host %s meldet einen Fehler:\n\n%s
+Server auf Host %s antwortet nicht\n
+Server auf Host %s ist nicht erreichbar.
+Server auf Host %s: Protokollfehler\n
+Shell-Skript
+Julianisches Datum anzeigen
+Warnzeiten anzeigen
+Dateinamen in Terminbalken zeigen
+Eintagestermine anzeigen
+Wochennummern anzeigen
+Kleine Monats-Ansicht
+Jemand anders ändert diesen Termin gerade.\nBitte später nochmal probieren.
+Keine Hilfe möglich.
+Keine Hilfedatei,\n%s existiert nicht
+Sortieren
+Spalten
+Druckkommando:
+Daemon starten
+Text-Konversionsfehler.\n
+So
+Neulesen
+Die erste Datei in der Dateiliste\n(%s)\nmuß eine grok-Fatenbank sein!\nVersuche weiterzuarbeiten, Datenverlust\nmöglich.
+Der netplan-Server hat beim Ablegen\ndes Termins einen Fehler gemeldet.\nBitte netplan-ACL-Rechte prüfen.
+Das neue Datum ist nach dem Endedatum,\n%s. Das Endedatum wurde abgeschaltet.
+Die neue Sprache wird nach\ndem nächsten Neustart wirksam.
+Das neue Endedatum ist vor dem Beginndatum, %s. Ignoriert.
+Das andere Programm konnte nicht beendet werden.\n
+Dieser Monat
+Diese Woche
+Do
+Zeit
+Zeitzone ist GMT
+Heute
+Morgen
+Zu viele Fehler, Abbruch.\n
+Fehlersuche
+Probieren Sie es mal mit -L.\n
+Di
+Undo
+Usage: pland [-dkKlL]\n
+GPS-Wochennummern
+Alle Ansichten im Hauptfenster
+Bitte rechte Maustaste benutzen
+Benutzerdatei %s auf Host %s:\nkeine Verbindung möglich\n
+Benutzerdatei %s auf Host %s:\nkann keinen Socket öffnen\n
+Benutzerdatei %s auf Host %s:\nunbekannter Host\n
+Ansicht
+Warnung:\n\nSie können jetzt fremde Termine ändern.\nplan verhindert normalerweise Zugriffskonflikte (außer\nüber NFS), aber frühere Änderungen anderer\nBenutzer während Ihrer Änderung können verlorengehen. Vorsicht!
+Warnung
+Warnung
+Warnung:\nEs läut schon ein %s. Drücken Sie Weiter,\num trotzdem zu starten, oder Beenden,\num das andere Programm zu beenden.\nWeiter könnte neue Termine verlieren, und\nKommandozeileneingabe funktioniert nicht.
+Warnung:\nDer Daemon läuft nicht. Ohne Daemon finden\nkeine Aktionen zur Alarmzeit statt.\nBitte "%s" in ~/.xsession oder ~/.sgisession starten,\noder plan mit der Option -S starten.
+Warnung: Alarm um %d:%02d%c
+Warnung: chmod 0600 auf Termindatei\n%s gescheitert\n
+Warnung: eigene Termindatei %s ist nicht schreibbar\n
+Warnung: eigene private Termindatei %s ist nicht schreibbar\n
+Mi
+Woche
+Wochen (Landscape)
+Wochen (Portrait)
+Wochen-Ansicht
+Wochen/Tages-Ansichts-Optionen:
+Woche beginnt mit Sonntag
+Wochen-Ansicht enthält
+Fenster verschwinden nach
+X-Resourcen
+Jahr
+Jahres-Übersicht
+Jahres-Übersicht
+Gelbes Fenster
+Sie haben %d Termine hier und %d auf\nServer %s. %s auf %s gespeichert und alte\nTermine in %s gelöscht.
+Ihre eigene Termindatei ist schreibgeschützt!
+Ja-Ü
+Zoom in
+immer aus
+immer an
+ein anderer Daemon läuft, %s -k verwenden
+auth auf %s antwortet %s\n
+Authentifizierungsfehler auf %s\n
+Authentifizierungsserver auf %s antwortet nicht\n
+automatisch
+Beg:
+kein Zugriff
+keine Verbindung zu Authentifizierungsserver auf %s möglich\n
+kann existierenden %s-Daemon nicht beenden
+kann Socket zur Authentifizierung nicht öffnen
+Tage
+Tage:
+Voreinstellung
+End:
+jedem...
+fünften...
+Termindatei von Benutzer %d nicht lesbar, kein Name oder Pfad
+Termindatei von Benutzer %d nicht schreibbar, kein Name oder Pfad
+ersten...
+vierten...
+Antwort ist "%s"\n
+unvollständig
+letzten...
+Lng:
+Länge %d:%02d, bis %d:%02d%c
+Min:
+fehlt
+.
+Abzufragender netplan-Server:
+neue Datei
+kein Speicher
+kein Speicher für Termindatei
+kein Speicher für Tages-Ansicht
+kein Speicher für Pixmap
+kein Speicher für Wochen-Ansicht
+kein Speicher für Jahres-Übersicht
+kein Benutzer "%s"
+Uhr
+älter als 90 Tage
+älter als einen Tag
+älter als einen Monat
+älter als eine Woche
+älter als ein Jahr
+Opt:
+Eigene
+plan: Verbindung zu Host %s: %s
+.
+zweiten...
+.
+.
+dritten...
+bis
+zu viele Ausnahmedaten für Termin
+unbekannt
+benutze Systemzeit
+Benutzer %s
+Schreibfehler
+xmbase-grok-Datenbank %s\nkann nicht gelesen werden, das Kalenderinterface\nist %s und es gibt keine Datumsfelder,\num eins automatisch zu erzeugen.

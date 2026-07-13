@@ -1,0 +1,33 @@
+:
+: US holiday file. Copy to ~/.holiday
+: Use this as a starting point, some holidays are missing, and some listed
+: here are largely irrelevant.
+:
+: Author: Ron Harichandran <harichan@cee.msu.edu>
+:
+small "New Year" weekend on 1/1
+small "US: M.L.King B'day" weekend on third monday in january
+small "US: President's Day" weekend on third monday in february
+small "US: Memorial Day" weekend on last monday in may
+small "US: Independence Day" weekend on july 4
+small "Labor Day" weekend on first monday in september
+small "US: Thanksgiving" weekend on fourth thursday in november
+small "Christmas" weekend on december 25
+:
+: Canadian holiday file. Copy to ~/.holiday
+:
+: Author: Peter Littlefield <plittle@sofkin.ca>
+:
+small "Valentine's Day" on february 14
+small "CAN: God Friday" weekend on easter minus 2 days
+small "CAN: Easter" weekend on easter
+small "CAN: Easter Monday" weekend on easter plus 1 day
+small "Mother's Day" on second sunday in may
+small "Victoria Day" weekend on monday before may 24
+small "Father's Day" on third sunday in june
+small "QC: St-Jean Baptiste" on june 24
+small "CAN: Canada Day" weekend on july 1
+small "AB: Civic Holiday" weekend on first monday in august
+small "CAN: Thanksgiving" weekend on second monday in october
+small "Christmas" weekend on december 25
+small "CAN: Boxing Day" weekend on december 26

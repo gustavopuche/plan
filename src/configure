@@ -1,0 +1,344 @@
+#!/bin/sh
+
+if [ $# -gt 1 -o "$1" = "--help" ]; then
+    echo "This is not a standard GNU configure script. It is an" 1>&2
+    echo "interactive shell script which can takes as only argument" 1>&2
+    echo "an answer to the first question asked by the interactive run." 1>&2
+    echo "If you wish information about what it does, you will" 1>&2
+    echo "have to read the script source." 1>&2
+    exit 1
+fi
+
+echo "This script configures the Makefile in the plan distribution. It saves a"
+echo "backup of the original file in Makefile.orig, and the previous Makefile"
+echo "in Makefile.back. It does not modify or install any other files."
+
+line=line
+which $line >/dev/null 2>&1 || line=read	# Linux has no line command
+
+readline()
+{
+	if test $interactive = no; then
+		in=
+	else
+		case $line in
+			line)	in=`line`;;
+			read)	read in;;
+		esac
+	fi
+}
+
+
+#-----------------------------------------------------------------------------
+# defaults
+#-----------------------------------------------------------------------------
+
+interactive=yes
+
+if test x"$1" != x; then
+	in=$1
+	interactive=no
+	echo ""
+	echo "Running in non-interactive mode"
+	echo ""
+else
+	echo ""
+	echo "Choose defaults for all following questions:"
+	echo "1 -- same as the previous configuration (default)"
+	echo "2 -- factory defaults (requires write access to /usr/local)"
+	echo "3 -- Silicon Graphics freeware (requires root privileges)"
+	echo "4 -- Debian Linux standard (requires root privileges)"
+	echo "5 -- SuSE Linux standard (requires root privileges)"
+	readline
+fi
+
+case ${in:-1} in
+  1)	sed '/end of configuration section/q' Makefile > .conftemp
+	. ./.conftemp
+	rm .conftemp
+	PLANHOME=
+	test x$PLANRULE = x || PLANHOME=`echo $PLANRULE | sed 's/.*=//;s/"//g'`
+	;;
+  2)	DIR=/usr/local/bin		# traditional factory defaults
+	SBIN=
+	LIB=/usr/local/lib
+	MAN=/usr/local/man/man
+	CATMAN=/usr/catman/local/cat
+	PLANHOME=
+	PLANLOCK=
+	PLANDLOCK=
+	INCDIR=
+	LEX=lex
+	YACC=yacc
+	NOB_UID=
+	NOB_GID=
+	CPP_PATH='/lib/cpp -P -I$(HELP)'
+	DOFORK=TRUE
+	JAPAN=
+	DEBUG=-O2
+	DEFTARGET=help
+	HOLIDAY=
+	;;
+  3)	DIR=/usr/freeware/bin		# SGI freeware CD
+	SBIN=
+	LIB=/usr/freeware/lib
+	MAN=/usr/share/man/local/man/man
+	CATMAN=/usr/share/catman/local/cat
+	PLANHOME=
+	PLANLOCK=
+	PLANDLOCK=
+	INCDIR=
+	LEX=lex
+	YACC=yacc
+	NOB_UID=60001
+	NOB_GID=60001
+	CPP_PATH='/lib/cpp -P -I$(HELP)'
+	DOFORK=TRUE
+	JAPAN=
+	DEBUG="-O2 -n32"
+	DEFTARGET=sgi6
+	HOLIDAY=
+	;;
+  4)	DIR=/usr/bin			# Debian Linux
+	SBIN=/usr/sbin
+	LIB=/usr/lib/plan
+	HELP=/usr/share/plan
+	NETPLANDIR=/var/lib/plan
+	MAN=/usr/share/man/man
+	CATMAN=NONE
+	PLANHOME=.plan.dir
+	PLANLOCK=
+	PLANDLOCK=
+	INCDIR=
+	LEX=lex
+	YACC=yacc
+	NOB_UID=63434
+	NOB_GID=63434
+	CPP_PATH='/usr/bin/cpp -P -I$(HELP)'
+	DOFORK=FALSE
+	JAPAN=
+	DEBUG="-O2"
+	DEFTARGET=linux
+	HOLIDAY=NONE
+	;;
+  5)	DIR=/usr/X11R6/bin		# SuSE Linux
+	SBIN=/usr/X11R6/bin
+	LIB=/usr/lib/plan
+	HELP=/usr/lib/plan
+	NETPLANDIR=/usr/lib/plan
+	MAN=/usr/X11R6/man/man
+	CATMAN=NONE
+	PLANHOME=
+	PLANLOCK=
+	PLANDLOCK=
+	INCDIR=
+	LEX=lex
+	YACC=yacc
+	NOB_UID=65534
+	NOB_GID=65534
+	CPP_PATH='/usr/bin/cpp -P -I$(HELP)'
+	DOFORK=FALSE
+	JAPAN=
+	DEBUG="-O2"
+	DEFTARGET=linux
+	HOLIDAY=/usr/lib/plan/holiday
+	;;
+  mi)	DIR=/usr/local/mi/bin		# mental images
+	SBIN=
+	LIB=/usr/local/mi/lib
+	MAN=
+	CATMAN=
+	PLANHOME=
+	PLANLOCK=
+	PLANDLOCK=
+	INCDIR=
+	LEX=lex
+	YACC=yacc
+	NOB_UID=
+	NOB_GID=
+	CPP_PATH='/lib/cpp -P -I$(HELP)'
+	DOFORK=TRUE
+	JAPAN=
+	DEBUG=-O2
+	DEFTARGET=sgi6
+	HOLIDAY=
+	;;
+  *)	echo "illegal choice, exiting."
+	exit;;
+esac
+
+#-----------------------------------------------------------------------------
+# configuration questions
+#-----------------------------------------------------------------------------
+
+echo ""
+echo "installation directory for plan executable? [$DIR]"
+readline; DIR=${in:-$DIR}
+
+SBIN=${SBIN:-$DIR}
+echo ""
+echo "installation directory for system executables (netplan)? [$SBIN]"
+readline; SBIN=${in:-$SBIN}
+
+LIB=${LIB:-$DIR}
+echo ""
+echo "installation directory for support executables and files? [$LIB]"
+readline; LIB=${in:-$LIB}
+
+HELP=${HELP:-$LIB}
+echo ""
+echo "installation directory for online help file? [$HELP]"
+readline; HELP=${in:-$HELP}
+
+NETPLANDIR=${NETPLANDIR:-$LIB}
+echo ""
+echo "installation directory for netplan's netplan.dir directory? [$NETPLANDIR]"
+readline; NETPLANDIR=${in:-$NETPLANDIR}
+
+MAN=${MAN:-$LIB}
+echo ""
+echo "The man pages go into sections 1 and 4, either in nroff or catman format."
+echo "Please choose the directory root. For example, to install /foo/man1/plan"
+echo "and /foo/man4/pland, enter /foo/man (without the trailing 1 or 4). Enter"
+echo "NONE if you don't want nroff manpages."
+echo "installation directory prefix for nroff man pages? [$MAN]"
+readline; MAN=${in:-$MAN}
+
+CATMAN=${CATMAN:-$MAN}
+echo ""
+echo "installation directory for cat man pages (or NONE)? [$CATMAN]"
+readline; CATMAN=${in:-$CATMAN}
+
+test x$PLANHOME = x && PLANHOME=/
+echo ""
+echo "You can either put lock files into /tmp and the default appointment files"
+echo "in your home directory, or create a subdirectory in your home directory"
+echo "that stores all lock and appointment files. Enter a single slash (/) for"
+echo "the former and the name of a directory (recommended: .plan.dir) in the"
+echo "latter case (note: if you change from a previous installation, you will"
+echo "have to move the old files manually): [$PLANHOME]"
+readline; PLANHOME=${in:-$PLANHOME}
+if test x$PLANHOME = x/; then
+	PLANHOME=
+	PLANLOCK=${PLANLOCK:-/tmp/.plan%d}
+	PLANDLOCK=${PLANDLOCK:-/tmp/.pland%d}
+else
+	PLANLOCK=${PLANLOCK:-\~/$PLANHOME/lock.plan}
+	PLANDLOCK=${PLANDLOCK:-\~/$PLANHOME/lock.pland}
+fi
+
+echo ""
+echo "main (plan) lockfile (use %d for user ID)? [$PLANLOCK]"
+readline; PLANLOCK=${in:-$PLANLOCK}
+
+echo ""
+echo "daemon (pland) lockfile (use %d for user ID)? [$PLANDLOCK]"
+readline; PLANDLOCK=${in:-$PLANDLOCK}
+
+if test x$LEX = x; then
+	LEX=`which lex`
+	case $LEX in /);; *) LEX="`which flex` -l";; esac
+	case $LEX in /);; *) LEX=;; esac
+fi
+echo ""
+echo "Where is your lex program? [$LEX]"
+readline; LEX=${in:-$LEX}
+
+if test x$YACC = x; then
+	YACC=`which yacc`
+	case $YACC in /);; *) LEX="`which bison` -y";; esac
+	case $YACC in /);; *) LEX=;; esac
+fi
+echo ""
+echo "Where is your yacc program? [$YACC]"
+readline; YACC=${in:-$YACC}
+
+test "x$CPP_PATH" = x && CPP_PATH='/lib/cpp -P -I$(HELP)'
+echo ""
+echo "If you have a C preprocessor, you can enter a command line here that will"
+echo "be used by plan to preprocess holiday configuration files. Enter a single"
+echo "slash (/) to disable preprocessing: [$CPP_PATH]"
+readline; CPP_PATH=${in:-$CPP_PATH}
+test "x$CPP_PATH" = x/ && CPP_PATH=
+
+def=y
+test ${DOFORK:-TRUE} = FALSE && def=n
+echo ""
+echo "Should plan background itself on startup, as if \`\`plan &'' had been"
+echo "used? Answer y or n: [$def]"
+readline; in=${in:-$def}
+DOFORK=TRUE
+test $in = n && DOFORK=FALSE
+
+IFS=":"
+set `grep nobody /etc/passwd | sed 's/[^0-9:]/x/g'`
+test x$NOB_UID = x && NOB_UID=${3:-60001}
+test x$NOB_GID = x && NOB_GID=${4:-60001}
+echo ""
+echo "Enter an unprivileged (nobody) numerical user ID for netplan: [$NOB_UID]"
+readline; NOB_UID=${in:-$NOB_UID}
+echo ""
+echo "Enter an unprivileged (nobody) numerical group ID for netplan: [$NOB_GID]"
+readline; NOB_GID=${in:-$NOB_GID}
+
+tmp=n
+test x"$JAPAN" = x || tmp=y
+echo ""
+echo "Do you want to compile a Japan-specific binary? Answer y or n: [$JAPAN]"
+readline; tmp=${in:-$tmp}
+if test x$tmp = xy; then
+	JAPAN='"$(JAPANDEFS)"'
+	HOLIDAY=japan
+fi
+
+test x$HOLIDAY = x && HOLIDAY=german
+echo ""
+echo "The following custom holiday definitions are available:"
+ls -1 ../holiday | sed 's/holiday_/    /'
+echo "Choose one: [$HOLIDAY]"
+readline; HOLIDAY=${in:-$HOLIDAY}
+
+test x$DEFTARGET = xhelp && DEFTARGET=linux
+echo ""
+echo "The following target systems are available:"
+grep "^.@echo .  make " Makefile | sed 's/.@echo....make/   /;s/"$//'
+echo "Choose a code from the left column: [$DEFTARGET]"
+readline; DEFTARGET=${in:-$DEFTARGET}
+
+#-----------------------------------------------------------------------------
+# rewrite Makefile
+#-----------------------------------------------------------------------------
+
+planrule=
+test x$PLANHOME = x || planrule="-DPLANHOME=\\\\\"\"$PLANHOME\"\\\\\""
+test -f Makefile.orig ||\
+	(mv Makefile Makefile.orig && cp Makefile.orig Makefile)
+cp Makefile Makefile.back
+sed    "s+^DIR=.*+DIR=$DIR+;\
+	s+^LIB=.*+LIB=$LIB+;\
+	s+^SBIN=.*+SBIN=$SBIN+;\
+	s+^HELP=.*+HELP=$HELP+;\
+	s+^NETPLANDIR=.*+NETPLANDIR=$NETPLANDIR+;\
+	s+^MAN=.*+MAN=$MAN+;\
+	s+^CATMAN=.*+CATMAN=$CATMAN+;\
+	s+^PLANRULE=.*+PLANRULE=$planrule+;\
+	s+^PLANLOCK=.*+PLANLOCK=\"$PLANLOCK\"+;\
+	s+^PLANDLOCK=.*+PLANDLOCK=\"$PLANDLOCK\"+;\
+	s+^INCDIR=.*+INCDIR=$INCDIR+;\
+	s+^LEX=.*+LEX=$LEX+;\
+	s+^YACC=.*+YACC=$YACC+;\
+	s+^NOB_UID=.*+NOB_UID=$NOB_UID+;\
+	s+^NOB_GID=.*+NOB_GID=$NOB_GID+;\
+	s+^CPP_PATH=.*+CPP_PATH='$CPP_PATH'+;\
+	s+^DOFORK=.*+DOFORK=$DOFORK+;\
+	s+^JAPAN=.*+JAPAN=$JAPAN+;\
+	s+^HOLIDAY=.*+HOLIDAY=$HOLIDAY+;\
+	s+^DEBUG=.*+DEBUG=$DEBUG+;\
+	s+^DEFTARGET=.*+DEFTARGET=$DEFTARGET+" Makefile > .conftemp
+mv .conftemp Makefile
+
+echo ""
+echo " ---  Done  ---"
+echo ""
+echo "Now run \`\`make clean'', \`\`make'' and \`\`make install'' to compile"
+echo "and install plan."
